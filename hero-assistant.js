@@ -28,7 +28,7 @@ class HeroAssistant {
                 parent.classList.remove('image-loaded');
                 console.warn('Assistant image failed to load:', img.src);
                 // Optional: Set a default placeholder image
-                // img.src = 'Image/placeholder-assistant.png';
+                // img.src = 'Images/placeholder-assistant.png';
             });
             
             // Check if image is already loaded (cached)

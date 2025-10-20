@@ -1,0 +1,1035 @@
+body {
+  background: white;
+  margin: 0px;
+  padding: 0px;
+  font-family: Arial, Narrow, sans-serif;
+  font-size: 12px;
+  color: #555555;
+  background-color: #475569;
+}
+
+h3,
+h2,
+img,
+a {
+  margin: 0px;
+  padding: 0px;
+  border: none;
+}
+
+div.sub {
+  margin: 0px 0px 5px 20px;
+}
+.tup {
+  text-transform: uppercase;
+}
+frame,
+iframe {
+  z-index: 1;
+}
+
+#logo {
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+  color: #ffffff;
+}
+#logo h1 a,
+#logo h1 a:visited,
+#logo h1 a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+#logo h1 {
+  padding: 10px 15px 0px 15px;
+  float: left;
+  margin: 0px;
+  font-size: 290%;
+  width: 50%;
+}
+#logo #hLang {
+  float: right;
+  width: 40%;
+  text-align: right;
+  font-size: 14px;
+  padding: 5px 5px 0px 0px;
+}
+#logo #hLang span {
+  float: right;
+  display: block;
+  margin: 2px;
+}
+#logo #hLang span.cn {
+  width: 24px;
+  height: 18px;
+  background: url(../images/flags2.png);
+}
+#logo #hLang span.pwi {
+  width: 24px;
+  height: 18px;
+  background: -24px url(../images/flags2.png);
+}
+#logo #hLang span.ru {
+  width: 24px;
+  height: 18px;
+  background: -48px url(../images/flags2.png);
+}
+#logo #hLang span.fr {
+  width: 24px;
+  height: 18px;
+  background: -72px url(../images/flags2.png);
+}
+#logo #hLang span.de {
+  width: 24px;
+  height: 18px;
+  background: -96px url(../images/flags2.png);
+}
+#logo #hLang img {
+  padding: 2px;
+  border: none;
+}
+
+#logo #hSearch {
+  float: right;
+  width: 40%;
+  text-align: right;
+  font-size: 12px;
+  padding: 0px;
+}
+#logo #hSearch input {
+  float: right;
+  width: 150px;
+  line-height: 18px;
+  height: 20px;
+}
+#logo #hSearch .hB {
+  width: 100px;
+  margin: 3px 0 0 0;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+#logo #hSearch .hB:hover {
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.top_ads,
+.ads {
+  width: 728px;
+  padding: 5px;
+  background-color: #7597de;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ads {
+  width: auto;
+}
+
+.srch {
+  padding: 0px;
+  margin: 200px auto;
+}
+.txt {
+  width: 250px;
+}
+.btn {
+  margin: 0 0 0 5px;
+}
+
+#footer {
+  clear: both;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  color: #dddddd;
+  text-align: center;
+  margin-top: 30px;
+}
+#footer span {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 10px;
+}
+#footer span a,
+#footer span a:visited,
+#footer span a:hover {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  color: #dddddd;
+  text-decoration: underline;
+  font-size: 10px;
+}
+
+.toplinks {
+  width: 836px;
+  margin: 10px auto 1px auto;
+  background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 5px;
+}
+.toplinks a,
+.toplinks a:visited {
+  color: #ffffff;
+}
+.toplinks a:hover {
+  color: #dddddd;
+}
+
+.tableHeader {
+  width: auto;
+  font-size: 21px;
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.list {
+  clear: both;
+  margin: 0px auto;
+  width: 850px;
+  border: none;
+}
+.list .tableItem {
+  float: left;
+  padding: 5px 25px 5px 25px;
+}
+.soft {
+  margin: 0px auto;
+  width: auto;
+  min-width: 300px;
+  max-width: 850px;
+  border: none;
+}
+.listitems {
+  margin: 0px auto;
+  border: none;
+  min-width: 500px;
+}
+.list th,
+.listitems th {
+  height: 20px;
+  font-size: 15px;
+  vertical-align: middle;
+  margin-bottom: 5px;
+  padding: 3px;
+  color: #fff;
+  background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+}
+
+.list td {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 14px;
+  background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+  color: #fff;
+  padding: 3px;
+}
+.list td.tleft {
+  min-width: 400px;
+  text-align: left;
+}
+.soft td.tleft {
+  min-width: 300px;
+}
+.list td p {
+  margin: 0px;
+  padding: 0px;
+}
+.listitems td {
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+  background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+  color: #fff;
+  padding: 5px;
+}
+.listitems td input {
+  width: 50px;
+}
+.listitems td input.name {
+  width: 150px;
+}
+.listitems td p {
+  padding: 0px;
+  margin: 2px 0px;
+}
+.list td a,
+.list td a:visited,
+.list th a,
+.list th a:visited,
+.listitems td a,
+.listitems td a:visited,
+.listitems th a,
+.listitems th a:visited {
+  text-decoration: none;
+  color: #fff;
+}
+.list td a:hover,
+.list th a:hover,
+.listitems td a:hover,
+.listitems th a:hover {
+  text-decoration: underline;
+  color: #ccc;
+}
+
+div.plain {
+  width: 900px;
+  margin: 20px auto;
+}
+div.plain div.header,
+div.plain div.text {
+  color: #fff;
+  background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+  margin: 2px 0px;
+}
+div.plain .header {
+  font-size: 20px;
+  text-align: center;
+  padding: 2px;
+}
+div.plain div.text {
+  font-size: 14px;
+  text-align: left;
+  padding: 5px 10px;
+  overflow: hidden;
+}
+div.plain div.text p {
+  margin: 0px 0px 5px 0px;
+  padding: 0px;
+}
+div.plain div.text a,
+div.plain div.text a:visited {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+div.plain div.text a:hover {
+  color: #fff;
+  text-decoration: underline;
+  font-size: 14px;
+}
+div.plain div.text .info,
+div.plain div.text .minfo {
+  font-size: 14px;
+  float: left;
+  overflow: hidden;
+}
+
+div.plain div.text .info,
+div.plain div.text .minfo {
+  max-width: 500px;
+}
+div.plain div.text .minfo p {
+  padding-left: 10px;
+}
+div.plain div.text .minfo p.sub {
+  padding-left: 20px;
+}
+div.plain div.text .cwidth {
+  width: 600px;
+}
+div.plain div.text .info p,
+div.plain div.text .minfo p {
+  margin: 0px;
+  padding: 0px;
+}
+div.plain div.text .info p.sub,
+div.plain div.text p.sub {
+  padding-left: 10px;
+}
+div.plain div.text .info p.addon {
+  color: #0090ff;
+}
+div.plain div.text .info p.descr {
+  padding-top: 10px;
+}
+div.plain div.text .info p strong {
+  font-weight: bold;
+}
+div.plain div.text .minfo p {
+  margin: 0px;
+  padding: 0px 0px 5px 10px;
+}
+div.plain div.text .minfo h3 {
+  margin: 0px;
+  padding: 0px;
+}
+div.plain div.text .minfo .infotable {
+  margin: 0px auto;
+  padding: 0px;
+  border: none;
+}
+div.plain div.text .subinfo {
+  font-size: 14px;
+  float: right;
+  min-width: 350px;
+  max-width: 430px;
+  overflow: hidden;
+}
+div.plain div.text .msubinfo {
+  min-width: 200px;
+  max-width: 400px;
+}
+div.plain div.text .subinfo {
+  font-size: 14px;
+  float: right;
+  min-width: 350px;
+  max-width: 450px;
+  overflow: hidden;
+}
+div.plain div.text .subinfo h2 {
+  font-size: 18px;
+}
+div.plain div.text .subinfo h3 {
+  font-size: 16px;
+}
+div.plain div.text .subinfo p {
+  margin: 0px;
+  padding: 0px 0px 0px 10px;
+}
+div.plain div.text .subinfo table {
+  width: 350px;
+  color: #fff;
+}
+
+div.plain .clean {
+  clear: both;
+}
+
+#content {
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  width: 100%;
+}
+#content div.message {
+  padding: 10px;
+  text-align: center;
+  margin: 25px 0px 100px 0px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+}
+#content div.message a,
+#content div.message a:visited {
+  text-decoration: underline;
+  color: #fff;
+}
+#content div.message a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #ccc;
+}
+
+.subTypes {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+}
+.subTypes a,
+.subTypes a:visited {
+  text-decoration: none;
+  color: #ffffff;
+}
+.subTypes a:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+.gold {
+  color: #ffdc50;
+}
+.silver {
+  color: #b1b1b1;
+}
+.bronze {
+  color: #ff6000;
+}
+
+.el_stun {
+  color: #ffff80;
+}
+.el_weak {
+  color: #80ffff;
+}
+.el_slow {
+  color: #00ff00;
+}
+.el_silen {
+  color: #ff00ff;
+}
+.el_sleep {
+  color: #0080ff;
+}
+.el_none {
+  color: #ffffff;
+}
+
+span.tc0 {
+  color: #8eb9ff;
+} /*task_color*/
+span.tc1 {
+  color: #ff765c;
+}
+span.tc2 {
+  color: #56a782;
+}
+span.tc3 {
+  color: #ffffff;
+}
+span.tc4 {
+  color: #d42503;
+}
+span.tc5 {
+  color: #61f2ff;
+}
+span.tc6 {
+  color: #fffd44;
+}
+span.tc7 {
+  color: #d181ff;
+}
+span.tc8 {
+  color: #000;
+}
+span.tc9 {
+  color: #0065fe;
+}
+span.tc10 {
+  color: #9fb1b7;
+}
+span.tc11 {
+  color: #ff9c00;
+}
+span.tc12 {
+  color: #a6fcd5;
+}
+span.tc13 {
+  color: #fa9ae0;
+}
+span.tc14 {
+  color: #000;
+}
+span.tc15 {
+  color: #000;
+}
+span.tc16 {
+  color: #000;
+}
+span.tc100 {
+  color: #ffdc8a;
+}
+
+.hiddenvis {
+  visibility: hidden;
+}
+.hidden {
+  display: none;
+}
+
+.pages {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  margin: 0px auto;
+  width: 850px;
+  color: #ffffff;
+  text-align: right;
+  padding: 5px;
+}
+.pages a,
+.pages a:visited,
+.pages a:hover {
+  color: #ffffff;
+}
+
+div#gmap {
+  margin-left: auto;
+  margin-right: auto;
+  width: 900px;
+  height: 500px;
+  background-color: #19385c;
+  text-align: left;
+  padding: 5px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  color: #ffffff;
+}
+
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+
+#infoTabs {
+  position: relative;
+  width: 350px;
+  overflow: hidden;
+  display: block;
+  background-color: #7597de;
+}
+
+.map {
+  width: 800px;
+  margin: 0px auto 0px auto;
+  padding: 0px;
+  text-align: left;
+}
+
+.map .mapTabs {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: block;
+}
+
+.map .mapContainer {
+  position: relative;
+  padding: 5px 0px 5px 0px;
+  background-color: #19385c;
+}
+
+.map .mapContainer .wmapMob {
+  background: url("../images/mapimg.gif") no-repeat;
+  /*background:url("../images/minimapmark.gif") no-repeat;*/
+  position: absolute;
+  width: 7px;
+  height: 7px;
+}
+.map .mapContainer .wmapMobSel {
+  background: -21px 0px url("../images/mapimg.gif") no-repeat;
+  /*			background:url("../images/minimapmark_sel.gif") no-repeat;*/
+  position: absolute;
+  width: 11px;
+  height: 11px;
+}
+
+.map .mapContainer .wmapnpc {
+  background: -7px 0px url("../images/mapimg.gif") no-repeat;
+  /*background:url("../images/npc.gif") no-repeat;*/
+  position: absolute;
+  width: 7px;
+  height: 7px;
+}
+.map .mapContainer .wmapnpcSel {
+  background: -32px 0px url("../images/mapimg.gif") no-repeat;
+  /*background:url("../images/npc_sel.gif") no-repeat;*/
+  position: absolute;
+  width: 11px;
+  height: 11px;
+}
+.map .mapContainer .wmapres {
+  background: -14px 0px url("../images/mapimg.gif") no-repeat;
+  /*background:url("../images/res.gif") no-repeat;*/
+  position: absolute;
+  width: 7px;
+  height: 7px;
+}
+.map .mapContainer .wmapresSel {
+  background: -44px 0px url("../images/mapimg.gif") no-repeat;
+  /*			background:url("../images/res_sel.gif") no-repeat;*/
+  position: absolute;
+  width: 11px;
+  height: 11px;
+}
+
+.map .mapCoords {
+  background-color: #19385c;
+  font-size: 13px;
+  padding: 5px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.map .mapCoords a,
+.map .mapCoords a:visited {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.map .mapCoords a:hover,
+.map .mapCoords a.Hover {
+  text-decoration: none;
+  color: #ccccff;
+}
+
+.login {
+  margin: 50px auto 50px auto;
+  width: 600px;
+  text-align: center;
+  color: #ffffff;
+}
+.login div {
+  width: 300px;
+  float: left;
+}
+.login p {
+  width: 600px;
+  float: left;
+  font-size: 14px;
+}
+.login div h3 {
+  width: 300px;
+  font-size: 16px;
+}
+.login div label {
+  width: 230px;
+  padding: 5px 60px 5px 10px;
+  display: block;
+  text-align: right;
+  font-size: 12px;
+}
+
+#tooltip {
+  position: absolute;
+  top: 60px;
+  left: 300px;
+  display: none;
+  z-index: 999;
+  border-collapse: collapse;
+  max-width: 500px;
+  min-width: 300px;
+}
+#tooltip td.content {
+  background-image: url("../images/popup.png");
+  padding: 12px 0px 0px 12px;
+}
+#tooltip td.content {
+  color: #fff;
+}
+#tooltip td.content p {
+  margin: 7px 0px 4px 0px;
+  padding: 0px;
+}
+#tooltip td.bgright {
+  width: 12px;
+  background: url("../images/popup.png") right top;
+}
+#tooltip td.bgleft {
+  background: url("../images/popup.png") left bottom;
+  height: 12px;
+}
+#tooltip td.bgbottom {
+  background: url("../images/popup.png") right bottom;
+}
+
+/* Tabs CSS */
+.tabs {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 13px;
+}
+.tabs li {
+  float: left;
+  margin-right: 2px;
+  height: 30px;
+  overflow: hidden;
+}
+.tabs a {
+  float: left;
+  position: relative;
+  display: block;
+  height: 30px;
+  text-decoration: none;
+  white-space: nowrap;
+  background: #475569;
+  padding-right: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.tabs a:hover {
+  color: #dddddd !important;
+  background-color: #334155;
+  cursor: pointer;
+}
+.tabs a.selected,
+.tabs a.selected:hover {
+  cursor: pointer;
+  color: white !important;
+  background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+}
+.tabs b {
+  padding: 0 5px;
+  display: block;
+  visibility: hidden;
+}
+.tabs b:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.tabs div {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-left: 16px;
+  padding-top: 2px;
+  text-align: center;
+  line-height: 30px;
+  color: inherit !important;
+}
+.tabs div:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.tabs a.selected div {
+  cursor: pointer;
+}
+
+.smallMenu {
+  padding: 0px;
+  position: absolute;
+  display: none;
+  color: #fff;
+  background-color: #3d67bd;
+  border: 1px solid #fff;
+}
+.smallMenu .inner {
+  border: 2px solid #333;
+  padding: 3px;
+  margin: 0px;
+}
+.smallMenu .inner h3 {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 1px;
+  margin: 0px;
+}
+.smallMenu .inner a {
+  color: #fff;
+}
+.smallMenu .inner p {
+  color: #fff;
+  padding: 0px;
+  margin: 3px 0px 0px 0px;
+}
+.smallMenu .inner .red {
+  color: #ff0000;
+}
+.smallMenu .inner #isubinfo {
+  display: none;
+}
+.smallMenu .inner .imenu {
+  padding: 3px;
+  margin: 0px;
+  cursor: pointer;
+}
+.smallMenu .inner .imenu:hover {
+  background-color: #19385c;
+}
+
+#www {
+  width: 100%;
+  text-align: left;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+* html .clearfix {
+  zoom: 1;
+} /* IE6 */
+*:first-child + html .clearfix {
+  zoom: 1;
+} /* IE7 */
+
+/* Ensure body and main content are visible */
+body.support-page {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background-color: var(--color-background) !important;
+  color: var(--color-foreground) !important;
+}
+
+main {
+  display: block !important;
+  min-height: 500px;
+}
+
+/* Reduce gap between hero section and class cards */
+.hero-with-assistants {
+  margin-bottom: 1rem !important;
+}
+
+.hero-assistants-content {
+  margin-bottom: 0 !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Calculator container */
+.calculator-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  /* Override the fixed height from styles.css with !important */
+  min-height: 254px !important;
+  height: auto !important;
+}
+
+#calculator-content {
+  min-height: 500px;
+}
+
+#content {
+  display: block !important;
+  visibility: visible !important;
+}
+
+.calc {
+  display: table !important;
+  visibility: visible !important;
+  width: 100% !important;
+}
+
+.calc td {
+  display: table-cell !important;
+  visibility: visible !important;
+  vertical-align: top;
+}
+
+#cmenu,
+#skill {
+  display: table-cell !important;
+  visibility: visible !important;
+  vertical-align: top;
+}
+
+/* Class Cards Container - 4x1 Layout */
+.class-cards-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  /* Remove top margin to reduce gap */
+  margin: 0 0 1rem 0;
+}
+
+/* Class Card Styling */
+.class-cards-container .class-card {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  min-height: 280px;
+}
+
+/* Category Content */
+.class-cards-container .category-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* Category Title and Count */
+.class-cards-container .category-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.class-cards-container .category-count {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+/* Faction Logos Grid */
+.faction-logos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+/* Faction Logo Links */
+.faction-logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Remove all padding and borders to make logo fill entire grid cell */
+  padding: 0 !important;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  transition: var(--transition);
+  /* Override border from styles.css to remove square outline */
+  border: none !important;
+  aspect-ratio: 1;
+  min-height: 50px;
+  overflow: hidden;
+}
+
+.faction-logo-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Faction Logo Placeholder */
+.faction-logo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: calc(var(--radius) - 2px);
+}
+
+/* Override logo styles to fill grid cell completely with no padding */
+.faction-logo {
+  width: 100% !important;
+  height: 100% !important;
+  /* Change from contain to cover to fill entire space */
+  object-fit: cover !important;
+  display: block !important;
+  filter: brightness(0) invert(1);
+  /* Remove padding that was creating gaps */
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.faction-logo-link:hover .faction-logo {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .class-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .class-cards-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .faction-logos {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .faction-logos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .class-cards-container .class-card {
+    min-height: 250px;
+    padding: 1rem;
+  }
+}

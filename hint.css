@@ -1,0 +1,35 @@
+/* Hint tooltip styling for better readability */
+#hint-tooltip {
+  font-weight: normal !important;
+  text-align: left !important;
+}
+
+/* Style any nested elements in tooltip */
+#hint-tooltip * {
+  color: inherit !important;
+  background: transparent !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Style bold text in tooltips */
+#hint-tooltip b,
+#hint-tooltip strong {
+  font-weight: bold !important;
+  color: #8b4513 !important;
+}
+
+/* Style divs and spans in tooltips */
+#hint-tooltip div,
+#hint-tooltip span {
+  display: inline !important;
+  line-height: inherit !important;
+}
+
+/* Add spacing between sections if there are line breaks */
+#hint-tooltip br {
+  display: block !important;
+  content: "" !important;
+  margin: 4px 0 !important;
+}

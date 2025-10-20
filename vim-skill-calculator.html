@@ -4,17 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumenpedia - Terms of Service</title>
+    <title>Lumenpedia - Vim Skill Calculator</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="Images/favicon.png">
 
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="hero-assistant.css">
     <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" type="text/css" media="all" href="skill-calculator.css">
+    <link rel="stylesheet" type="text/css" media="all" href="calc.css">
+    <link rel="stylesheet" href="enhanced-calculator.css">
+    <link rel="stylesheet" href="skill-calc-nav.css">
+    <link rel="stylesheet" href="hint.css">
+
 </head>
 
-<body>
+<body class="support-page">
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -27,16 +35,7 @@
                 </div>
                 <!-- Nav Buttons -->
                 <div class="header-actions">
-                    <!-- Nav Button to Index.html -->
-                    <a href="index.html" class="nav-toggle">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="m15 18-6-6 6-6" />
-                        </svg>
-                        Home
-                    </a>
-
-                    <!-- Theme Toggle Button -->
+                    <a href="browse.html" class="btn-secondary">Browse All Guides</a>
                     <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
                         <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
@@ -60,108 +59,118 @@
         </div>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <!-- REPLACE HERO TITLE WITH LOGO -->
-                <div class="hero-logo">
-                    <img src="Images/Lumenpedia Logo - No BG (2).png" alt="Lumenpedia" class="logo-hero">
-                    <!-- Optional: Keep text below logo -->
-                    <span class="hero-tagline">Jade Dynasty Lumen Server Guide</span>
+    <!-- Hero-Assistant -->
+    <main>
+        <div class="hero-with-assistants">
+            <div class="hero-assistants-container">
+                <!-- Original Desktop Assistants -->
+                <div class="hero-assistant left">
+                    <div class="assistant-card" style="cursor: default; pointer-events: none;">
+                        <img src="Images/Lumen Classic Assistant.png" alt="Lumenpedia Classic Assistant"
+                            class="assistant-img" />
+                        <div class="assistant-info">
+                            <span class="assistant-name">Lumenpedia Classic Assistant</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center Content -->
+                <div class="hero-assistants-content">
+                    <h1>Vim Simulator</h1>
+                    <p>Helps you simulate your skills and tomes build
+                    </p>
+                </div>
+
+                <!-- Original Desktop Assistants -->
+                <div class="hero-assistant right">
+                    <div class="assistant-card" style="cursor: default; pointer-events: none;">
+                        <img src="Images/Lumen Main Assistant.png" alt="Lumenpedia Main Assistant"
+                            class="assistant-img" />
+                        <div class="assistant-info">
+                            <span class="assistant-name">Lumenpedia Main Assistant</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <p class="hero-description">Master the Path of Cultivation</p>
-
-    <main class="page-content">
-        <div class="container">
-            <div class="page-header">
-                <h1>Terms of Service</h1>
-                <p class="page-description">Last updated: January 2025</p>
-            </div>
-
-            <div class="guide-content">
-                <div class="guide-section">
-                    <h2>1. Acceptance of Terms</h2>
-                    <p>By accessing and using Lumenpedia, you accept and agree to be bound by these Terms of
-                        Service.</p>
-                </div>
-
-                <div class="guide-section">
-                    <h2>2. Use License</h2>
-                    <p>We grant you permission to temporarily use our website for personal, non-commercial
-                        purposes. This license does not include:</p>
-                    <ul>
-                        <li>Modifying or copying our content</li>
-                        <li>Using content for commercial purposes</li>
-                        <li>Attempting to reverse engineer any software</li>
-                        <li>Removing any copyright notations</li>
+        <!-- Class Navigation Bar -->
+        <nav class="class-nav">
+            <ul class="class-nav-list">
+                <!-- Human -->
+                <li class="nav-item dropdown">
+                    <button class="dropdown-btn">Human ▾</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="jadeon-skill-calculator.html">Jadeon</a></li>
+                        <li><a href="vim-skill-calculator.html">Vim</a></li>
+                        <li><a href="?c=skysong">Skysong</a></li>
+                        <li><a href="?c=modo">Modo</a></li>
+                        <li><a href="?c=lupin">Lupin</a></li>
+                        <li><a href="?c=incense">Incense</a></li>
                     </ul>
-                </div>
+                </li>
 
-                <div class="guide-section">
-                    <h2>3. User Responsibilities</h2>
-                    <p>You agree not to:</p>
-                    <ul>
-                        <li>Use the site in any way that could damage, disable, or impair the service</li>
-                        <li>Engage in any data mining or similar data gathering activities</li>
-                        <li>Submit false or misleading information</li>
-                        <li>Violate any applicable laws or regulations</li>
+                <!-- Athan -->
+                <li class="nav-item dropdown">
+                    <button class="dropdown-btn">Athan ▾</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="?c=arden">Arden</a></li>
+                        <li><a href="?c=balo">Balo</a></li>
+                        <li><a href="?c=rayan">Rayan</a></li>
+                        <li><a href="?c=celan">Celan</a></li>
+                        <li><a href="?c=forta">Forta</a></li>
+                        <li><a href="?c=voida">Voida</a></li>
                     </ul>
-                </div>
+                </li>
 
-                <div class="guide-section">
-                    <h2>4. Intellectual Property</h2>
-                    <p>All content on Lumenpedia, including but not limited to text, graphics, logos, and
-                        images, is our property or licensed to us and protected by copyright laws.</p>
-                    <p><strong>Note:</strong> Jade Dynasty is a registered trademark of its respective
-                        owners. We are not affiliated with the official game developers.</p>
-                </div>
+                <!-- Etherkin -->
+                <li class="nav-item dropdown">
+                    <button class="dropdown-btn">Etherkin ▾</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="?c=psychea">Psychea</a></li>
+                        <li><a href="?c=kytos">Kytos</a></li>
+                        <li><a href="?c=hydran">Hydran</a></li>
+                        <li><a href="?c=seira">Seira</a></li>
+                        <li><a href="?c=gevrin">Gevrin</a></li>
+                        <li><a href="?c=sylia">Sylia</a></li>
+                    </ul>
+                </li>
 
-                <div class="guide-section">
-                    <h2>5. Disclaimer</h2>
-                    <p>Our content is provided "as is" without warranties of any kind. Game information may
-                        change and we cannot guarantee accuracy at all times.</p>
-                </div>
+                <!-- Deikin -->
+                <li class="nav-item dropdown">
+                    <button class="dropdown-btn">Deikin ▾</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="?c=ceros">Ceros</a></li>
+                        <li><a href="?c=imperia">Imperia</a></li>
+                        <li><a href="?c=ashura">Ashura</a></li>
+                        <li><a href="?c=zephyr">Zephyr</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
 
-                <div class="guide-section">
-                    <h2>6. Limitation of Liability</h2>
-                    <p>Lumenpedia shall not be liable for any damages arising from the use or inability to
-                        use our website.</p>
-                </div>
-
-                <div class="guide-section">
-                    <h2>7. Changes to Terms</h2>
-                    <p>We reserve the right to modify these terms at any time. Continued use after changes
-                        constitutes acceptance.</p>
-                </div>
-
-                <div class="guide-section">
-                    <h2>8. Governing Law</h2>
-                    <p>These terms are governed by and construed in accordance with applicable laws.</p>
+        <!-- Main Calculator Content -->
+        <div class="calculator-container">
+            <div id="calculator-content">
+                <div id="content">
+                    <div class="tableHeader tup">Skill Calculator: Vim</div>
+                    <table class="calc">
+                        <tbody>
+                            <tr>
+                                <td id="cmenu"></td>
+                                <td id="skill"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+
     </main>
 
     <!-- Footer -->
     <footer class="lumenpedia-footer">
         <div class="footer-container">
-            <!-- Newsletter Section -->
-            <!-- <div class="footer-newsletter">
-                <div class="newsletter-content">
-                    <h3 class="newsletter-title">Stay Updated with Lumenpedia</h3>
-                    <p class="newsletter-description">Get the latest Jade Dynasty Lumen server updates, guides, and community news delivered to your inbox.</p>
-                    <form class="newsletter-form" id="newsletterForm">
-                        <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
-                        <button type="submit" class="newsletter-btn">Subscribe</button>
-                    </form>
-                    <div class="newsletter-message" id="newsletterMessage"></div>
-                </div>
-            </div> -->
-
             <!-- Main Footer Content -->
             <div class="footer-main">
                 <!-- Brand Section -->
@@ -190,7 +199,7 @@
                             aria-label="Instagram">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                 <path
-                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.073-1.689-.073-4.948 0-3.204.013-3.663.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                             </svg>
                         </a>
                         <a href="https://www.twitch.tv/jadedynastylumen" class="social-link" target="_blank"
@@ -203,7 +212,7 @@
                         <a href="https://vk.com/lumendynasty" class="social-link" target="_blank" aria-label="VK">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                 <path
-                                    d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.28h-1.729c-.612 0-.804-.402-1.896-1.469-.965-.965-1.386-.99-1.613-.99-.358 0-.456.083-.456.573v1.351c0 .402-.136.603-1.247.603-1.847 0-3.896-1.044-5.367-2.97-2.177-2.729-2.842-4.752-2.842-4.986 0-.218.082-.402.547-.402h1.729c.402 0 .6.19.753.629.738 2.106 1.972 3.955 2.483 3.955.218 0 .327-.109.327-.683v-2.351c-.055-.957-.547-1.033-.547-1.361 0-.136.109-.272.272-.272h2.129c.327 0 .436.163.436.683v3.521c0 .376.19.518.3.518.218 0 .402-.136.765-.518 1.033-1.142 1.769-2.896 1.769-2.896.136-.272.327-.464.765-.464h1.729c.464 0 .572.245.464.572-.218.765-2.287 3.465-2.287 3.465-.19.245-.272.381 0 .683.19.218.819.792 1.224 1.279.819.847 1.452 1.578 1.614 2.073.19.518-.082.765-.572.765z" />
+                                    d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.28h-1.729c-.612 0-.804-.402-1.896-1.469-.965-.965-1.386-.99-1.613-.99-.358 0-.456.083-.456.573v1.351c0 .402-.136.603-1.247.603-1.847 0-3.896-1.044-5.367-2.97-2.177-2.729-2.842-4.752-2.842-4.986 0-.218.082-.402.547-.402h1.729c.402 0 .6.19.753.629.738 2.106 1.972 3.955 2.483 3.955.218 0 .402-.136.765-.518 1.033-1.142 1.769-2.896 1.769-2.896.136-.272.327-.464.765-.464h1.729c.464 0 .572.245.464.572-.218.765-2.287 3.465-2.287 3.465-.19.245-.272.381 0 .683.19.218.819.792 1.224 1.279.819.847 1.452 1.578 1.614 2.073.19.518-.082.765-.572.765z" />
                             </svg>
                         </a>
                     </div>
@@ -215,9 +224,6 @@
                     <div class="footer-links">
                         <a href="latest-updates.html" class="footer-link">Latest Updates</a>
                         <a href="browse.html" class="footer-link">Browse All Guides</a>
-                        <!-- <a href="classes.html" class="footer-link">Classes & Factions</a>
-                        <a href="quests.html" class="footer-link">Quest Database</a>
-                        <a href="items.html" class="footer-link">Item Database</a> -->
                     </div>
                 </div>
 
@@ -244,7 +250,6 @@
                         <a href="support.html" class="footer-link">Report Issue</a>
                         <a href="support.html" class="footer-link">Contribute</a>
                         <a href="support.html" class="footer-link">Contact Us</a>
-                        <!-- <a href="faq.html" class="footer-link">FAQ</a> -->
                     </div>
                 </div>
             </div>
@@ -261,8 +266,25 @@
         </div>
     </footer>
 
+    <!-- Core Scripts -->
     <script src="scripts.js"></script>
+    <script src="hero-assistant.js"></script>
     <script src="footer.js"></script>
+
+    <!-- Added main.js which defines the $ function needed by calcmin.js -->
+    <script type="text/javascript" src="main.js"></script>
+
+    <!-- Calculator Data Scripts (must load first) -->
+    <script type="text/javascript" src="data_pwi.js"></script>
+    <script type="text/javascript" src="lang_pwi.js"></script>
+    <script type="text/javascript" src="tvim_pwi.js"></script>
+
+    <!-- Hint tooltip library before calculator logic -->
+    <script type="text/javascript" src="hint.js"></script>
+
+    <!-- Calculator Logic Scripts -->
+    <script type="text/javascript" src="calcmin.js"></script>
+    <script type="text/javascript" src="skill-calculator.js"></script>
 
 </body>
 

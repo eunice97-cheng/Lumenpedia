@@ -1,0 +1,82 @@
+.class-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem auto;
+    flex-wrap: wrap;
+}
+
+.class-nav-list {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.dropdown-btn {
+    background: var(--accent-color, #007bff);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.dropdown-btn:hover {
+    background: var(--accent-hover, #0056b3);
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px); /* only a 4px gap between button and menu */
+    left: 0;
+    background-color: var(--card-bg, #1e1e1e);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 8px 0;
+    list-style: none;
+    margin: 0;
+    z-index: 100;
+    min-width: 150px;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+/* make links look clickable */
+.dropdown-menu li a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: var(--text-color, #fff);
+    white-space: nowrap;
+}
+
+.dropdown-menu li a:hover {
+    background: var(--hover-bg, #333);
+}
+
+/* Show dropdown on hover */
+.nav-item:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nav-item::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 6px; /* small buffer zone */
+    width: 100%;
+}
