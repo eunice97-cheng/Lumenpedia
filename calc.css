@@ -52,7 +52,7 @@
   z-index: 100;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url(data:image/gif;base64,R0lGODlhDQAMAOZpAAUoDQ00Fy+weTrgrRaDXCCrdQUoDD3blxWTYzbYpgdaPiauiyetgiGyhSfHkybHhiOvfS7IoA1zThA3FxWAWA+EVwcqCx+XZxk4Eu7m1sPWwQowDCOjgsXWwYumkjCaXcPVwDDLoR9XMO7l1oynlA4wDxWZaCZbMkVPJpCznC3PliZMGBg3GFZyHizGj1dZKSa4dkDjmZfGrCbHlRtQLJvHqhWaaA0uDwZXOwkvDRGMXw0tDgptSRRKKiGRaye3dpG0nJvHqcTWwIunk4umkyU5HJG1njtCIggsDC3PlzDKoRqibCaTaBqhaxKMXwVWOgttSu7m10DjmBKIWgwsDQ+FV5jGrSbHlkNMJDObXUxRKSGRaizHkAgtDRKJWpC0nR6nfA8xDh+YZymVakJJJxg5ERQvEREtEO/m1////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAGkALAAAAAANAAwAAAeUgGlpLSsTAYcTLGSCaScXDlcNYA0zDmIiaS9ZUgcCQVE1AgcxHyhlPw8FFCloQBQFDzAYG00IEgpDaCQKEghLYTlTGhkjaMbGHV4lXRUgx89CVTdIJk5QOB5oRE88OjY7Fi5JEARfaEYEECpcVEVMAwkMMmhWDAkDY1hpPVtKEQscFkQI4YMGoyNnDABYaMCMFkGBAAA7);
+  background-image: url(data:image/gif;base64,R0lGODlhDQAMAOZpAAUoDQ00Fy+weTrgrRaDXCCrdQUoDD3blxWTYzbYpgdaPiauiyetgiGyhSfHkybHhiOvfS7IoA1zThA3FxWAWA+EVwcqCw+EZxk4Eu7m1sPWwQowDCOjgsXWwYumkjCaXcPVwDDLoR9XMO7l1oynlA4wDxWZaCZbMkVPJpCznC3PliZMGBg3GFZyHizGj1dZKSa4dkDjmZfGrCbHlRtQLJvHqhWaaA0uDwZXOwkvDRGMXw0tDgptSRRKKiGRaye3dpG0nJvHqcTWwIunk4umkyU5HJG1njtCIggsDC3PlzDKoRqibCaTaBqhaxKMXwVWOgttSu7m10DjmBKIWgwsDQ+FV5jGrSbHlkNMJDObXUxRKSGRaizHkAgtDRKJWpC0nR6nfA8xDh+YZymVakJJJxg5ERQvEREtEO/m1////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAGkALAAAAAANAAwAAAeUgGlpLSsTAYcTLGSCaScXDlcNYA0zDmIiaS9ZUgcCQVE1AgcxHyhlPw8FFCloQBQFDzAYG00IEgpDaCQKEghLYTlTGhkjaMbGHV4lXRUgx89CVTdIJk5QOB5oRE88OjY7Fi5JEARfaEYEECpcVEVMAwkMMmhWDAkDY1hpPVtKEQscFkQI4YMGoyNnDABYaMCMFkGBAAA7);
 }
 
 .calc td#skill div.cont div.m {
@@ -78,7 +78,6 @@
   border: none;
   margin: 0px;
   color: #06b6d4;
-  /* ← Changed from #ffce31 to #06b6d4 */
   z-index: 10;
 }
 
@@ -111,7 +110,6 @@
   border: none;
   margin: 0px;
   color: #06b6d4;
-  /* ← Changed from #ffce31 to #06b6d4 */
   z-index: 1;
   top: 2px;
   left: 2px;
@@ -183,8 +181,9 @@
   z-index: 1;
 }
 
+/* SKILL ICONS - FIXED: Using x extension */
 .calc td#skill div.cont div.sarden {
-  background-image: url(../Images/skills/as.jpg);
+  background-image: url(../Images/skills/ax.jpg);
 }
 
 .calc td#skill div.cont div.tarden {
@@ -192,7 +191,7 @@
 }
 
 .calc td#skill div.cont div.sbalo {
-  background-image: url(../Images/skills/bs.jpg);
+  background-image: url(../Images/skills/bx.jpg);
 }
 
 .calc td#skill div.cont div.tbalo {
@@ -200,7 +199,7 @@
 }
 
 .calc td#skill div.cont div.srayan {
-  background-image: url(../Images/skills/rs.jpg);
+  background-image: url(../Images/skills/rx.jpg);
 }
 
 .calc td#skill div.cont div.trayan {
@@ -208,7 +207,7 @@
 }
 
 .calc td#skill div.cont div.scelan {
-  background-image: url(../Images/skills/cs.jpg);
+  background-image: url(../Images/skills/cx.jpg);
 }
 
 .calc td#skill div.cont div.tcelan {
@@ -216,7 +215,7 @@
 }
 
 .calc td#skill div.cont div.sforta {
-  background-image: url(../Images/skills/fs.jpg);
+  background-image: url(../Images/skills/fx.jpg);
 }
 
 .calc td#skill div.cont div.tforta {
@@ -224,7 +223,7 @@
 }
 
 .calc td#skill div.cont div.svim {
-  background-image: url(../Images/skills/vs.jpg);
+  background-image: url(../Images/skills/vx.jpg);
 }
 
 .calc td#skill div.cont div.tvim {
@@ -232,7 +231,7 @@
 }
 
 .calc td#skill div.cont div.slupin {
-  background-image: url(../Images/skills/ls.jpg);
+  background-image: url(../Images/skills/lx.jpg);
 }
 
 .calc td#skill div.cont div.tlupin {
@@ -240,7 +239,7 @@
 }
 
 .calc td#skill div.cont div.sjadeon {
-  background-image: url(../Images/skills/js.jpg);
+  background-image: url(../Images/skills/jx.jpg);
 }
 
 .calc td#skill div.cont div.tjadeon {
@@ -248,7 +247,7 @@
 }
 
 .calc td#skill div.cont div.sskysong {
-  background-image: url(../Images/skills/ss.jpg);
+  background-image: url(../Images/skills/sx.jpg);
 }
 
 .calc td#skill div.cont div.tskysong {
@@ -256,7 +255,7 @@
 }
 
 .calc td#skill div.cont div.sincense {
-  background-image: url(../Images/skills/is.jpg);
+  background-image: url(../Images/skills/ix.jpg);
 }
 
 .calc td#skill div.cont div.tincense {
@@ -264,7 +263,7 @@
 }
 
 .calc td#skill div.cont div.smodo {
-  background-image: url(../Images/skills/ms.jpg);
+  background-image: url(../Images/skills/mx.jpg);
 }
 
 .calc td#skill div.cont div.tmodo {
@@ -272,7 +271,7 @@
 }
 
 .calc td#skill div.cont div.sbarbe {
-  background-image: url(../Images/skills/vos.jpg);
+  background-image: url(../Images/skills/vox.jpg);
 }
 
 .calc td#skill div.cont div.tbarbe {
@@ -280,7 +279,7 @@
 }
 
 .calc td#skill div.cont div.skytos {
-  background-image: url(../Images/skills/ks.jpg);
+  background-image: url(../Images/skills/kx.jpg);
 }
 
 .calc td#skill div.cont div.tkytos {
@@ -288,7 +287,7 @@
 }
 
 .calc td#skill div.cont div.spsychea {
-  background-image: url(../Images/skills/ps.jpg);
+  background-image: url(../Images/skills/px.jpg);
 }
 
 .calc td#skill div.cont div.tpsychea {
@@ -296,11 +295,11 @@
 }
 
 .calc td#skill div.cont div.shydran {
-  background-image: url(../Images/skills/hs.jpg);
+  background-image: url(../Images/skills/hx.jpg);
 }
 
 .calc td#skill div.cont div.sseira {
-  background-image: url(../Images/skills/ses.jpg);
+  background-image: url(../Images/skills/sex.jpg);
 }
 
 .calc td#skill div.cont div.thydran {
@@ -312,7 +311,7 @@
 }
 
 .calc td#skill div.cont div.sgevrin {
-  background-image: url(../Images/skills/gs.jpg);
+  background-image: url(../Images/skills/gx.jpg);
 }
 
 .calc td#skill div.cont div.tgevrin {
@@ -320,7 +319,7 @@
 }
 
 .calc td#skill div.cont div.ssylia {
-  background-image: url(../Images/skills/18s.png);
+  background-image: url(../Images/skills/18x.png);
 }
 
 .calc td#skill div.cont div.tsylia {
@@ -328,7 +327,7 @@
 }
 
 .calc td#skill div.cont div.sceros {
-  background-image: url(../Images/skills/19s.png);
+  background-image: url(../Images/skills/19x.png);
 }
 
 .calc td#skill div.cont div.tceros {
@@ -336,7 +335,7 @@
 }
 
 .calc td#skill div.cont div.simperia {
-  background-image: url(../Images/skills/20s.png);
+  background-image: url(../Images/skills/20x.png);
 }
 
 .calc td#skill div.cont div.timperia {
@@ -344,7 +343,7 @@
 }
 
 .calc td#skill div.cont div.sashura {
-  background-image: url(../Images/skills/21s.png);
+  background-image: url(../Images/skills/21x.png);
 }
 
 .calc td#skill div.cont div.tashura {
@@ -352,13 +351,14 @@
 }
 
 .calc td#skill div.cont div.szephyr {
-  background-image: url(../Images/skills/22s.png?v1);
+  background-image: url(../Images/skills/22x.png?v1);
 }
 
 .calc td#skill div.cont div.tzephyr {
   background-image: url(../Images/skills/22t.png?v1);
 }
 
+/* Background layouts - unchanged */
 .calc td#skill div.cont div.sarden1,
 .calc td#skill div.cont div.sbalo1,
 .calc td#skill div.cont div.srayan1,
@@ -765,12 +765,6 @@
   width: 256px;
   height: 334px;
   background: url(../Images/skills/back_kytos2.png);
-}
-
-.calc td#skill div.cont div.ssylia5 {
-  width: 256px;
-  height: 334px;
-  background: url(../Images/skills/back_kytos5.png);
 }
 
 .calc td#skill div.cont div.ssylia5 {
