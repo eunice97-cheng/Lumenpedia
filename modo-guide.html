@@ -2,156 +2,414 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lumenpedia - Jade Dynasty Lumen Server Guide</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumenpedia - Modo Guide</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Images/favicon.png">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="hero-assistant.css">
+    <link rel="stylesheet" href="factions.css">
+    <link rel="stylesheet" href="footer.css">
 </head>
 
-<body>
-  <header class="header">
-    <div class="container">
-      <div class="header-content">
-        <!-- Remove text logo - keep it empty or add minimal branding -->
-        <a href="index.html" class="header-logo-minimal">
-          <span class="logo-text-minimal">Lumenpedia</span>
-        </a>
-        <div class="header-actions">
-          <a href="browse.html" class="btn btn-secondary">Browse All Guides</a>
-          <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
-            <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2">
-              <circle cx="12" cy="12" r="5" />
-              <line x1="12" y1="1" x2="12" y2="3" />
-              <line x1="12" y1="21" x2="12" y2="23" />
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-              <line x1="1" y1="12" x2="3" y2="12" />
-              <line x1="21" y1="12" x2="23" y2="12" />
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-            </svg>
-            <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </header>
-
-    <main class="page-content">
+<body class="guide-page">
+    <!-- Header -->
+    <header class="header">
         <div class="container">
-            <div class="breadcrumb">
-                <a href="index.html">Home</a>
-                <span>/</span>
-                <a href="classes-factions.html">Classes & Factions</a>
-                <span>/</span>
-                <span>Modo</span>
-            </div>
-
-            <div class="guide-header">
-                <div class="guide-meta">
-                    <span class="guide-tag">Human</span>
-                    <span class="guide-tag primary">Modo</span>
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="Images/Lumenpedia Logo - No BG (2).png" alt="Lumenpedia" class="logo-image">
+                    <a href="index.html" class="header-logo-minimal">
+                        <span class="logo-text">Lumenpedia</span>
+                    </a>
                 </div>
-                <h1>Modo</h1>
-                <p class="guide-subtitle">A unique faction with transformation abilities</p>
-            </div>
+                <!-- Nav Buttons -->
+                <div class="header-actions">
+                    <!-- Nav Button to Browse.html -->
+                    <a href="browse.html" class="btn-secondary">Browse All Guides</a>
 
-            <div class="guide-content">
-                <div class="guide-section">
-                    <h2>Overview</h2>
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <div class="info-label">Class</div>
-                            <div class="info-value">Human</div>
-                        </div>
-                        <div class="info-card">
-                            <div class="info-label">Weapon Type</div>
-                            <div class="info-value">Fangclaw [Melee / Ranged]</div>
-                        </div>
-                        <div class="info-card">
-                            <div class="info-label">Role</div>
-                            <div class="info-value">DPS / Shapeshifter</div>
-                        </div>
-                        <div class="info-card">
-                            <div class="info-label">Difficulty</div>
-                            <div class="info-value">High</div>
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
+
+                        <svg class="icon-sun" width="20" height="20">
+                            <use href="#icon-sun"></use>
+                        </svg>
+
+                        <svg class="icon-moon" width="20" height="20">
+                            <use href="#icon-moon"></use>
+                        </svg>
+
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero-Assistant -->
+    <main>
+        <div class="hero-with-assistants">
+            <div class="hero-assistants-container">
+                <!-- Original Desktop Assistants -->
+                <div class="hero-assistant left">
+                    <div class="assistant-card" style="cursor: default; pointer-events: none;">
+                        <img src="Images/Lumen Classic Assistant.png" alt="Lumenpedia Classic Assistant"
+                            class="assistant-img" />
+                        <div class="assistant-info">
+                            <span class="assistant-name">Lumenpedia Classic Assistant</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="guide-section">
-                    <h2>Skills and Abilities</h2>
-                    <p>Modo specializes in transformation abilities that allow them to adapt to different combat situations. Their shapeshifting skills provide unique advantages in both melee and ranged combat scenarios.</p>
-                    <a href="#" class="guide-link">View Complete Skill List →</a>
+                <!-- Center Content -->
+                <div class="hero-assistants-content">
+                    <h1>Modo Guide</h1>
+                    <p>Master the art of shapeshifting combat with this comprehensive Modo faction guide</p>
                 </div>
 
-                <div class="guide-section">
-                    <h2>Affinity Tips</h2>
-                    <div class="affinity-list">
-                        <div class="affinity-item">
-                            <h3>Dagos</h3>
-                            <p>Spammable AoE</p>
+                <!-- Original Desktop Assistants -->
+                <div class="hero-assistant right">
+                    <div class="assistant-card" style="cursor: default; pointer-events: none;">
+                        <img src="Images/Lumen Main Assistant.png" alt="Lumenpedia Main Assistant"
+                            class="assistant-img" />
+                        <div class="assistant-info">
+                            <span class="assistant-name">Lumenpedia Main Assistant</span>
                         </div>
-                        <div class="affinity-item">
-                            <h3>Felkin</h3>
-                            <p>DoT Effect Skills, Fasting</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-content">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <a href="classes-factions.html">Classes & Factions</a>
+                    <span>/</span>
+                    <a href="human-class.html">Human</a>
+                    <span>/</span>
+                    <span>Modo</span>
+                </div>
+
+                <!-- 3-Card Header Section -->
+                <div class="guide-header-cards">
+                    <div class="header-cards-grid">
+                        <!-- Card 1: Modo Image with Tags -->
+                        <div class="header-card image-card">
+                            <div class="faction-image-container">
+                                <img src="Images/modo.png" alt="Modo" class="faction-image">
+                                <div class="guide-meta">
+                                    <span class="guide-tag">Human</span>
+                                    <span class="guide-tag primary">Modo</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="affinity-item">
-                            <h3>Fuwa</h3>
-                            <p>Tank, Single Target DPS</p>
+
+                        <!-- Card 2: Stats Overview Image -->
+                        <div class="header-card stats-card">
+                            <div class="stats-image-container">
+                                <img src="Images/modo-stats.png" alt="Modo Stats" class="stats-image">
+                                <div class="stats-label">
+                                    <span class="stats-label-text">Stats Overview</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Detailed Information -->
+                        <div class="header-card info-card">
+                            <!-- Server Availability -->
+                            <div class="server-availability">
+                                <h4>Server Availability</h4>
+                                <div class="server-status">
+                                    <span class="server-name">Classic</span>
+                                    <span class="status-badge available">Available</span>
+                                </div>
+                                <div class="server-status">
+                                    <span class="server-name">Main</span>
+                                    <span class="status-badge unavailable">Not Available</span>
+                                </div>
+                            </div>
+
+                            <!-- Detailed Stats -->
+                            <div class="detailed-stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">Weapon</span>
+                                    <span class="stat-value">Claws [Melee]</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Role</span>
+                                    <span class="stat-value">Shapeshifter</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Difficulty</span>
+                                    <span class="stat-value">Hard</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Playstyle</span>
+                                    <span class="stat-value">Adaptive Warrior</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="guide-section">
-                    <h2>Related Factions</h2>
-                    <div class="related-factions">
-                        <a href="jadeon-guide.html" class="faction-link">Jadeon</a>
-                        <a href="vim-guide.html" class="faction-link">Vim</a>
-                        <a href="skysong-guide.html" class="faction-link">Skysong</a>
-                        <a href="lupin-guide.html" class="faction-link">Lupin</a>
-                        <a href="incensemage-guide.html" class="faction-link">Incense Mage</a>
+                <div class="guide-content">
+                    <div class="guide-navigation">
+                        <h3>Guide Contents</h3>
+                        <nav class="content-nav">
+                            <a href="#overview" class="nav-link">Overview</a>
+                            <a href="#skills" class="nav-link">Skills & Tomes</a>
+                            <a href="#equipment" class="nav-link">Equipment</a>
+                            <a href="#affinities" class="nav-link">Affinity Tips</a>
+                            <a href="#pvp" class="nav-link">PvP Guide</a>
+                        </nav>
+                    </div>
+
+                    <div class="guide-section" id="overview">
+                        <h2>Overview</h2>
+                        <p>The Modo are versatile warriors who can transform between human, modon and demonic form, adapting to any combat situation. With their shapeshifting abilities, Modo can switch between durable tanking and powerful damage dealing as the battle demands.</p>
+
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h3>Strengths</h3>
+                                <ul>
+                                    <li>Versatile with three distinct forms</li>
+                                    <li>Good balance of offense and defense</li>
+                                    <li>Flexible playstyle for different situations</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <h3>Weaknesses</h3>
+                                <ul>
+                                    <li>Complex form management required</li>
+                                    <li>Weaker than specialized classes in each role</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills & Tomes - Link to Skill Calc -->
+                    <div class="guide-section" id="skills">
+                        <h2>Skills and Tomes</h2>
+
+                        <div class="calculator-cta">
+                            <a href="modo-skill-calculator.html" class="calculator-btn">
+                                <span>Click here</span>
+                                <span>and find out more about Modo's Skills and Tomes</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Equipment Guides - 3 Cards disabled (Coming Soon) -->
+                    <div class="guide-section" id="equipment">
+                        <h2>Equipment Guide</h2>
+                            <div class="coming-soon-cta">
+                                <div class="coming-soon-box">
+                                    <span>Coming Soon...</span>
+                                    <span>Equipment guide is currently in development</span>
+                                </div>
+                            </div>
+                    </div>
+
+                    <!-- Affinity Tips - 3 Cards -->
+                    <div class="guide-section" id="affinities">
+                        <h2>Affinity Tips</h2>
+                        <p>Affinities provide powerful bonuses and abilities that can significantly enhance your Modo's capabilities.</p>
+
+                        <div class="section-cards-grid">
+                            <!-- Card 1: Felkin -->
+                            <div class="section-card">
+                                <div class="section-card-header affinity-felkin">
+                                    <h3>Felkin</h3>
+                                    <span class="affinity-rating">★★★★★</span>
+                                </div>
+                                <div class="section-card-content">
+                                    <div class="affinity-type-tag">DoT</div>
+                                    <p>Great for DoT abilities combined with fasting.</p>
+                                    <div class="affinity-synergy-compact">
+                                        <h4>Best Skill(s):</h4>
+                                        <ul>
+                                            <li><strong>Spiritual Charm II</strong> - Ranged, AoE Fasting</li>
+                                        </ul>
+                                    </div>
+                                    <div class="affinity-best-for">
+                                        <strong>Best for:</strong> Long Ranged PvP
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 2: Dagos -->
+                            <div class="section-card">
+                                <div class="section-card-header affinity-dagos">
+                                    <h3>Dagos</h3>
+                                    <span class="affinity-rating">★★★★★</span>
+                                </div>
+                                <div class="section-card-content">
+                                    <div class="affinity-type-tag">Crowd Control, AoE Spam</div>
+                                    <p>Good for both PvP and PvE. Dagos' crowd control abilities help Modo manage different combat situations.</p>
+                                    <div class="affinity-synergy-compact">
+                                        <h4>Best Skill(s):</h4>
+                                        <ul>
+                                            <li><strong>Death's Embrace II</strong> - Reduce AoE skills CD</li>
+                                        </ul>
+                                    </div>
+                                    <div class="affinity-best-for">
+                                        <strong>Best for:</strong> Both PvE and PvP
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 3: Fuwa -->
+                            <div class="section-card">
+                                <div class="section-card-header affinity-fuwa">
+                                    <h3>Fuwa</h3>
+                                    <span class="affinity-rating">★★★★★</span>
+                                </div>
+                                <div class="section-card-content">
+                                    <div class="affinity-type-tag">Tank, Single Target DPS</div>
+                                    <p>Excellent for tank-focused builds and single target damage skills.</p>
+                                    <div class="affinity-synergy-compact">
+                                        <h4>Best Skill(s):</h4>
+                                        <ul>
+                                            <li><strong>Forest of Laughter II</strong> - Powerful single target attack base on differences in ressistances</li>
+                                        </ul>
+                                    </div>
+                                    <div class="affinity-best-for">
+                                        <strong>Best for:</strong> Tanking, Single Target Damage
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PvP Guide - Discord CTA -->
+                    <div class="guide-section" id="pvp">
+                        <h2>PvP Guide</h2>
+                        <p>Advanced PvP strategies, matchups, and tactics for Modo players.</p>
+                        
+                        <div class="discord-cta">
+                            <a href="https://discord.com/channels/1113567251765919776/1209507702833938533" class="discord-box" target="_blank">
+                                <span>Share Your PvP Experience!</span>
+                                <span>Leave a message on Discord and share us your favourite Modo's PvP video link(s)</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="guide-section">
+                        <h2>Related Factions</h2>
+                        <p>Explore other Human factions to find your perfect playstyle:</p>
+                        <div class="related-factions">
+                            <a href="jadeon-guide.html" class="faction-link">Jadeon - DPS/Spellcaster</a>
+                            <a href="vim-guide.html" class="faction-link">Vim - Tank/DPS</a>
+                            <a href="skysong-guide.html" class="faction-link">Skysong - Support/Buffer</a>
+                            <a href="lupin-guide.html" class="faction-link">Lupin - DPS/Assassin</a>
+                            <a href="incensemage-guide.html" class="faction-link">Incense Mage - DPS/Support</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="class-navigation">
+                    <h2>Explore Other Classes</h2>
+                    <div class="class-links">
+                        <a href="classes-factions.html#athan" class="class-link">Athan Class →</a>
+                        <a href="classes-factions.html#etherkin" class="class-link">Etherkin Class →</a>
+                        <a href="classes-factions.html#deikin" class="class-link">Deikin Class →</a>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-grid">
-                    <div class="footer-section">
-                        <h4>Explore</h4>
-                        <a href="index.html">Home</a>
-                        <a href="browse.html">Browse Guides</a>
-                        <a href="classes-factions.html">Classes & Factions</a>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Community</h4>
-                        <a href="https://www.facebook.com/jadedynastylumen" target="_blank">Facebook</a>
-                        <a href="https://discord.com/invite/TeNbyexB6W" target="_blank">Discord</a>
-                        <a href="https://www.instagram.com/jadedynastylumen/" target="_blank">Instagram</a>
-                        <a href="https://www.twitch.tv/jadedynastylumen" target="_blank">Twitch</a>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Support</h4>
-                        <a href="#">Help Center</a>
-                        <a href="#">Report Issue</a>
-                        <a href="#">Contribute</a>
+    <!-- Footer -->
+    <footer class="lumenpedia-footer">
+        <div class="footer-container">
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo">LUMENPEDIA</div>
+                    <p class="footer-tagline">Your all-in-one community guide for the Jade Dynasty Lumen Server.
+                        Discover game information, guides, and server updates in one convenient location.</p>
+
+                    <!-- Social Media -->
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/jadedynastylumen" class="social-link" target="_blank"
+                            aria-label="Facebook">
+                            <svg width="16" height="16"><use href="#icon-facebook"></use></svg>
+                        </a>
+                        <a href="https://discord.com/invite/TeNbyexB6W" class="social-link" target="_blank"
+                            aria-label="Discord">
+                            <svg width="16" height="16"><use href="#icon-discord"></use></svg>
+                        </a>
+                        <a href="https://www.instagram.com/jadedynastylumen/" class="social-link" target="_blank"
+                            aria-label="Instagram">
+                            <svg width="16" height="16"><use href="#icon-instagram"></use></svg>
+                        </a>
+                        <a href="https://www.twitch.tv/jadedynastylumen" class="social-link" target="_blank"
+                            aria-label="Twitch">
+                            <svg width="16" height="16"><use href="#icon-twitch"></use></svg>
+                        </a>
+                        <a href="https://vk.com/lumendynasty" class="social-link" target="_blank" aria-label="VK">
+                            <svg width="16" height="16"><use href="#icon-vk"></use></svg>
+                        </a>
                     </div>
                 </div>
-                <div class="footer-bottom">
-                    <p>&copy; 2025 Lumenpedia. All rights reserved.</p>
+
+                <!-- Explore Section -->
+                <div class="footer-section">
+                    <h4>EXPLORE</h4>
+                    <div class="footer-links">
+                        <a href="latest-updates.html" class="footer-link">Latest Updates</a>
+                        <a href="browse.html" class="footer-link">Browse All Guides</a>
+                    </div>
+                </div>
+
+                <!-- Community Section -->
+                <div class="footer-section">
+                    <h4>COMMUNITY</h4>
+                    <div class="footer-links">
+                        <a href="https://www.facebook.com/jadedynastylumen" class="footer-link"
+                            target="_blank">Facebook</a>
+                        <a href="https://discord.com/invite/TeNbyexB6W" class="footer-link" target="_blank">Discord</a>
+                        <a href="https://www.instagram.com/jadedynastylumen/" class="footer-link"
+                            target="_blank">Instagram</a>
+                        <a href="https://www.twitch.tv/jadedynastylumen" class="footer-link"
+                            target="_blank">Twitch.tv</a>
+                        <a href="https://vk.com/lumendynasty" class="footer-link" target="_blank">VK</a>
+                    </div>
+                </div>
+
+                <!-- Support Section -->
+                <div class="footer-section">
+                    <h4>SUPPORT</h4>
+                    <div class="footer-links">
+                        <a href="support.html" class="footer-link">Help Center</a>
+                        <a href="support.html" class="footer-link">Report Issue</a>
+                        <a href="support.html" class="footer-link">Contribute</a>
+                        <a href="support.html" class="footer-link">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">© 2025 Lumenpedia. All rights reserved.</div>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="cookies.html">Cookie Policy</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script src="scripts.js"></script>
+    <script src="hero-assistant.js"></script>
+    <script src="footer.js"></script>
+    <script src="icon-loader.js"></script>
 </body>
 </html>

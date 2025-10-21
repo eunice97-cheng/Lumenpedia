@@ -2,140 +2,330 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lumenpedia - Jade Dynasty Lumen Server Guide</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumenpedia - Lastest Update</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Images/favicon.png">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="hero-assistant.css">
+    <link rel="stylesheet" href="classic-main-switch.css">
+    <link rel="stylesheet" href="footer.css">
 </head>
 
-<body>
-  <header class="header">
-    <div class="container">
-      <div class="header-content">
-        <!-- Remove text logo - keep it empty or add minimal branding -->
-        <a href="index.html" class="header-logo-minimal">
-          <span class="logo-text-minimal">Lumenpedia</span>
-        </a>
-        <div class="header-actions">
-          <a href="browse.html" class="btn btn-secondary">Browse All Guides</a>
-          <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
-            <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2">
-              <circle cx="12" cy="12" r="5" />
-              <line x1="12" y1="1" x2="12" y2="3" />
-              <line x1="12" y1="21" x2="12" y2="23" />
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-              <line x1="1" y1="12" x2="3" y2="12" />
-              <line x1="21" y1="12" x2="23" y2="12" />
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-            </svg>
-            <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </header>
-
-    <main class="updates-page">
-        <div class="updates-hero">
-            <h1>Latest Updates</h1>
-            <p>Find out what's new on Lumenpedia</p>
-        </div>
-
-        <div class="updates-content">
-            <div class="updates-grid">
-                <div class="update-column">
-                    <div class="column-header">
-                        <h2>Lumen Classic</h2>
-                        <span class="server-badge classic">Classic</span>
-                    </div>
-                    
-                    <div class="update-card">
-                        <div class="update-date">Date</div>
-                        <p>Info</p>
-                    </div>
-                    
-                    <div class="update-card">
-                        <div class="update-date">Date</div>
-                        <p>Info</p>
-                    </div>
-                    
-                    <div class="update-card">
-                        <div class="update-date">Date</div>
-                        <p>Info</p>
-                    </div>
-                    
-                    <div class="update-card">
-                        <div class="update-date">Date</div>
-                        <p>Info</p>
-                    </div>
+<body class="support-page">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="Images/Lumenpedia Logo - No BG (2).png" alt="Lumenpedia" class="logo-image">
+                    <a href="index.html" class="header-logo-minimal">
+                        <span class="logo-text">Lumenpedia</span>
+                    </a>
                 </div>
+                <!-- Nav Buttons -->
+                <div class="header-actions">
+                    <!-- Nav Button to Browse.html -->
+                    <a href="browse.html" class="btn-secondary">Browse All Guides</a>
 
-                <div class="update-column">
-                    <div class="column-header">
-                        <h2>Lumen Main</h2>
-                        <span class="server-badge main">Main</span>
-                    </div>
-                    
-                    <div class="update-card">
-                        <div class="update-date">Date</div>
-                        <p>Info</p>
-                    </div>
-                    
-                    <div class="update-card">
-                        <div class="update-date">Date</div>
-                        <p>Info</p>
-                    </div>
-                    
-                    <div class="update-card">
-                        <div class="update-date">Date</div>
-                        <p>Info</p>
-                    </div>
-                    
-                    <div class="update-card">
-                        <div class="update-date">Date</div>
-                        <p>Info</p>
-                    </div>
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
+                        <svg class="icon-sun" width="20" height="20">
+                            <use href="#icon-sun"></use>
+                        </svg>
+                        <svg class="icon-moon" width="20" height="20">
+                            <use href="#icon-moon"></use>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
-    </main>
+    </header>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-grid">
+    <!-- Hero-Assistant -->
+    <div class="hero-with-assistants">
+        <div class="hero-assistants-container">
+            <!-- Left Assistant - Desktop Only -->
+            <div class="hero-assistant left">
+                <a href="javascript:void(0)" class="assistant-card" data-assistant="classic">
+                    <img src="Images/Lumen Classic Assistant.png" alt="Lumenpedia Classic Assistant"
+                        class="assistant-img" />
+                    <div class="assistant-info">
+                        <span class="assistant-name">Lumenpedia Classic Assistant</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Center Content -->
+            <div class="hero-assistants-content">
+                <h1>Latest Update(s)</h1>
+                <p>Detailed information about Jade Dynasty Lumen Server(s)</p>
+            </div>
+
+            <!-- Right Assistant - Desktop Only -->
+            <div class="hero-assistant right">
+                <a href="javascript:void(0)" class="assistant-card" data-assistant="main">
+                    <img src="Images/Lumen Main Assistant.png" alt="Lumenpedia Main Assistant" class="assistant-img" />
+                    <div class="assistant-info">
+                        <span class="assistant-name">Lumenpedia Main Assistant</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- In the mobile assistants row section -->
+            <div class="assistants-row">
+                <div class="hero-assistant">
+                    <a href="javascript:void(0)" class="assistant-card" data-assistant="classic">
+                        <img src="Images/Lumen Classic Assistant.png" alt="Lumenpedia Classic Assistant"
+                            class="assistant-img" />
+                        <div class="assistant-info">
+                            <span class="assistant-name">Lumenpedia Classic Assistant</span>
+                            <span class="tap-label">Tap to view</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="hero-assistant">
+                    <a href="javascript:void(0)" class="assistant-card" data-assistant="main">
+                        <img src="Images/Lumen Main Assistant.png" alt="Lumenpedia Main Assistant"
+                            class="assistant-img" />
+                        <div class="assistant-info">
+                            <span class="assistant-name">Lumenpedia Main Assistant</span>
+                            <span class="tap-label">Tap to view</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Server Comparison Section -->
+    <div class="server-comparison">
+        <div class="server-card">
+            <div class="server-card-header">
+                <h2>Lumen Classic</h2>
+                <span class="server-status active">Active</span>
+            </div>
+
+            <div class="server-details">
+                <div class="detail-item">
+                    <div class="detail-label">Date</div>
+                    <div class="detail-value">Update(s)</div>
+                    <div class="detail-note">Description(s)</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Date</div>
+                    <div class="detail-value">Update(s)</div>
+                    <div class="detail-note">Description(s)</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Date</div>
+                    <div class="detail-value">Update(s)</div>
+                    <div class="detail-note">Description(s)</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Date</div>
+                    <div class="detail-value">Update(s)</div>
+                    <div class="detail-note">Description(s)</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Date</div>
+                    <div class="detail-value">Update(s)</div>
+                    <div class="detail-note">Description(s)</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Date</div>
+                    <div class="detail-value">Update(s)</div>
+                    <div class="detail-note">Description(s)</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Lumen Points</div>
+                    <div class="detail-value">
+                        <div class="detail-label">Date</div>
+                        <div class="detail-value">Update(s)</div>
+                        <div class="detail-note">Description(s)</div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://jadedynasty.org/" target="_blank" class="server-link">
+                Visit Classic Lumen Website
+                <svg width="16" height="16">
+                    <use href="#icon-external"></use>
+                </svg>
+            </a>
+        </div>
+
+        <div class="server-card">
+            <div class="server-card-header">
+                <h2>Lumen Main</h2>
+                <span class="server-status inactive">Coming Soon</span>
+            </div>
+
+            <div class="server-details">
+                <div class="detail-item">
+                    <div class="detail-label">Date</div>
+                    <div class="detail-value">Update(s)</div>
+                    <div class="detail-note">Description(s)</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Date</div>
+                    <div class="detail-value">Update(s)</div>
+                    <div class="detail-note">Description(s)</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Date</div>
+                    <div class="detail-value">Update(s)</div>
+                    <div class="detail-note">Description(s)</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Date</div>
+                    <div class="detail-value">Update(s)</div>
+                    <div class="detail-note">Description(s)</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Date</div>
+                    <div class="detail-value">Update(s)</div>
+                    <div class="detail-note">Description(s)</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Date</div>
+                    <div class="detail-value">Update(s)</div>
+                    <div class="detail-note">Description(s)</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Date</div>
+                    <div class="detail-value">Update(s)</div>
+                    <div class="detail-note">Description(s)</div>
+                </div>
+
+                <a href="#" class="server-link disabled">
+                    Coming Soon
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="lumenpedia-footer">
+        <div class="footer-container">
+
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo">LUMENPEDIA</div>
+                    <p class="footer-tagline">Your all-in-one community guide for the Jade Dynasty Lumen Server.
+                        Discover game information, guides, and server updates in one convenient location.</p>
+
+                    <!-- Social Media -->
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/jadedynastylumen" class="social-link" target="_blank"
+                            aria-label="Facebook">
+                            <svg width="16" height="16">
+                                <use href="#icon-facebook"></use>
+                            </svg>
+                        </a>
+                        <a href="https://discord.com/invite/TeNbyexB6W" class="social-link" target="_blank"
+                            aria-label="Discord">
+                            <svg width="16" height="16">
+                                <use href="#icon-discord"></use>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/jadedynastylumen/" class="social-link" target="_blank"
+                            aria-label="Instagram">
+                            <svg width="16" height="16">
+                                <use href="#icon-instagram"></use>
+                            </svg>
+                        </a>
+                        <a href="https://www.twitch.tv/jadedynastylumen" class="social-link" target="_blank"
+                            aria-label="Twitch">
+                            <svg width="16" height="16">
+                                <use href="#icon-twitch"></use>
+                            </svg>
+                        </a>
+                        <a href="https://vk.com/lumendynasty" class="social-link" target="_blank" aria-label="VK">
+                            <svg width="16" height="16">
+                                <use href="#icon-vk"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Explore Section -->
                 <div class="footer-section">
                     <h4>EXPLORE</h4>
-                    <a href="latest-updates.html">Latest Updates</a>
-                    <a href="browse.html">Browse All Guides</a>
+                    <div class="footer-links">
+                        <a href="latest-updates.html" class="footer-link">Latest Updates</a>
+                        <a href="browse.html" class="footer-link">Browse All Guides</a>
+                        <!-- <a href="classes.html" class="footer-link">Classes & Factions</a>
+                        <a href="quests.html" class="footer-link">Quest Database</a>
+                        <a href="items.html" class="footer-link">Item Database</a> -->
+                    </div>
                 </div>
+
+                <!-- Community Section -->
                 <div class="footer-section">
                     <h4>COMMUNITY</h4>
-                    <a href="https://www.facebook.com/jadedynastylumen" target="_blank">Facebook</a>
-                    <a href="https://discord.com/invite/TeNbyexB6W" target="_blank">Discord</a>
-                    <a href="https://www.instagram.com/jadedynastylumen/" target="_blank">Instagram</a>
-                    <a href="https://www.twitch.tv/jadedynastylumen" target="_blank">Twitch.tv</a>
-                    <a href="https://vk.com/lumendynasty" target="_blank">VK</a>
+                    <div class="footer-links">
+                        <a href="https://www.facebook.com/jadedynastylumen" class="footer-link"
+                            target="_blank">Facebook</a>
+                        <a href="https://discord.com/invite/TeNbyexB6W" class="footer-link" target="_blank">Discord</a>
+                        <a href="https://www.instagram.com/jadedynastylumen/" class="footer-link"
+                            target="_blank">Instagram</a>
+                        <a href="https://www.twitch.tv/jadedynastylumen" class="footer-link"
+                            target="_blank">Twitch.tv</a>
+                        <a href="https://vk.com/lumendynasty" class="footer-link" target="_blank">VK</a>
+                    </div>
                 </div>
+
+                <!-- Support Section -->
                 <div class="footer-section">
                     <h4>SUPPORT</h4>
-                    <a href="support.html">Help Center</a>
-                    <a href="support.html">Report Issue</a>
-                    <a href="support.html">Contribute</a>
+                    <div class="footer-links">
+                        <a href="support.html" class="footer-link">Help Center</a>
+                        <a href="support.html" class="footer-link">Report Issue</a>
+                        <a href="support.html" class="footer-link">Contribute</a>
+                        <a href="support.html" class="footer-link">Contact Us</a>
+                        <!-- <a href="faq.html" class="footer-link">FAQ</a> -->
+                    </div>
                 </div>
             </div>
+
+            <!-- Footer Bottom -->
             <div class="footer-bottom">
-                <div class="footer-logo">LUMENPEDIA</div>
                 <div class="footer-copyright">© 2025 Lumenpedia. All rights reserved.</div>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script src="scripts.js"></script>
+    <script src="hero-assistant.js"></script>
+    <script src="classic-main-switch.js"></script>
+    <script src="footer.js"></script>
+    <script src="icon-loader.js"></script>
+
 </body>
+
 </html>
