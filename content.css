@@ -1,0 +1,524 @@
+/* Content Section Styles */
+.content-section {
+    padding: 60px 0;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+}
+
+.content-intro {
+    text-align: center;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-intro h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--color-foreground);
+    font-weight: 700;
+}
+
+.content-intro p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+}
+
+/* NEW: Optimized content boxes layout */
+.content-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* For sections with 3 boxes (like Introduction) */
+.content-boxes.three-boxes .content-box {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+/* For sections with 2 boxes (like How to Get Started) */
+.content-boxes.two-boxes {
+    justify-content: space-between;
+}
+
+.content-boxes.two-boxes .content-box {
+    flex: 1;
+    min-width: 400px;
+    max-width: 600px;
+}
+
+.content-box {
+    background-color: var(--color-card);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--color-border);
+}
+
+.content-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: var(--color-primary);
+}
+
+.box-header {
+    background: var(--gradient-hero);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.box-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.box-content {
+    padding: 25px;
+}
+
+.box-content p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: var(--color-foreground);
+}
+
+.content-detail {
+    margin-top: 20px;
+}
+
+.content-detail h4 {
+    color: var(--color-primary);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 5px;
+}
+
+.content-detail ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.content-detail li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+    color: var(--color-foreground);
+}
+
+.content-detail ol {
+    list-style: decimal;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.content-detail ol li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    color: var(--color-foreground);
+}
+
+/* UPDATED: Centered images without borders */
+/* UPDATED: Proper image with caption below */
+.content-image {
+    margin: 20px 0;
+    text-align: center;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: zoom-in;
+    position: relative;
+    background: transparent;
+    border: none !important;
+    display: block; /* This ensures caption goes below image */
+}
+
+.content-image:hover {
+    transform: translateY(-2px);
+}
+
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    display: block;
+    margin: 0 auto; /* Centers the image horizontally */
+}
+
+.content-image:hover .responsive-image {
+    transform: scale(1.05);
+}
+
+.image-caption {
+    margin-top: 10px;
+    font-style: italic;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    padding: 0 10px;
+    text-align: center;
+    display: block;
+}
+
+/* UPDATED: Image zoom overlay */
+.image-zoom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    cursor: zoom-out;
+}
+
+.image-zoom-overlay.active {
+    display: flex;
+}
+
+.zoomed-image-container {
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.zoomed-image {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: zoomIn 0.3s ease;
+}
+
+.zoom-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    z-index: 10001;
+}
+
+.zoom-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.image-caption {
+    margin-top: 10px;
+    font-style: italic;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.zoomed-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+.code-copy-section {
+    background: var(--color-card);
+    border-radius: 12px;
+    padding: 25px;
+    border: 1px solid var(--color-border);
+    margin: 20px 0;
+}
+
+.code-copy-section h3 {
+    margin: 0 0 10px 0;
+    color: var(--color-foreground);
+    font-weight: 600;
+}
+
+.code-copy-section p {
+    margin: 0 0 20px 0;
+    color: var(--color-muted);
+}
+
+.code-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--color-background);
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    min-height: 60px;
+    transition: border-color 0.3s ease;
+}
+
+.code-container:hover {
+    border-color: var(--color-primary);
+}
+
+#induction-code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--color-foreground);
+    background: var(--color-card);
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    flex: 1;
+    word-break: break-all;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.copy-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gradient-hero);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    height: 40px;
+    min-width: 100px;
+    border: 1px solid transparent;
+}
+
+.copy-btn:hover {
+    background: var(--color-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.copy-btn:active {
+    transform: translateY(0);
+}
+
+.copy-message {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.copy-message.show {
+    opacity: 1;
+}
+
+.copy-message.success {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.copy-message.error {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Consistent paragraph styling */
+.content-detail p {
+    color: var(--color-foreground);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+/* Only style the introductory paragraph differently */
+.box-content > p:first-child {
+    font-weight: 500;
+    font-size: 1.05rem;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .content-boxes.two-boxes .content-box {
+        min-width: 350px;
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-boxes.two-boxes {
+        justify-content: center;
+    }
+    
+    .content-boxes.two-boxes .content-box {
+        min-width: 300px;
+        max-width: 100%;
+    }
+    
+    .code-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    
+    #induction-code {
+        text-align: center;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+    
+    .copy-btn {
+        width: 100%;
+        justify-content: center;
+        height: 44px;
+    }
+    
+    .code-copy-section {
+        padding: 20px;
+    }
+    
+    .content-intro h2 {
+        font-size: 2rem;
+    }
+    
+    .content-intro p {
+        font-size: 1.1rem;
+    }
+    
+    .box-header h3 {
+        font-size: 1.3rem;
+    }
+    
+    .zoomed-image-container {
+        max-width: 95%;
+        max-height: 80%;
+    }
+    
+    .zoom-close {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #induction-code {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
+    
+    .copy-btn {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+    
+    .content-section {
+        padding: 40px 0;
+    }
+    
+    .content-box {
+        min-width: 280px;
+    }
+    
+    .content-image {
+        margin: 15px 0;
+    }
+}
+
+/* Compact version */
+.code-container.compact {
+    padding: 8px;
+    min-height: 50px;
+}
+
+.code-container.compact #induction-code {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+}
+
+.code-container.compact .copy-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    height: 36px;
+    min-width: 80px;
+}
+
+/* Section background alternation */
+.content-section:nth-child(even) {
+    background-color: var(--color-card);
+}
+
+.content-section:nth-child(odd) {
+    background-color: var(--color-background);
+}
+
+/* Content link styling */
+.content-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.content-link:hover {
+    color: var(--color-primary-hover);
+    border-bottom: 1px solid var(--color-primary);
+}
+
+.content-link:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
