@@ -1,4 +1,4 @@
-/* Content Section Styles */
+/* Content Section Styles - For Universal Content Pages*/
 .content-section {
     padding: 60px 0;
     background-color: var(--color-background);
@@ -141,7 +141,8 @@
     position: relative;
     background: transparent;
     border: none !important;
-    display: block; /* This ensures caption goes below image */
+    display: block;
+    /* This ensures caption goes below image */
 }
 
 .content-image:hover {
@@ -154,7 +155,8 @@
     border-radius: 8px;
     transition: transform 0.3s ease;
     display: block;
-    margin: 0 auto; /* Centers the image horizontally */
+    margin: 0 auto;
+    /* Centers the image horizontally */
 }
 
 .content-image:hover .responsive-image {
@@ -237,6 +239,7 @@
         opacity: 0;
         transform: scale(0.8);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -381,7 +384,7 @@
 }
 
 /* Only style the introductory paragraph differently */
-.box-content > p:first-child {
+.box-content>p:first-child {
     font-weight: 500;
     font-size: 1.05rem;
 }
@@ -398,51 +401,51 @@
     .content-boxes.two-boxes {
         justify-content: center;
     }
-    
+
     .content-boxes.two-boxes .content-box {
         min-width: 300px;
         max-width: 100%;
     }
-    
+
     .code-container {
         flex-direction: column;
         align-items: stretch;
         gap: 12px;
     }
-    
+
     #induction-code {
         text-align: center;
         font-size: 0.9rem;
         padding: 8px 12px;
     }
-    
+
     .copy-btn {
         width: 100%;
         justify-content: center;
         height: 44px;
     }
-    
+
     .code-copy-section {
         padding: 20px;
     }
-    
+
     .content-intro h2 {
         font-size: 2rem;
     }
-    
+
     .content-intro p {
         font-size: 1.1rem;
     }
-    
+
     .box-header h3 {
         font-size: 1.3rem;
     }
-    
+
     .zoomed-image-container {
         max-width: 95%;
         max-height: 80%;
     }
-    
+
     .zoom-close {
         top: 10px;
         right: 10px;
@@ -457,20 +460,20 @@
         font-size: 0.85rem;
         padding: 6px 10px;
     }
-    
+
     .copy-btn {
         font-size: 0.8rem;
         padding: 10px;
     }
-    
+
     .content-section {
         padding: 40px 0;
     }
-    
+
     .content-box {
         min-width: 280px;
     }
-    
+
     .content-image {
         margin: 15px 0;
     }
@@ -521,4 +524,147 @@
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
     border-radius: 2px;
+}
+
+/* For Rewards and Promo codes page*/
+.promo-code-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.promo-item {
+    padding: 0.75rem;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.promo-item strong {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.promo-code-list.expired .promo-item {
+    opacity: 0.7;
+    background-color: var(--color-card);
+}
+
+.promo-code-list.expired .promo-item strong {
+    color: var(--color-muted);
+}
+
+.text-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 1px dotted var(--color-primary);
+}
+
+.text-link:hover {
+    text-decoration: underline;
+    color: var(--color-primary-hover);
+    border-bottom: 1px solid var(--color-primary-hover);
+}
+
+/* Promo Code Copy Button Styles - Compact Version */
+.promo-code-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.promo-code-text {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.promo-copy-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--gradient-hero);
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    height: 24px;
+    min-width: 50px;
+    border: 1px solid transparent;
+}
+
+.promo-copy-btn:hover {
+    background: var(--color-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.promo-copy-btn:active {
+    transform: translateY(0);
+}
+
+.promo-copy-btn.copied {
+    background: var(--gradient-green);
+}
+
+.promo-copy-btn.copied svg {
+    transform: scale(1.1);
+}
+
+.promo-copy-btn svg {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.2s ease;
+}
+
+.promo-description {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    line-height: 1.4;
+    display: block;
+}
+
+/* Expired promo codes styling */
+.promo-code-list.expired .promo-code-text {
+    color: var(--color-muted);
+}
+
+.promo-code-list.expired .promo-copy-btn {
+    background: var(--color-muted);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.promo-code-list.expired .promo-copy-btn:hover {
+    transform: none;
+    box-shadow: none;
+    background: var(--color-muted);
+}
+
+/* Responsive design for promo codes */
+@media (max-width: 768px) {
+    .promo-code-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .promo-copy-btn {
+        align-self: flex-start;
+    }
+    
+    .promo-item {
+        padding: 1rem;
+    }
 }
