@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumenpedia - Social Media</title>
+
+  <link rel="icon" type="image/png" href="Images/favicon.png">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="footer.css">
+  <script>
+    try {
+      const saved = localStorage.getItem('theme');
+      if (!saved) {
+        localStorage.setItem('theme', 'dark');
+        document.documentElement.classList.add('dark');
+        document.documentElement.style.colorScheme = 'dark';
+      } else if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.documentElement.style.colorScheme = 'dark';
+      }
+    } catch (e) {}
+  </script>
+  <style>
+    /* Square card layout for social platforms */
+    .social-cards {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      margin: 1.5rem 0 0 0;
+      align-items: stretch;
+    }
+
+    .social-card {
+      aspect-ratio: 1 / 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1rem;
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      background: var(--color-card);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      color: var(--color-foreground);
+      text-decoration: none;
+    }
+
+    .social-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .social-card h4 {
+      margin: 0.5rem 0 0.25rem 0;
+      font-size: 1rem;
+    }
+
+    .social-card p {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--color-muted);
+    }
+
+    @media (max-width: 1200px) {
+      .social-cards { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .social-cards { grid-template-columns: repeat(1, 1fr); }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <img src="Images/Lumenpedia Logo - No BG (2).png" alt="Lumenpedia" class="logo-image">
+          <a href="index.html" class="header-logo-minimal">
+            <span class="logo-text">Lumenpedia</span>
+          </a>
+        </div>
+        <div class="header-actions">
+          <a href="browse.html" class="btn btn-secondary">Browse All Guides</a>
+          <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
+            <svg class="icon-sun" width="20" height="20"><use href="#icon-sun"></use></svg>
+            <svg class="icon-moon" width="20" height="20"><use href="#icon-moon"></use></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-logo">
+          <img src="Images/Lumenpedia Logo - No BG (2).png" alt="Lumenpedia" class="logo-hero">
+          <span class="hero-tagline">Connect with the Lumen community</span>
+        </div>
+        <p class="hero-description">Follow us on social platforms for announcements, events, and community chat.</p>
+      </div>
+    </div>
+  </section>
+
+  <main class="section">
+    <div class="container">
+      
+      <div class="section-header">
+        <h3 class="section-title">Social Media</h3>
+        <p class="section-description">Official community channels and how to reach us</p>
+      </div>
+
+      <div class="social-cards">
+        <a href="https://www.facebook.com/jadedynastylumen" class="social-card" target="_blank" aria-label="Facebook">
+          <svg width="28" height="28"><use href="#icon-facebook"></use></svg>
+          <h4>Facebook</h4>
+          <p>Announcements & community posts</p>
+        </a>
+
+        <a href="https://discord.com/invite/TeNbyexB6W" class="social-card" target="_blank" aria-label="Discord">
+          <svg width="28" height="28"><use href="#icon-discord"></use></svg>
+          <h4>Discord</h4>
+          <p>Community chat & support</p>
+        </a>
+
+        <a href="https://www.instagram.com/jadedynastylumen/" class="social-card" target="_blank" aria-label="Instagram">
+          <svg width="28" height="28"><use href="#icon-instagram"></use></svg>
+          <h4>Instagram</h4>
+          <p>Screenshots & highlights</p>
+        </a>
+
+        <a href="https://www.twitch.tv/jadedynastylumen" class="social-card" target="_blank" aria-label="Twitch">
+          <svg width="28" height="28"><use href="#icon-twitch"></use></svg>
+          <h4>Twitch</h4>
+          <p>Streams & events</p>
+        </a>
+
+        <a href="https://vk.com/lumendynasty" class="social-card" target="_blank" aria-label="VK">
+          <svg width="28" height="28"><use href="#icon-vk"></use></svg>
+          <h4>VK</h4>
+          <p>Community hub</p>
+        </a>
+      </div>
+
+      
+    </div>
+  </main>
+
+  <!-- Footer -->
+    <footer class="lumenpedia-footer">
+        <div class="footer-container">
+
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo">LUMENPEDIA</div>
+                    <p class="footer-tagline">Your all-in-one community guide for the Jade Dynasty Lumen Server.
+                        Discover game information, guides, and server updates in one convenient location.</p>
+
+                    <!-- Social Media -->
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/jadedynastylumen" class="social-link" target="_blank"
+                            aria-label="Facebook">
+                            <svg width="16" height="16"><use href="#icon-facebook"></use></svg>
+                        </a>
+                        <a href="https://discord.com/invite/TeNbyexB6W" class="social-link" target="_blank"
+                            aria-label="Discord">
+                            <svg width="16" height="16"><use href="#icon-discord"></use></svg>
+                        </a>
+                        <a href="https://www.instagram.com/jadedynastylumen/" class="social-link" target="_blank"
+                            aria-label="Instagram">
+                            <svg width="16" height="16"><use href="#icon-instagram"></use></svg>
+                        </a>
+                        <a href="https://www.twitch.tv/jadedynastylumen" class="social-link" target="_blank"
+                            aria-label="Twitch">
+                            <svg width="16" height="16"><use href="#icon-twitch"></use></svg>
+                        </a>
+                        <a href="https://vk.com/lumendynasty" class="social-link" target="_blank" aria-label="VK">
+                            <svg width="16" height="16"><use href="#icon-vk"></use></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Explore Section -->
+                <div class="footer-section">
+                    <h4>EXPLORE</h4>
+                    <div class="footer-links">
+                        <a href="latest-updates.html" class="footer-link">Latest Updates</a>
+                        <a href="browse.html" class="footer-link">Browse All Guides</a>
+                        <!-- <a href="classes.html" class="footer-link">Classes & Factions</a>
+                        <a href="quests.html" class="footer-link">Quest Database</a>
+                        <a href="items.html" class="footer-link">Item Database</a> -->
+                    </div>
+                </div>
+
+                <!-- Community Section -->
+                <div class="footer-section">
+                    <h4>COMMUNITY</h4>
+                    <div class="footer-links">
+                            <a href="https://www.facebook.com/jadedynastylumen" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-facebook"></use></svg>Facebook</a>
+                            <a href="https://discord.com/invite/TeNbyexB6W" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-discord"></use></svg>Discord</a>
+                            <a href="https://www.instagram.com/jadedynastylumen/" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-instagram"></use></svg>Instagram</a>
+                            <a href="https://www.twitch.tv/jadedynastylumen" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-twitch"></use></svg>Twitch.tv</a>
+                            <a href="https://vk.com/lumendynasty" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-vk"></use></svg>VK</a>
+                    </div>
+                </div>
+
+                <!-- Support Section -->
+                <div class="footer-section">
+                    <h4>SUPPORT</h4>
+                    <div class="footer-links">
+                        <a href="support.html" class="footer-link">Help Center</a>
+                        <a href="support.html" class="footer-link">Report Issue</a>
+                        <a href="support.html" class="footer-link">Contribute</a>
+                        <a href="support.html" class="footer-link">Contact Us</a>
+                        <!-- <a href="faq.html" class="footer-link">FAQ</a> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">© 2025 Lumenpedia. All rights reserved.</div>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+  <script src="scripts.js"></script>
+  <script src="hero-assistant.js"></script>
+  <script src="classic-main-switch.js"></script>
+  <script src="footer.js"></script>
+  <script src="icon-loader.js"></script>
+</body>
+
+</html>

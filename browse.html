@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumenpedia - Browse A-Z</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="Images/favicon.png">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="browse.css">
+  <script>
+    try {
+      const saved = localStorage.getItem('theme');
+      if (!saved) {
+        localStorage.setItem('theme', 'dark');
+        document.documentElement.classList.add('dark');
+        document.documentElement.style.colorScheme = 'dark';
+      } else if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.documentElement.style.colorScheme = 'dark';
+      }
+    } catch (e) {}
+  </script>
+</head>
+
+<body class="browse-page">
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <img src="Images/Lumenpedia Logo - No BG (2).png" alt="Lumenpedia" class="logo-image">
+          <a href="index.html" class="header-logo-minimal">
+            <span class="logo-text-minimal">Lumenpedia</span>
+          </a>
+        </div>
+        <!-- Nav Buttons -->
+        <div class="header-actions">
+          <!-- Nav Button to Index.html -->
+          <a href="index.html" class="nav-toggle">
+            <svg class="icon-chevron-left" width="16" height="16">
+              <use href="#icon-chevron-left"></use>
+            </svg>
+            Home
+          </a>
+
+          <!-- Theme Toggle Button -->
+          <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
+
+            <svg class="icon-sun" width="20" height="20">
+              <use href="#icon-sun"></use>
+            </svg>
+            <svg class="icon-moon" width="20" height="20">
+              <use href="#icon-moon"></use>
+            </svg>
+
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <!-- Page Header with Images -->
+  <section class="page-header browse-page-header">
+    <div class="hero-container">
+      <!-- Left side image -->
+      <div class="hero-image left">
+        <div class="assistant-card">
+          <img src="Images/Lumen Classic Assistant.png" alt="Lumenpedia Classic Assistant" class="assistant-img" />
+          <div class="assistant-info">
+            <span class="assistant-name">Lumenpedia Classic Assistant</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center content -->
+      <div class="hero-content">
+        <h1>All Guides A-Z</h1>
+        <p>Complete directory of Jade Dynasty Lumen guides and resources</p>
+
+        <div class="search-container browse-search">
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          <input type="text" id="browse-search-input" class="search-input" placeholder="Search all guides...">
+        </div>
+      </div>
+
+      <!-- Right side image -->
+      <div class="hero-image right">
+        <div class="assistant-card">
+          <img src="Images/Lumen Main Assistant.png" alt="Lumenpedia Main Assistant" class="assistant-img" />
+          <div class="assistant-info">
+            <span class="assistant-name">Lumenpedia Main Assistant</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Alphabet Navigation (immediately after page header) -->
+  <nav class="alphabet-nav" id="alphabet-nav">
+    <div class="container">
+      <div class="alphabet-nav-content">
+        <a href="#section-a" class="alphabet-link">A</a>
+        <a href="#section-b" class="alphabet-link">B</a>
+        <a href="#section-c" class="alphabet-link">C</a>
+        <a href="#section-d" class="alphabet-link">D</a>
+        <a href="#section-e" class="alphabet-link">E</a>
+        <a href="#section-f" class="alphabet-link">F</a>
+        <a href="#section-g" class="alphabet-link">G</a>
+        <a href="#section-h" class="alphabet-link">H</a>
+        <a href="#section-i" class="alphabet-link">I</a>
+        <a href="#section-j" class="alphabet-link">J</a>
+        <a href="#section-k" class="alphabet-link">K</a>
+        <a href="#section-l" class="alphabet-link">L</a>
+        <a href="#section-m" class="alphabet-link">M</a>
+        <a href="#section-n" class="alphabet-link">N</a>
+        <a href="#section-o" class="alphabet-link">O</a>
+        <a href="#section-p" class="alphabet-link">P</a>
+        <a href="#section-q" class="alphabet-link">Q</a>
+        <a href="#section-r" class="alphabet-link">R</a>
+        <a href="#section-s" class="alphabet-link">S</a>
+        <a href="#section-t" class="alphabet-link">T</a>
+        <a href="#section-u" class="alphabet-link">U</a>
+        <a href="#section-v" class="alphabet-link">V</a>
+        <a href="#section-w" class="alphabet-link">W</a>
+        <a href="#section-x" class="alphabet-link">X</a>
+        <a href="#section-y" class="alphabet-link">Y</a>
+        <a href="#section-z" class="alphabet-link">Z</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="browse-content">
+    <div class="container">
+      <div class="guides-container">
+        <!-- Section A -->
+        <section id="section-a" class="guide-section">
+          <div class="section-header">
+            <h2 class="section-letter">A</h2>
+            <span class="guide-count">6 guides</span>
+          </div>
+          <div class="guides-grid">
+            <a href="about-lumen.html" class="guide-card">
+              <h3 class="guide-title">About Lumen</h3>
+              <p class="guide-excerpt">Learn about the Lumen server features and unique systems</p>
+            </a>
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Accessories</h3>
+              <p class="guide-excerpt">Jewelry, rings, necklaces and accessory systems</p>
+            </a>
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Affinity</h3>
+              <p class="guide-excerpt">Character affinity systems and relationships</p>
+            </a>
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Alliance & Clan</h3>
+              <p class="guide-excerpt">Guild systems and social organizations</p>
+            </a>
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Ascension</h3>
+              <p class="guide-excerpt">Transcend mortal limits and gain new powers</p>
+            </a>
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Astral Tales</h3>
+              <p class="guide-excerpt">Story quests and narrative content</p>
+            </a>
+          </div>
+        </section>
+
+        <!-- Section B -->
+        <section id="section-b" class="guide-section">
+          <div class="section-header">
+            <h2 class="section-letter">B</h2>
+            <span class="guide-count">4 guides</span>
+          </div>
+          <div class="guides-grid">
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Battleground</h3>
+              <p class="guide-excerpt">PvP battlegrounds and combat arenas</p>
+            </a>
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Bloodbonding</h3>
+              <p class="guide-excerpt">Blood bonding mechanics and benefits</p>
+            </a>
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Bloodsmelting</h3>
+              <p class="guide-excerpt">Equipment enhancement through bloodsmelting</p>
+            </a>
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Bosses</h3>
+              <p class="guide-excerpt">World bosses and raid encounters</p>
+            </a>
+          </div>
+        </section>
+
+        <!-- Section C -->
+        <section id="section-c" class="guide-section">
+          <div class="section-header">
+            <h2 class="section-letter">C</h2>
+            <span class="guide-count">9 guides</span>
+          </div>
+          <div class="guides-grid">
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Celestial Mount</h3>
+              <p class="guide-excerpt">Flying mounts and celestial companions</p>
+            </a>
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Charity</h3>
+              <p class="guide-excerpt">Donation systems and charitable activities</p>
+            </a>
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Charm</h3>
+              <p class="guide-excerpt">Character charm and appearance systems</p>
+            </a>
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Chi</h3>
+              <p class="guide-excerpt">Energy systems and chi management</p>
+            </a>
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Chroma</h3>
+              <p class="guide-excerpt">Color and dye systems for customization</p>
+            </a>
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Class System</h3>
+              <p class="guide-excerpt">Overview of all available classes</p>
+            </a>
+            <a href="classes-factions.html" class="guide-card">
+              <h3 class="guide-title">Classes & Factions</h3>
+              <p class="guide-excerpt">Detailed class and faction information</p>
+            </a>
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Crafting</h3>
+              <p class="guide-excerpt">Professions and item creation</p>
+            </a>
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Crisis Event</h3>
+              <p class="guide-excerpt">Special events and crisis scenarios</p>
+            </a>
+          </div>
+        </section>
+
+        <!-- Section D -->
+        <section id="section-d" class="guide-section">
+          <div class="section-header">
+            <h2 class="section-letter">D</h2>
+            <span class="guide-count">4 guides</span>
+          </div>
+          <div class="guides-grid">
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Daily Divination</h3>
+              <p class="guide-excerpt">Daily fortune telling and divination</p>
+            </a>
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Daily Quests</h3>
+              <p class="guide-excerpt">Repeatable daily tasks and objectives</p>
+            </a>
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Deity in the Wind</h3>
+              <p class="guide-excerpt">Special deity events and encounters</p>
+            </a>
+            <a href="#" class="guide-card">
+              <h3 class="guide-title">Dispel the Curse</h3>
+              <p class="guide-excerpt">Curse removal mechanics and quests</p>
+            </a>
+          </div>
+        </section>
+
+        <!-- Empty Section Example -->
+        <section id="section-o" class="guide-section empty-section">
+          <div class="section-header">
+            <h2 class="section-letter">O</h2>
+            <span class="guide-count">0 guides</span>
+          </div>
+          <div class="empty-state">
+            <p>No guides starting with O yet</p>
+            <a href="contribute.html" class="btn btn-secondary">Suggest a Guide</a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+    <footer class="lumenpedia-footer">
+        <div class="footer-container">
+
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo">LUMENPEDIA</div>
+                    <p class="footer-tagline">Your all-in-one community guide for the Jade Dynasty Lumen Server.
+                        Discover game information, guides, and server updates in one convenient location.</p>
+
+                    <!-- Social Media -->
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/jadedynastylumen" class="social-link" target="_blank"
+                            aria-label="Facebook">
+                            <svg width="16" height="16"><use href="#icon-facebook"></use></svg>
+                        </a>
+                        <a href="https://discord.com/invite/TeNbyexB6W" class="social-link" target="_blank"
+                            aria-label="Discord">
+                            <svg width="16" height="16"><use href="#icon-discord"></use></svg>
+                        </a>
+                        <a href="https://www.instagram.com/jadedynastylumen/" class="social-link" target="_blank"
+                            aria-label="Instagram">
+                            <svg width="16" height="16"><use href="#icon-instagram"></use></svg>
+                        </a>
+                        <a href="https://www.twitch.tv/jadedynastylumen" class="social-link" target="_blank"
+                            aria-label="Twitch">
+                            <svg width="16" height="16"><use href="#icon-twitch"></use></svg>
+                        </a>
+                        <a href="https://vk.com/lumendynasty" class="social-link" target="_blank" aria-label="VK">
+                            <svg width="16" height="16"><use href="#icon-vk"></use></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Explore Section -->
+                <div class="footer-section">
+                    <h4>EXPLORE</h4>
+                    <div class="footer-links">
+                        <a href="latest-updates.html" class="footer-link">Latest Updates</a>
+                        <a href="browse.html" class="footer-link">Browse All Guides</a>
+                        <!-- <a href="classes.html" class="footer-link">Classes & Factions</a>
+                        <a href="quests.html" class="footer-link">Quest Database</a>
+                        <a href="items.html" class="footer-link">Item Database</a> -->
+                    </div>
+                </div>
+
+                <!-- Community Section -->
+                <div class="footer-section">
+                    <h4>COMMUNITY</h4>
+                    <div class="footer-links">
+                            <a href="https://www.facebook.com/jadedynastylumen" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-facebook"></use></svg>Facebook</a>
+                            <a href="https://discord.com/invite/TeNbyexB6W" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-discord"></use></svg>Discord</a>
+                            <a href="https://www.instagram.com/jadedynastylumen/" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-instagram"></use></svg>Instagram</a>
+                            <a href="https://www.twitch.tv/jadedynastylumen" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-twitch"></use></svg>Twitch.tv</a>
+                            <a href="https://vk.com/lumendynasty" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-vk"></use></svg>VK</a>
+                    </div>
+                </div>
+
+                <!-- Support Section -->
+                <div class="footer-section">
+                    <h4>SUPPORT</h4>
+                    <div class="footer-links">
+                        <a href="support.html" class="footer-link">Help Center</a>
+                        <a href="support.html" class="footer-link">Report Issue</a>
+                        <a href="support.html" class="footer-link">Contribute</a>
+                        <a href="support.html" class="footer-link">Contact Us</a>
+                        <!-- <a href="faq.html" class="footer-link">FAQ</a> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">© 2025 Lumenpedia. All rights reserved.</div>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+  <script src="scripts.js"></script>
+  <script src="browse.js"></script>
+  <script src="footer.js"></script>
+  <script src="icon-loader.js"></script>
+
+</body>
+
+</html>

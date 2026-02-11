@@ -1,0 +1,152 @@
+/* Basic calculator container styles */
+.calculator-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+#calculator-content {
+  min-height: 600px;
+  background: var(--color-card);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin: 2rem 0;
+  border: 1px solid var(--color-border);
+}
+
+/* Ensure calculator elements are visible */
+#content {
+  display: block !important;
+  visibility: visible !important;
+}
+
+.calc {
+  display: table !important;
+  visibility: visible !important;
+  width: 100% !important;
+}
+
+.calc td {
+  display: table-cell !important;
+  visibility: visible !important;
+}
+
+#cmenu,
+#skill {
+  display: table-cell !important;
+  visibility: visible !important;
+  vertical-align: top;
+}
+
+/* Enhanced calculator styles */
+.enhanced-calculator {
+  background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin: 1rem 0;
+  color: white;
+}
+
+.skill-card {
+  background: #475569;
+  border: 1px solid #64748b;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.skill-card:hover {
+  border-color: #06b6d4;
+  transform: translateY(-2px);
+}
+
+.skill-points {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.skill-point {
+  width: 20px;
+  height: 4px;
+  background: #64748b;
+  border-radius: 2px;
+  transition: background 0.2s ease;
+}
+
+.skill-point.active {
+  background: #06b6d4;
+}
+
+.tier-section {
+  margin-bottom: 2rem;
+}
+
+.tier-header {
+  color: #06b6d4;
+  border-bottom: 2px solid #06b6d4;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Control Panel Styles */
+.control-panel {
+  padding: 1rem;
+  color: white;
+  background: #1e293b;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.points-display {
+  margin-bottom: 1rem;
+}
+
+.point-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.control-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.control-button {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.control-button.export {
+  background: #10b981;
+}
+
+.tier-progress {
+  background: #334155;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Build Summary */
+.build-summary {
+  background: #334155;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  font-size: 0.9rem;
+}

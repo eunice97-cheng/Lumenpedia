@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumenpedia - Home</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="Images/favicon.png">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="footer.css">
+  <script>
+    // Default to dark mode for first-time visitors only (do not override existing preference)
+    try {
+      const saved = localStorage.getItem('theme');
+      if (!saved) {
+        localStorage.setItem('theme', 'dark');
+        document.documentElement.classList.add('dark');
+        document.documentElement.style.colorScheme = 'dark';
+      } else if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.documentElement.style.colorScheme = 'dark';
+      }
+    } catch (e) {}
+  </script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container">
+          <img src="Images/Lumenpedia Logo - No BG (2).png" alt="Lumenpedia" class="logo-image">
+          <a href="index.html" class="header-logo-minimal">
+            <span class="logo-text">Lumenpedia</span>
+          </a>
+        </div>
+        <!-- Nav Buttons -->
+        <div class="header-actions">
+          <!-- Nav Button to Browse.html -->
+          <a href="browse.html" class="btn btn-secondary">Browse All Guides</a>
+
+          <!-- Theme Toggle Button -->
+          <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
+
+            <svg class="icon-sun" width="20" height="20">
+              <use href="#icon-sun"></use>
+            </svg>
+            <svg class="icon-moon" width="20" height="20">
+              <use href="#icon-moon"></use>
+            </svg>
+
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <!-- REPLACE HERO TITLE WITH LOGO -->
+        <div class="hero-logo">
+          <img src="Images/Lumenpedia Logo - No BG (2).png" alt="Lumenpedia" class="logo-hero">
+          <!-- Optional: Keep text below logo -->
+          <span class="hero-tagline">Jade Dynasty Lumen Server Guide</span>
+        </div>
+
+        <p class="hero-description">Master the Path of Cultivation</p>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <svg class="icon-bolt" width="48" height="48">
+          <use href="#icon-bolt"></use>
+        </svg>
+        <h3 class="section-title">Quick Start</h3>
+        <p class="section-description">Essential guides to get you started</p>
+      </div>
+
+      <div class="grid grid-3">
+        <a href="about-lumen.html" class="card">
+          <div class="card-icon">
+            <svg class="icon-book" width="24" height="24">
+              <use href="#icon-book"></use>
+            </svg>
+          </div>
+          <h4 class="card-title">About Lumen</h4>
+          <p class="card-description">Learn about the Lumen server, its features, and what makes it unique</p>
+        </a>
+
+        <a href="induction-system.html" class="card">
+          <div class="card-icon">
+            <svg class="icon-brain" width="24" height="24">
+              <use href="#icon-brain"></use>
+            </svg>
+          </div>
+          <h4 class="card-title">Induction System</h4>
+          <p class="card-description">Learn about how to be rewarded for being an inductor and inductee</p>
+        </a>
+
+        <a href="rewards-promocodes.html" class="card">
+          <div class="card-icon">
+            <svg class="icon-gift" width="24" height="24">
+              <use href="#icon-gift"></use>
+            </svg>
+          </div>
+          <h4 class="card-title">Rewards & Promo Codes</h4>
+          <p class="card-description">Get your rewards and promo codes while they last</p>
+        </a>
+
+        <a href="lumen-website.html" class="card">
+          <div class="card-icon">
+            <svg class="icon-tent" width="24" height="24">
+              <use href="#icon-fist"></use>
+            </svg>
+          </div>
+          <h4 class="card-title">About Lumen Website</h4>
+          <p class="card-description">Learn about Lumen website and claim your place among the immortals</p>
+        </a>
+
+        <a href="socialmedia.html" class="card">
+          <div class="card-icon">
+            <svg class="icon-cigarette" width="24" height="24">
+              <use href="#icon-connect"></use>
+            </svg>
+          </div>
+          <h4 class="card-title">Social Media</h4>
+          <p class="card-description">Connect and gain a deeper understanding of your journey</p>
+        </a>
+
+        <a href="classes-factions.html" class="card">
+          <div class="card-icon">
+            <svg class="icon-users" width="24" height="24">
+              <use href="#icon-users"></use>
+            </svg>
+          </div>
+          <h4 class="card-title">Classes & Factions</h4>
+          <p class="card-description">Explore all available classes and choose your path</p>
+        </a>
+
+        <a href="under-construction.html" class="card">
+          <div class="card-icon">
+            <svg class="icon-soccer" width="24" height="24">
+              <use href="#icon-ui/ux"></use>
+            </svg>
+          </div>
+          <h4 class="card-title">User Interface</h4>
+          <p class="card-description">A basic understanding of the game UI</p>
+        </a>
+
+        <a href="under-construction.html" class="card">
+          <div class="card-icon">
+            <svg class="icon-navigation" width="24" height="24">
+              <use href="#icon-navigation"></use>
+            </svg>
+          </div>
+          <h4 class="card-title">Map</h4>
+          <p class="card-description">Explore the world and discover the path of cultivation</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <svg class="icon-fire" width="48" height="48">
+          <use href="#icon-fire"></use>
+        </svg>
+        <h3 class="section-title">Popular Guides</h3>
+        <p class="section-description">Most viewed and essential information</p>
+      </div>
+
+      <div class="grid grid-3">
+
+        <a href="under-construction.html" class="card card-featured">
+          <div class="card-icon-gradient gradient-teal">
+            <svg class="icon-layers" width="24" height="24">
+              <use href="#icon-layers"></use>
+            </svg>
+          </div>
+          <h4 class="card-title">Leveling</h4>
+          <p class="card-description">Efficient leveling strategies and experience guides</p>
+          <span class="card-tag">Leveling</span>
+        </a>
+
+        <a href="under-construction.html" class="card card-featured">
+          <div class="card-icon-gradient gradient-teal">
+            <svg class="icon-layers" width="24" height="24">
+              <use href="#icon-layers"></use>
+            </svg>
+          </div>
+          <h4 class="card-title">Daily Quests</h4>
+          <p class="card-description">Complete daily tasks for rewards and progression</p>
+          <span class="card-tag">Daily</span>
+        </a>
+
+        <a href="under-construction.html" class="card card-featured">
+          <div class="card-icon-gradient gradient-teal">
+            <svg class="icon-layers" width="24" height="24">
+              <use href="#icon-layers"></use>
+            </svg>
+          </div>
+          <h4 class="card-title">Gears - Upgrade & Refinery</h4>
+          <p class="card-description">Master equipment enhancement systems</p>
+          <span class="card-tag">Equipment</span>
+        </a>
+
+        <a href="under-construction.html" class="card card-featured">
+          <div class="card-icon-gradient gradient-purple">
+            <svg class="icon-layers" width="24" height="24">
+              <use href="#icon-layers"></use>
+            </svg>
+          </div>
+          <h4 class="card-title">Ascension</h4>
+          <p class="card-description">Transcend mortal limits and gain new powers</p>
+          <span class="card-tag">Character</span>
+        </a>
+
+        <a href="under-construction.html" class="card card-featured">
+          <div class="card-icon-gradient gradient-orange">
+            <svg class="icon-layers" width="24" height="24">
+              <use href="#icon-layers"></use>
+            </svg>
+          </div>
+          <h4 class="card-title">Territory War</h4>
+          <p class="card-description">Dominate the battlefield in faction warfare</p>
+          <span class="card-tag">PvP</span>
+        </a>
+
+        <a href="under-construction.html" class="card card-featured">
+          <div class="card-icon-gradient gradient-blue">
+            <svg class="icon-layers" width="24" height="24">
+              <use href="#icon-layers"></use>
+            </svg>
+          </div>
+          <h4 class="card-title">Esper</h4>
+          <p class="card-description">Unlock and upgrade your Esper companion</p>
+          <span class="card-tag">Character</span>
+        </a>
+
+        <a href="under-construction.html" class="card card-featured">
+          <div class="card-icon-gradient gradient-green">
+            <svg class="icon-layers" width="24" height="24">
+              <use href="#icon-layers"></use>
+            </svg>
+          </div>
+          <h4 class="card-title">Tier Advancement</h4>
+          <p class="card-description">Progress through cultivation tiers</p>
+          <span class="card-tag">Progression</span>
+        </a>
+
+        <a href="under-construction.html" class="card card-featured">
+          <div class="card-icon-gradient gradient-pink">
+            <svg class="icon-layers" width="24" height="24">
+              <use href="#icon-layers"></use>
+            </svg>
+          </div>
+          <h4 class="card-title">Skills and Tomes</h4>
+          <p class="card-description">Learn and master powerful abilities</p>
+          <span class="card-tag">Character</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <svg class="icon-kanban" width="48" height="48">
+          <use href="#icon-kanban"></use>
+        </svg>
+        <h3 class="section-title">Browse by Category</h3>
+        <p class="section-description">Explore guides organized by topic</p>
+      </div>
+
+      <div class="grid grid-3">
+        <a href="under-construction.html" class="category-card gradient-teal">
+          <div class="category-content">
+            <h4 class="category-title">Getting Started</h4>
+            <p class="category-count">12 guides</p>
+            <p class="category-description">Essential information for new players</p>
+          </div>
+        </a>
+
+        <a href="under-construction.html" class="category-card gradient-purple">
+          <div class="category-content">
+            <h4 class="category-title">Character Progression</h4>
+            <p class="category-count">18 guides</p>
+            <p class="category-description">Level up and enhance your character</p>
+          </div>
+        </a>
+
+        <a href="under-construction.html" class="category-card gradient-blue">
+          <div class="category-content">
+            <h4 class="category-title">Equipment & Items</h4>
+            <p class="category-count">15 guides</p>
+            <p class="category-description">Gear, accessories, and item systems</p>
+          </div>
+        </a>
+
+        <a href="under-construction.html" class="category-card gradient-orange">
+          <div class="category-content">
+            <h4 class="category-title">Activities & Events</h4>
+            <p class="category-count">22 guides</p>
+            <p class="category-description">Daily quests, events, and challenges</p>
+          </div>
+        </a>
+
+        <a href="under-construction.html" class="category-card gradient-green">
+          <div class="category-content">
+            <h4 class="category-title">Social & Economy</h4>
+            <p class="category-count">10 guides</p>
+            <p class="category-description">Trading, clans, and social features</p>
+          </div>
+        </a>
+
+        <a href="under-construction.html" class="category-card gradient-pink">
+          <div class="category-content">
+            <h4 class="category-title">Combat & PvP</h4>
+            <p class="category-count">8 guides</p>
+            <p class="category-description">Battle strategies and PvP content</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <svg class="icon-magicwand" width="48" height="48">
+          <use href="#icon-magicwand"></use>
+        </svg>
+        <h3 class="cta-title">Ready to Explore Everything?</h3>
+        <p class="cta-description">Browse our complete A-Z directory of all guides</p>
+        <a href="browse.html" class="btn btn-primary btn-lg">Browse All Guides</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+    <footer class="lumenpedia-footer">
+        <div class="footer-container">
+
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo">LUMENPEDIA</div>
+                    <p class="footer-tagline">Your all-in-one community guide for the Jade Dynasty Lumen Server.
+                        Discover game information, guides, and server updates in one convenient location.</p>
+
+                    <!-- Social Media -->
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/jadedynastylumen" class="social-link" target="_blank"
+                            aria-label="Facebook">
+                            <svg width="16" height="16"><use href="#icon-facebook"></use></svg>
+                        </a>
+                        <a href="https://discord.com/invite/TeNbyexB6W" class="social-link" target="_blank"
+                            aria-label="Discord">
+                            <svg width="16" height="16"><use href="#icon-discord"></use></svg>
+                        </a>
+                        <a href="https://www.instagram.com/jadedynastylumen/" class="social-link" target="_blank"
+                            aria-label="Instagram">
+                            <svg width="16" height="16"><use href="#icon-instagram"></use></svg>
+                        </a>
+                        <a href="https://www.twitch.tv/jadedynastylumen" class="social-link" target="_blank"
+                            aria-label="Twitch">
+                            <svg width="16" height="16"><use href="#icon-twitch"></use></svg>
+                        </a>
+                        <a href="https://vk.com/lumendynasty" class="social-link" target="_blank" aria-label="VK">
+                            <svg width="16" height="16"><use href="#icon-vk"></use></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Explore Section -->
+                <div class="footer-section">
+                    <h4>EXPLORE</h4>
+                    <div class="footer-links">
+                        <a href="latest-updates.html" class="footer-link">Latest Updates</a>
+                        <a href="browse.html" class="footer-link">Browse All Guides</a>
+                        <!-- <a href="classes.html" class="footer-link">Classes & Factions</a>
+                        <a href="quests.html" class="footer-link">Quest Database</a>
+                        <a href="items.html" class="footer-link">Item Database</a> -->
+                    </div>
+                </div>
+
+                <!-- Community Section -->
+                <div class="footer-section">
+                    <h4>COMMUNITY</h4>
+                    <div class="footer-links">
+                            <a href="https://www.facebook.com/jadedynastylumen" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-facebook"></use></svg>Facebook</a>
+                            <a href="https://discord.com/invite/TeNbyexB6W" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-discord"></use></svg>Discord</a>
+                            <a href="https://www.instagram.com/jadedynastylumen/" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-instagram"></use></svg>Instagram</a>
+                            <a href="https://www.twitch.tv/jadedynastylumen" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-twitch"></use></svg>Twitch.tv</a>
+                            <a href="https://vk.com/lumendynasty" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-vk"></use></svg>VK</a>
+                    </div>
+                </div>
+
+                <!-- Support Section -->
+                <div class="footer-section">
+                    <h4>SUPPORT</h4>
+                    <div class="footer-links">
+                        <a href="support.html" class="footer-link">Help Center</a>
+                        <a href="support.html" class="footer-link">Report Issue</a>
+                        <a href="support.html" class="footer-link">Contribute</a>
+                        <a href="support.html" class="footer-link">Contact Us</a>
+                        <!-- <a href="faq.html" class="footer-link">FAQ</a> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">© 2025 Lumenpedia. All rights reserved.</div>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+  <script src="scripts.js"></script>
+  <script src="footer.js"></script>
+  <script src="icon-loader.js"></script>
+
+</body>
+
+</html>

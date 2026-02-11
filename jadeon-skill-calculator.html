@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumenpedia - Jadeon Skill Calculator</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Images/favicon.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="hero-assistant.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" type="text/css" media="all" href="skill-calculator.css">
+    <link rel="stylesheet" type="text/css" media="all" href="calc.css">
+    <link rel="stylesheet" href="enhanced-calculator.css">
+    <link rel="stylesheet" href="skill-calc-nav.css">
+    <link rel="stylesheet" href="hint.css">
+
+    <script>
+        try {
+            const saved = localStorage.getItem('theme');
+            if (!saved) {
+                localStorage.setItem('theme', 'dark');
+                document.documentElement.classList.add('dark');
+                document.documentElement.style.colorScheme = 'dark';
+            } else if (saved === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.documentElement.style.colorScheme = 'dark';
+            }
+        } catch (e) {}
+    </script>
+</head>
+
+<body class="support-page">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="Images/Lumenpedia Logo - No BG (2).png" alt="Lumenpedia" class="logo-image">
+                    <a href="index.html" class="header-logo-minimal">
+                        <span class="logo-text">Lumenpedia</span>
+                    </a>
+                </div>
+                <!-- Nav Buttons -->
+                <div class="header-actions">
+                    <!-- Nav Button to Browse.html -->
+                    <a href="browse.html" class="btn-secondary">Browse All Guides</a>
+
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
+                        <svg class="icon-sun" width="20" height="20">
+                            <use href="#icon-sun"></use>
+                        </svg>
+                        <svg class="icon-moon" width="20" height="20">
+                            <use href="#icon-moon"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero-Assistant -->
+    <main>
+        <div class="hero-with-assistants">
+            <div class="hero-assistants-container">
+                <!-- Original Desktop Assistants -->
+                <div class="hero-assistant left">
+                    <div class="assistant-card" style="cursor: default; pointer-events: none;">
+                        <img src="Images/Lumen Classic Assistant.png" alt="Lumenpedia Classic Assistant"
+                            class="assistant-img" />
+                        <div class="assistant-info">
+                            <span class="assistant-name">Lumenpedia Classic Assistant</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center Content -->
+                <div class="hero-assistants-content">
+                    <h1>Jadeon Simulator</h1>
+                    <p>Helps you simulate your skills and tomes build
+                    </p>
+                </div>
+
+                <!-- Original Desktop Assistants -->
+                <div class="hero-assistant right">
+                    <div class="assistant-card" style="cursor: default; pointer-events: none;">
+                        <img src="Images/Lumen Main Assistant.png" alt="Lumenpedia Main Assistant"
+                            class="assistant-img" />
+                        <div class="assistant-info">
+                            <span class="assistant-name">Lumenpedia Main Assistant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Class Navigation Bar -->
+        <nav class="class-nav">
+            <ul class="class-nav-list">
+                <!-- Human -->
+                <li class="nav-item dropdown">
+                    <button class="dropdown-btn">Human ▾</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="jadeon-skill-calculator.html">Jadeon</a></li>
+                        <li><a href="vim-skill-calculator.html">Vim</a></li>
+                        <li><a href="?c=skysong">Skysong</a></li>
+                        <li><a href="?c=modo">Modo</a></li>
+                        <li><a href="?c=lupin">Lupin</a></li>
+                        <li><a href="?c=incense">Incense</a></li>
+                    </ul>
+                </li>
+
+                <!-- Athan -->
+                <li class="nav-item dropdown">
+                    <button class="dropdown-btn">Athan ▾</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="?c=arden">Arden</a></li>
+                        <li><a href="?c=balo">Balo</a></li>
+                        <li><a href="?c=rayan">Rayan</a></li>
+                        <li><a href="?c=celan">Celan</a></li>
+                        <li><a href="?c=forta">Forta</a></li>
+                        <li><a href="?c=voida">Voida</a></li>
+                    </ul>
+                </li>
+
+                <!-- Etherkin -->
+                <li class="nav-item dropdown">
+                    <button class="dropdown-btn">Etherkin ▾</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="?c=psychea">Psychea</a></li>
+                        <li><a href="?c=kytos">Kytos</a></li>
+                        <li><a href="?c=hydran">Hydran</a></li>
+                        <li><a href="?c=seira">Seira</a></li>
+                        <li><a href="?c=gevrin">Gevrin</a></li>
+                        <li><a href="?c=sylia">Sylia</a></li>
+                    </ul>
+                </li>
+
+                <!-- Deikin -->
+                <li class="nav-item dropdown">
+                    <button class="dropdown-btn">Deikin ▾</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="?c=ceros">Ceros</a></li>
+                        <li><a href="?c=imperia">Imperia</a></li>
+                        <li><a href="?c=ashura">Ashura</a></li>
+                        <li><a href="?c=zephyr">Zephyr</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Calculator Content -->
+        <div class="calculator-container">
+            <div id="calculator-content">
+                <div id="content">
+                    <div class="tableHeader tup">Skill Calculator: Jadeon</div>
+                    <table class="calc">
+                        <tbody>
+                            <tr>
+                                <td id="cmenu"></td>
+                                <td id="skill"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="lumenpedia-footer">
+        <div class="footer-container">
+
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo">LUMENPEDIA</div>
+                    <p class="footer-tagline">Your all-in-one community guide for the Jade Dynasty Lumen Server.
+                        Discover game information, guides, and server updates in one convenient location.</p>
+
+                    <!-- Social Media -->
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/jadedynastylumen" class="social-link" target="_blank"
+                            aria-label="Facebook">
+                            <svg width="16" height="16"><use href="#icon-facebook"></use></svg>
+                        </a>
+                        <a href="https://discord.com/invite/TeNbyexB6W" class="social-link" target="_blank"
+                            aria-label="Discord">
+                            <svg width="16" height="16"><use href="#icon-discord"></use></svg>
+                        </a>
+                        <a href="https://www.instagram.com/jadedynastylumen/" class="social-link" target="_blank"
+                            aria-label="Instagram">
+                            <svg width="16" height="16"><use href="#icon-instagram"></use></svg>
+                        </a>
+                        <a href="https://www.twitch.tv/jadedynastylumen" class="social-link" target="_blank"
+                            aria-label="Twitch">
+                            <svg width="16" height="16"><use href="#icon-twitch"></use></svg>
+                        </a>
+                        <a href="https://vk.com/lumendynasty" class="social-link" target="_blank" aria-label="VK">
+                            <svg width="16" height="16"><use href="#icon-vk"></use></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Explore Section -->
+                <div class="footer-section">
+                    <h4>EXPLORE</h4>
+                    <div class="footer-links">
+                        <a href="latest-updates.html" class="footer-link">Latest Updates</a>
+                        <a href="browse.html" class="footer-link">Browse All Guides</a>
+                        <!-- <a href="classes.html" class="footer-link">Classes & Factions</a>
+                        <a href="quests.html" class="footer-link">Quest Database</a>
+                        <a href="items.html" class="footer-link">Item Database</a> -->
+                    </div>
+                </div>
+
+                <!-- Community Section -->
+                <div class="footer-section">
+                    <h4>COMMUNITY</h4>
+                    <div class="footer-links">
+                            <a href="https://www.facebook.com/jadedynastylumen" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-facebook"></use></svg>Facebook</a>
+                            <a href="https://discord.com/invite/TeNbyexB6W" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-discord"></use></svg>Discord</a>
+                            <a href="https://www.instagram.com/jadedynastylumen/" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-instagram"></use></svg>Instagram</a>
+                            <a href="https://www.twitch.tv/jadedynastylumen" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-twitch"></use></svg>Twitch.tv</a>
+                            <a href="https://vk.com/lumendynasty" class="footer-link" target="_blank">
+                                <svg class="footer-icon" width="14" height="14"><use href="#icon-vk"></use></svg>VK</a>
+                    </div>
+                </div>
+
+                <!-- Support Section -->
+                <div class="footer-section">
+                    <h4>SUPPORT</h4>
+                    <div class="footer-links">
+                        <a href="support.html" class="footer-link">Help Center</a>
+                        <a href="support.html" class="footer-link">Report Issue</a>
+                        <a href="support.html" class="footer-link">Contribute</a>
+                        <a href="support.html" class="footer-link">Contact Us</a>
+                        <!-- <a href="faq.html" class="footer-link">FAQ</a> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">© 2025 Lumenpedia. All rights reserved.</div>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Core Scripts -->
+    <script src="scripts.js"></script>
+    <script src="hero-assistant.js"></script>
+    <script src="footer.js"></script>
+
+    <!-- Added main.js which defines the $ function needed by calcmin.js -->
+    <script type="text/javascript" src="main.js"></script>
+
+    <!-- Calculator Data Scripts (must load first) -->
+    <script type="text/javascript" src="data_pwi.js"></script>
+    <script type="text/javascript" src="lang_pwi.js"></script>
+    <script type="text/javascript" src="tjadeon_pwi.js"></script>
+
+    <!-- Added Hint tooltip library before calculator logic -->
+    <script type="text/javascript" src="hint.js"></script>
+
+    <!-- Calculator Logic Scripts -->
+    <script type="text/javascript" src="calcmin.js"></script>
+    <script type="text/javascript" src="skill-calculator.js"></script>
+    <script src="icon-loader.js"></script>
+
+</body>
+
+</html>
