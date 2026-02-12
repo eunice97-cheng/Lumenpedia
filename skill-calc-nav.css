@@ -80,3 +80,30 @@
     height: 6px; /* small buffer zone */
     width: 100%;
 }
+
+/* Disabled dropdown buttons */
+.dropdown-btn.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+    color: #999;
+}
+
+/* Disabled dropdown menu items */
+.dropdown-menu a.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    color: #999;
+}
+
+/* Ensure dropdown menus of disabled buttons also appear faded and non-interactive */
+.nav-item.dropdown .dropdown-btn.disabled + .dropdown-menu {
+    opacity: 0.7;
+}
+
+.nav-item.dropdown .dropdown-btn.disabled + .dropdown-menu a {
+    pointer-events: none;
+    cursor: default;
+}

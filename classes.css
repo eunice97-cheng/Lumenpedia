@@ -407,6 +407,14 @@
     color: var(--color-muted);
 }
 
+.class-link.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    color: #999;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .faction-cards-grid {

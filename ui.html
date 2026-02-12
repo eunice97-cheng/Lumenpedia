@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumenpedia - Interface Atlas</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Images/favicon.png">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="hero-assistant.css">
+    <link rel="stylesheet" href="classic-main-switch.css">
+    <link rel="stylesheet" href="content.css">
+    <link rel="stylesheet" href="footer.css">
+    <style>
+        /* Quick image styles - add these to your content.css later */
+        .interface-image-container {
+            margin: 15px 0 25px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .interface-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .image-caption {
+            padding: 10px 15px;
+            font-size: 0.9rem;
+            color: var(--text-secondary, #a0a0a0);
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(45deg, #2a2a2a, #1a1a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            color: #888;
+            font-style: italic;
+        }
+        
+        .detail-item .interface-image-container:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+    <script>
+        try {
+            const saved = localStorage.getItem('theme');
+            if (!saved) {
+                localStorage.setItem('theme', 'dark');
+                document.documentElement.classList.add('dark');
+                document.documentElement.style.colorScheme = 'dark';
+            } else if (saved === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.documentElement.style.colorScheme = 'dark';
+            }
+        } catch (e) {}
+    </script>
+</head>
+
+<body class="support-page">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="Images/Lumenpedia Logo - No BG (2).png" alt="Lumenpedia" class="logo-image">
+                    <a href="index.html" class="header-logo-minimal">
+                        <span class="logo-text">Lumenpedia</span>
+                    </a>
+                </div>
+                <!-- Nav Buttons -->
+                <div class="header-actions">
+                    <a href="browse.html" class="btn-secondary">Browse All Guides</a>
+                    <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
+                        <svg class="icon-sun" width="20" height="20">
+                            <use href="#icon-sun"></use>
+                        </svg>
+                        <svg class="icon-moon" width="20" height="20">
+                            <use href="#icon-moon"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero-Assistant -->
+    <div class="hero-with-assistants">
+        <div class="hero-assistants-container">
+            <!-- Left Assistant - Desktop Only -->
+            <div class="hero-assistant left">
+                <a href="javascript:void(0)" class="assistant-card" data-assistant="classic">
+                    <img src="Images/Lumen Classic Assistant.png" alt="Lumenpedia Classic Assistant"
+                        class="assistant-img" />
+                    <div class="assistant-info">
+                        <span class="assistant-name">Lumenpedia Classic Assistant</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Center Content -->
+            <div class="hero-assistants-content">
+                <h1>Interface Atlas</h1>
+                <p>Complete guide to Lumen client UI, buttons, and menus</p>
+            </div>
+
+            <!-- Right Assistant - Desktop Only -->
+            <div class="hero-assistant right">
+                <a href="javascript:void(0)" class="assistant-card" data-assistant="main">
+                    <img src="Images/Lumen Main Assistant.png" alt="Lumenpedia Main Assistant" class="assistant-img" />
+                    <div class="assistant-info">
+                        <span class="assistant-name">Lumenpedia Main Assistant</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Mobile assistants row -->
+            <div class="assistants-row">
+                <div class="hero-assistant">
+                    <a href="javascript:void(0)" class="assistant-card" data-assistant="classic">
+                        <img src="Images/Lumen Classic Assistant.png" alt="Lumenpedia Classic Assistant"
+                            class="assistant-img" />
+                        <div class="assistant-info">
+                            <span class="assistant-name">Lumenpedia Classic Assistant</span>
+                            <span class="tap-label">Tap to view</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="hero-assistant">
+                    <a href="javascript:void(0)" class="assistant-card" data-assistant="main">
+                        <img src="Images/Lumen Main Assistant.png" alt="Lumenpedia Main Assistant"
+                            class="assistant-img" />
+                        <div class="assistant-info">
+                            <span class="assistant-name">Lumenpedia Main Assistant</span>
+                            <span class="tap-label">Tap to view</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interface Atlas Sections -->
+    <div class="server-comparison">
+        <!-- Lumen Classic Interface Guide -->
+        <div class="server-card">
+            <div class="server-card-header">
+                <h2>Lumen Classic Interface</h2>
+                <span class="server-status active">Active</span>
+            </div>
+
+            <div class="server-details">
+                <!-- 1) CHAT WINDOW - WITH IMAGE -->
+                <div class="detail-item">
+                    <div class="detail-label">Chat Window</div>
+                    <div class="detail-value">
+                        <!-- CHAT WINDOW CHANNEL SELECTOR IMAGE -->
+                        <div class="interface-image-container">
+                            <img src="Images/chat.png" alt="Chat Window" class="interface-image" onerror="this.parentElement.innerHTML='<div class=image-placeholder>📱 Chat Channel Selector Interface<br><span style=font-size:0.8rem;opacity:0.7;>Place image at: Images/chat-channel-selector.jpg</span></div>'">
+                        </div>
+                        <div class="promo-code-list">
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Channel Selector</strong>
+                                </div>
+                                <span class="promo-description">Com./Party/PM/Allies/Clan/World/Class - Last active determines output</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Edit Mode</strong>
+                                </div>
+                                <span class="promo-description">Fine-tune which channels appear in each window</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Emote Palette 😊</strong>
+                                </div>
+                                <span class="promo-description">Emotes, greetings, social macros</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Lock/Unlock & Eraser 🔒🔓 🧽</strong>
+                                </div>
+                                <span class="promo-description">Clear chat history · Lock icon freezes history</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2) CHARACTER PORTRAIT - WITH IMAGE -->
+                <div class="detail-item">
+                    <div class="detail-label">Character Portrait</div>
+                    <div class="detail-value">
+                        <!-- CHARACTER PORTRAIT AND HEALTH/SPIRIT IMAGE -->
+                        <div class="interface-image-container">
+                            <img src="Images/character.png" alt="Character Portrait with Health/Spirit Bars" class="interface-image" onerror="this.parentElement.innerHTML='<div class=image-placeholder>👤 Character Portrait & Health/Spirit Display<br><span style=font-size:0.8rem;opacity:0.7;>Place image at: Images/character-portrait.jpg</span></div>'">
+                        </div>
+                        <div class="promo-code-list">
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Health 🔴/ Spirit 🔵</strong>
+                                </div>
+                                <span class="promo-description">Red bar (HP) · Blue bar (Spirit) · Ascended affinity border changes</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Vigor Bar 🟣</strong>
+                                </div>
+                                <span class="promo-description">Purple bar - appears after Chroma quest (Ascended)</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Faction Icon</strong>
+                                </div>
+                                <span class="promo-description">Right of vigor bar - faction unique</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Safety Lock 🔓🔒/ Timer ⏰</strong>
+                                </div>
+                                <span class="promo-description">Clamp icon = lock settings · Timer icon = Online Rewards</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">PvP Attitude 👤⚔️</strong>
+                                </div>
+                                <span class="promo-description">Bottom-left corner - adjust attack willingness</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3) HOTKEY SKILL BAR - WITH IMAGE -->
+                <div class="detail-item">
+                    <div class="detail-label">Hotkey Skill Bar</div>
+                    <div class="detail-value">
+                        <!-- HOTKEY SKILL BAR AND EXPANDABLE BARS IMAGE -->
+                        <div class="interface-image-container">
+                            <img src="Images/skillbar.png" alt="Hotkey Skill Bar with Expandable Bars" class="interface-image" onerror="this.parentElement.innerHTML='<div class=image-placeholder>⌨️ Hotkey Skill Bar & Expandable Bars<br><span style=font-size:0.8rem;opacity:0.7;>Place image at: Images/hotkey-skill-bar.jpg</span></div>'">
+                        </div>
+                        <div class="promo-code-list">
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Expandable Bars 🔼🔽</strong>
+                                </div>
+                                <span class="promo-description">Small arrows next to yin-yang reveal/hide extra rows</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Pet Summon 😈</strong>
+                                </div>
+                                <span class="promo-description">Red button - far left side</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Marketplace 💰</strong>
+                                </div>
+                                <span class="promo-description">Jaden Market</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Esper Bar ☯️</strong>
+                                </div>
+                                <span class="promo-description">Large yin-yang - expands/collapses esper view</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">KO Skill</strong>
+                                </div>
+                                <span class="promo-description">A powerful AOE Skill that only damage monsters with a 10mins CD</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4) MINIMAP CONTROLS + SYSTEM MENUS - WITH IMAGE -->
+                <div class="detail-item">
+                    <div class="detail-label">Minimap Controls & System Menus</div>
+                    <div class="detail-value">
+                        <!-- MINIMAP CONTROL AND JD REVELATION IMAGE -->
+                        <div class="interface-image-container">
+                            <img src="Images/minimap.png" alt="Minimap Controls and JD Revelation" class="interface-image" onerror="this.parentElement.innerHTML='<div class=image-placeholder>🧭 Minimap Controls & JD Revelation Calendar<br><span style=font-size:0.8rem;opacity:0.7;>Place image at: Images/minimap-controls.jpg</span></div>'">
+                        </div>
+                        <div class="promo-code-list">
+                            <!-- MINIMAP CONTROLS -->
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">JD Revelation 📆</strong>
+                                </div>
+                                <span class="promo-description">Calendar / Event List / Schedule</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">JD-Mart 🔨</strong>
+                                </div>
+                                <span class="promo-description">Auction</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Map Legend 🧭</strong>
+                                </div>
+                                <span class="promo-description">Navigation aids</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Realm Indicator 💻</strong>
+                                </div>
+                                <span class="promo-description">Current server/realm display</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Meditate 🧘</strong>
+                                </div>
+                                <span class="promo-description">Safe zone EXP gain</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Zoom Controls ➕ / ➖</strong>
+                                </div>
+                                <span class="promo-description">+ / - buttons for minimap zoom</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Destination List ↙️</strong>
+                                </div>
+                                <span class="promo-description">Set/View cordinates</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Auto-Route Map 📈</strong>
+                                </div>
+                                <span class="promo-description">Show Map</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Help ❓</strong>
+                                </div>
+                                <span class="promo-description">Basic/Additional Guides</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Server Time 🕙</strong>
+                                </div>
+                                <span class="promo-description">Check current server time</span>
+                            </div>
+                            
+                            <!-- SYSTEM MENUS (continued under same section) -->
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Orb Forging 🏺</strong>
+                                </div>
+                                <span class="promo-description">Stats enhancement</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Soul Tower 🏯</strong>
+                                </div>
+                                <span class="promo-description">View Soul Tower Rewards, Ranking and Guides</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Update Log 📜</strong>
+                                </div>
+                                <span class="promo-description">Expansion notes</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">VIP Rewards</strong>
+                                </div>
+                                <span class="promo-description">VIP rewards and benefits</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Coronation 👑</strong>
+                                </div>
+                                <span class="promo-description">Coming Soon</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Charge Rewards 🎁</strong>
+                                </div>
+                                <span class="promo-description">Redirect you to Lumen Official Website for VIP rewards</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Fealty System ☀️</strong>
+                                </div>
+                                <span class="promo-description">Complete the tasks and collect fealty points for the rewards everyday</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Battle for Supremacy 🧩</strong>
+                                </div>
+                                <span class="promo-description">Coming Soon</span>
+                            </div>
+                            <div class="promo-item">
+                                <div class="promo-code-container">
+                                    <strong class="promo-code-text">Exploration Rewards 🔍</strong>
+                                </div>
+                                <span class="promo-description">Discover and collect rewards using Exploration Pack and Sage's Compass</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lumen Main Interface (Unavailable) -->
+        <div class="server-card">
+            <div class="server-card-header">
+                <h2>Lumen Main Interface</h2>
+                <span class="server-status inactive">Unavailable</span>
+            </div>
+
+            <div class="server-details">
+                <div class="detail-item">
+                    <div class="detail-label">Server Status</div>
+                    <div class="detail-value">
+                        Lumen Main server is currently in development and not yet available to the public.
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Interface Documentation</div>
+                    <div class="detail-value">
+                        No interface documentation available at this time.
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Expected Launch Features</div>
+                    <div class="detail-value">
+                        When Lumen Main launches, expect updated UI elements, new menus, and revised interface documentation.
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-label">Stay Updated</div>
+                    <div class="detail-value">
+                        Follow our social media channels and check back here for updates on Lumen Main server development and future interface documentation.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="lumenpedia-footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo">LUMENPEDIA</div>
+                    <p class="footer-tagline">Your all-in-one community guide for the Jade Dynasty Lumen Server. Discover game information, guides, and server updates in one convenient location.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/jadedynastylumen" class="social-link" target="_blank" aria-label="Facebook">
+                            <svg width="16" height="16"><use href="#icon-facebook"></use></svg>
+                        </a>
+                        <a href="https://discord.com/invite/TeNbyexB6W" class="social-link" target="_blank" aria-label="Discord">
+                            <svg width="16" height="16"><use href="#icon-discord"></use></svg>
+                        </a>
+                        <a href="https://www.instagram.com/jadedynastylumen/" class="social-link" target="_blank" aria-label="Instagram">
+                            <svg width="16" height="16"><use href="#icon-instagram"></use></svg>
+                        </a>
+                        <a href="https://www.twitch.tv/jadedynastylumen" class="social-link" target="_blank" aria-label="Twitch">
+                            <svg width="16" height="16"><use href="#icon-twitch"></use></svg>
+                        </a>
+                        <a href="https://vk.com/lumendynasty" class="social-link" target="_blank" aria-label="VK">
+                            <svg width="16" height="16"><use href="#icon-vk"></use></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Explore Section -->
+                <div class="footer-section">
+                    <h4>EXPLORE</h4>
+                    <div class="footer-links">
+                        <a href="latest-updates.html" class="footer-link">Latest Updates</a>
+                        <a href="browse.html" class="footer-link">Browse All Guides</a>
+                    </div>
+                </div>
+
+                <!-- Community Section -->
+                <div class="footer-section">
+                    <h4>COMMUNITY</h4>
+                    <div class="footer-links">
+                        <a href="https://www.facebook.com/jadedynastylumen" class="footer-link" target="_blank">
+                            <svg class="footer-icon" width="14" height="14"><use href="#icon-facebook"></use></svg>Facebook
+                        </a>
+                        <a href="https://discord.com/invite/TeNbyexB6W" class="footer-link" target="_blank">
+                            <svg class="footer-icon" width="14" height="14"><use href="#icon-discord"></use></svg>Discord
+                        </a>
+                        <a href="https://www.instagram.com/jadedynastylumen/" class="footer-link" target="_blank">
+                            <svg class="footer-icon" width="14" height="14"><use href="#icon-instagram"></use></svg>Instagram
+                        </a>
+                        <a href="https://www.twitch.tv/jadedynastylumen" class="footer-link" target="_blank">
+                            <svg class="footer-icon" width="14" height="14"><use href="#icon-twitch"></use></svg>Twitch.tv
+                        </a>
+                        <a href="https://vk.com/lumendynasty" class="footer-link" target="_blank">
+                            <svg class="footer-icon" width="14" height="14"><use href="#icon-vk"></use></svg>VK
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Support Section -->
+                <div class="footer-section">
+                    <h4>SUPPORT</h4>
+                    <div class="footer-links">
+                        <a href="support.html" class="footer-link">Help Center</a>
+                        <a href="support.html" class="footer-link">Report Issue</a>
+                        <a href="support.html" class="footer-link">Contribute</a>
+                        <a href="support.html" class="footer-link">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">© 2025 Lumenpedia. All rights reserved.</div>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script src="hero-assistant.js"></script>
+    <script src="classic-main-switch.js"></script>
+    <script src="content.js"></script>
+    <script src="footer.js"></script>
+    <script src="icon-loader.js"></script>
+</body>
+
+</html>
