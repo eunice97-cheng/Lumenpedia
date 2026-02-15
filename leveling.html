@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumenpedia – Leveling Guide</title>
+
+    <link rel="icon" type="image/png" href="Images/favicon.png">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="hero-assistant.css">
+    <link rel="stylesheet" href="classic-main-switch.css">
+    <link rel="stylesheet" href="footer.css">
+
+    <script>
+        try {
+            const saved = localStorage.getItem('theme');
+            if (!saved) {
+                localStorage.setItem('theme', 'dark');
+                document.documentElement.classList.add('dark');
+                document.documentElement.style.colorScheme = 'dark';
+            } else if (saved === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.documentElement.style.colorScheme = 'dark';
+            }
+        } catch (e) {}
+    </script>
+
+    <style>
+        /* --- COLORFUL CARD STYLES - FITS EXISTING LAYOUT --- */
+        .leveling-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .level-card {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border: none;
+            border-radius: 16px;
+            padding: 4px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .level-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .level-card:active {
+            transform: translateY(0);
+        }
+
+        .card-content {
+            background: var(--card-bg, #ffffff);
+            border-radius: 14px;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            min-height: 60px;
+        }
+
+        .dark .card-content {
+            --card-bg: rgba(17, 24, 39, 0.95);
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .card-icon {
+            font-size: 1.4rem;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            line-height: 1;
+            margin-top: 0;
+            margin-bottom: 0;
+            transform: translateY(0);
+        }
+
+        .card-text {
+            display: flex;
+            align-items: center;
+            line-height: 1;
+            height: 28px;
+            transform: translateY(0);
+        }
+
+        .card-arrow {
+            font-size: 1.2rem;
+            opacity: 0.7;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            line-height: 1;
+        }
+
+        .level-card:hover .card-arrow {
+            transform: translateX(4px);
+            opacity: 1;
+        }
+
+        /* Card gradients - each one unique */
+        .card-1 { --gradient-start: #f43f5e; --gradient-end: #fb7185; }
+        .card-2 { --gradient-start: #8b5cf6; --gradient-end: #a78bfa; }
+        .card-3 { --gradient-start: #10b981; --gradient-end: #34d399; }
+        .card-4 { --gradient-start: #f59e0b; --gradient-end: #fbbf24; }
+        .card-5 { --gradient-start: #3b82f6; --gradient-end: #60a5fa; }
+        .card-6 { --gradient-start: #ec4899; --gradient-end: #f472b6; }
+        .card-7 { --gradient-start: #a855f7; --gradient-end: #c084fc; }
+
+        /* Dark mode adjustments */
+        .dark .card-content {
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .dark .card-title {
+            color: #f3f4f6;
+        }
+
+        /* --- MODAL/POPUP STYLES --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-popup {
+            background: var(--modal-bg, #ffffff);
+            border-radius: 24px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .dark .modal-popup {
+            --modal-bg: #1f2937;
+            background: #1f2937;
+            border: 1px solid #374151;
+        }
+
+        .modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-color, #e2e8f0);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, var(--header-start), var(--header-end));
+            border-radius: 24px 24px 0 0;
+            color: white;
+        }
+
+        .dark .modal-header {
+            --border-color: #374151;
+        }
+
+        .modal-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .modal-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            line-height: 1;
+            padding: 0;
+        }
+
+        .modal-close:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .modal-section {
+            margin-bottom: 20px;
+            padding: 16px;
+            background: var(--section-bg, #f8fafc);
+            border-radius: 16px;
+            border-left: 4px solid var(--section-color);
+        }
+
+        .dark .modal-section {
+            --section-bg: #111827;
+            background: #111827;
+        }
+
+        .modal-section-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        .modal-section-content {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-color, #1e293b);
+        }
+
+        .dark .modal-section-content {
+            --text-color: #f3f4f6;
+            color: #f3f4f6;
+        }
+
+        /* Link styling */
+        .modal-link {
+            color: #0891b2;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px dashed #0891b2;
+        }
+
+        .modal-link:hover {
+            color: #0284c7;
+            border-bottom-style: solid;
+        }
+
+        .dark .modal-link {
+            color: #22d3ee;
+            border-bottom-color: #22d3ee;
+        }
+
+        .location-list, .instance-list {
+            list-style: none;
+            padding: 0;
+            margin: 8px 0 0 0;
+        }
+
+        .location-list li, .instance-list li {
+            padding: 4px 0 4px 20px;
+            position: relative;
+        }
+
+        .location-list li:before, .instance-list li:before {
+            content: "•";
+            color: var(--section-color);
+            font-weight: bold;
+            position: absolute;
+            left: 4px;
+        }
+
+        .quest-highlight {
+            background: rgba(8, 145, 178, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #0891b2;
+        }
+
+        .dark .quest-highlight {
+            background: rgba(34, 211, 238, 0.1);
+            color: #22d3ee;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Simple click prompt */
+        .click-hint {
+            text-align: center;
+            color: #0891b2;
+            font-size: 0.9rem;
+            margin: 16px 0 8px 0;
+            opacity: 0.8;
+        }
+
+        .dark .click-hint {
+            color: #22d3ee;
+        }
+    </style>
+</head>
+<body class="support-page">
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="Images/Lumenpedia Logo - No BG (2).png" alt="Lumenpedia" class="logo-image">
+                    <a href="index.html" class="header-logo-minimal">
+                        <span class="logo-text">Lumenpedia</span>
+                    </a>
+                </div>
+                <div class="header-actions">
+                    <a href="browse.html" class="btn-secondary">Browse All Guides</a>
+                    <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
+                        <svg class="icon-sun" width="20" height="20"><use href="#icon-sun"></use></svg>
+                        <svg class="icon-moon" width="20" height="20"><use href="#icon-moon"></use></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-with-assistants">
+        <div class="hero-assistants-container">
+            <div class="hero-assistant left">
+                <a href="javascript:void(0)" class="assistant-card" data-assistant="classic">
+                    <img src="Images/Lumen Classic Assistant.png" alt="Lumenpedia Classic Assistant" class="assistant-img" />
+                    <div class="assistant-info">
+                        <span class="assistant-name">Lumenpedia Classic Assistant</span>
+                    </div>
+                </a>
+            </div>
+            <div class="hero-assistants-content">
+                <h1>Leveling Guide</h1>
+                <p>The Paths of Cultivation</p>
+            </div>
+            <div class="hero-assistant right">
+                <a href="javascript:void(0)" class="assistant-card" data-assistant="main">
+                    <img src="Images/Lumen Main Assistant.png" alt="Lumenpedia Main Assistant" class="assistant-img" />
+                    <div class="assistant-info">
+                        <span class="assistant-name">Lumenpedia Main Assistant</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="server-comparison">
+        <!-- LUMEN CLASSIC - COLORFUL CARDS -->
+        <div class="server-card">
+            <div class="server-card-header">
+                <h2>Lumen Classic</h2>
+                <span class="server-status active">Paths of Cultivation</span>
+            </div>
+            
+            <div class="server-details">
+                <div class="leveling-cards">
+                    
+                    <!-- Card 1: Power Leveling -->
+                    <div class="level-card card-1" data-method="power">
+                        <div class="card-content">
+                            <span class="card-title">
+                                <span class="card-icon">⚡</span>
+                                <span class="card-text">Power Leveling</span>
+                            </span>
+                            <span class="card-arrow">→</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Plot Quests -->
+                    <div class="level-card card-2" data-method="plot">
+                        <div class="card-content">
+                            <span class="card-title">
+                                <span class="card-icon">📖</span>
+                                <span class="card-text">Plot Quests</span>
+                            </span>
+                            <span class="card-arrow">→</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Daily Quests & Events -->
+                    <div class="level-card card-3" data-method="daily">
+                        <div class="card-content">
+                            <span class="card-title">
+                                <span class="card-icon">📅</span>
+                                <span class="card-text">Daily Quests & Events</span>
+                            </span>
+                            <span class="card-arrow">→</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Instances -->
+                    <div class="level-card card-4" data-method="instances">
+                        <div class="card-content">
+                            <span class="card-title">
+                                <span class="card-icon">🏛️</span>
+                                <span class="card-text">Instances</span>
+                            </span>
+                            <span class="card-arrow">→</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Grinding -->
+                    <div class="level-card card-5" data-method="grinding">
+                        <div class="card-content">
+                            <span class="card-title">
+                                <span class="card-icon">⚔️</span>
+                                <span class="card-text">Grinding</span>
+                            </span>
+                            <span class="card-arrow">→</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Lawful Doping -->
+                    <div class="level-card card-6" data-method="doping">
+                        <div class="card-content">
+                            <span class="card-title">
+                                <span class="card-icon">💊</span>
+                                <span class="card-text">Lawful Doping</span>
+                            </span>
+                            <span class="card-arrow">→</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 7: Battlegrounds -->
+                    <div class="level-card card-7" data-method="battlegrounds">
+                        <div class="card-content">
+                            <span class="card-title">
+                                <span class="card-icon">🏆</span>
+                                <span class="card-text">Battlegrounds</span>
+                            </span>
+                            <span class="card-arrow">→</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Simple click hint -->
+                <div class="click-hint">
+                    Click any card for details
+                </div>
+            </div>
+        </div>
+
+        <!-- LUMEN MAIN - UNTOUCHED -->
+        <div class="server-card">
+            <div class="server-card-header">
+                <h2>Lumen Main Interface</h2>
+                <span class="server-status inactive">Unavailable</span>
+            </div>
+            <div class="server-details">
+                <div class="detail-item">
+                    <div class="detail-label">Server Status</div>
+                    <div class="detail-value">Lumen Main server is currently in development and not yet available to the public.</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Interface Documentation</div>
+                    <div class="detail-value">No interface documentation available at this time.</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Expected Launch Features</div>
+                    <div class="detail-value">When Lumen Main launches, expect updated UI elements, new menus, and revised interface documentation.</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Stay Updated</div>
+                    <div class="detail-value">Follow our social media channels and check back here for updates on Lumen Main server development and future interface documentation.</div>
+                </div>
+            </div>
+            <a href="#" class="server-link disabled">Coming Soon</a>
+        </div>
+    </div>
+
+    <!-- MODAL/POPUP (hidden by default) -->
+    <div class="modal-overlay" id="methodModal">
+        <div class="modal-popup" id="modalContent">
+            <!-- Content populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- FOOTER - UNTOUCHED -->
+    <footer class="lumenpedia-footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">LUMENPEDIA</div>
+                    <p class="footer-tagline">Your all-in-one community guide for the Jade Dynasty Lumen Server. Discover game information, guides, and server updates in one convenient location.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/jadedynastylumen" class="social-link" target="_blank" aria-label="Facebook"><svg width="16" height="16"><use href="#icon-facebook"></use></svg></a>
+                        <a href="https://discord.com/invite/TeNbyexB6W" class="social-link" target="_blank" aria-label="Discord"><svg width="16" height="16"><use href="#icon-discord"></use></svg></a>
+                        <a href="https://www.instagram.com/jadedynastylumen/" class="social-link" target="_blank" aria-label="Instagram"><svg width="16" height="16"><use href="#icon-instagram"></use></svg></a>
+                        <a href="https://www.twitch.tv/jadedynastylumen" class="social-link" target="_blank" aria-label="Twitch"><svg width="16" height="16"><use href="#icon-twitch"></use></svg></a>
+                        <a href="https://vk.com/lumendynasty" class="social-link" target="_blank" aria-label="VK"><svg width="16" height="16"><use href="#icon-vk"></use></svg></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>EXPLORE</h4>
+                    <div class="footer-links">
+                        <a href="latest-updates.html" class="footer-link">Latest Updates</a>
+                        <a href="browse.html" class="footer-link">Browse All Guides</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>COMMUNITY</h4>
+                    <div class="footer-links">
+                        <a href="https://www.facebook.com/jadedynastylumen" class="footer-link" target="_blank"><svg class="footer-icon" width="14" height="14"><use href="#icon-facebook"></use></svg>Facebook</a>
+                        <a href="https://discord.com/invite/TeNbyexB6W" class="footer-link" target="_blank"><svg class="footer-icon" width="14" height="14"><use href="#icon-discord"></use></svg>Discord</a>
+                        <a href="https://www.instagram.com/jadedynastylumen/" class="footer-link" target="_blank"><svg class="footer-icon" width="14" height="14"><use href="#icon-instagram"></use></svg>Instagram</a>
+                        <a href="https://www.twitch.tv/jadedynastylumen" class="footer-link" target="_blank"><svg class="footer-icon" width="14" height="14"><use href="#icon-twitch"></use></svg>Twitch.tv</a>
+                        <a href="https://vk.com/lumendynasty" class="footer-link" target="_blank"><svg class="footer-icon" width="14" height="14"><use href="#icon-vk"></use></svg>VK</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>SUPPORT</h4>
+                    <div class="footer-links">
+                        <a href="support.html" class="footer-link">Help Center</a>
+                        <a href="support.html" class="footer-link">Report Issue</a>
+                        <a href="support.html" class="footer-link">Contribute</a>
+                        <a href="support.html" class="footer-link">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copyright">© 2025 Lumenpedia. All rights reserved.</div>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Modal content for each method
+        const methodDetails = {
+            power: {
+                title: '⚡ Power Leveling',
+                color: '#f43f5e',
+                sections: [
+                    { 
+                        title: 'Overview', 
+                        content: `Power Leveling is a common practice for players who are already familiar with the storyline and the basics of the game. By partying up with high-level players, EXP sharing will be automatically enabled as long as both players are within range. This is the perfect time to put your <a href="induction-system.html" class="modal-link">inductor</a> to good use. If you don't have one, find a volunteer from our <a href="https://discord.com/invite/TeNbyexB6W" class="modal-link" target="_blank">Discord</a> channel — inductor or not, everyone is eager to help!` 
+                    },
+                    { 
+                        title: 'Pre-Ascension Spots', 
+                        content: `<ul class="location-list"><li>Shura</li><li>Moontop Hollow</li></ul>` 
+                    },
+                    { 
+                        title: 'Post-Ascension Spots', 
+                        content: `<ul class="location-list"><li>Affinity Land</li><li>Imperial Citadel</li></ul>` 
+                    }
+                ]
+            },
+            plot: {
+                title: '📖 Plot Quests',
+                color: '#8b5cf6',
+                sections: [
+                    { 
+                        title: 'Overview', 
+                        content: `For players who are new or wish to experience the full storyline, this is a perfect way to level up. The plot quests provide decent EXP, guiding you from map to map and giving you the satisfaction of unlocking quest after quest. Press <span class="quest-highlight">Q</span> to open the quest window and go to <span class="quest-highlight">JD Plot</span> to access the plot quests.` 
+                    }
+                ]
+            },
+            daily: {
+                title: '📅 Daily Quests & Events',
+                color: '#10b981',
+                sections: [
+                    { 
+                        title: 'Overview', 
+                        content: `Daily Quests and Events are the secret to quick leveling and great rewards. These quests are easy to complete, but the EXP gains are massive. For more information, check out our <a href="dailyquests.html" class="modal-link">Daily Quests guide</a>.` 
+                    }
+                ]
+            },
+            instances: {
+                title: '🏛️ Instances',
+                color: '#f59e0b',
+                sections: [
+                    { 
+                        title: 'Overview', 
+                        content: `Instances are fun weekly activities that you'll need to complete alongside other players, as they require a minimum number of participants to activate — and of course, having enough players makes clearing them easier and faster! And yes, the EXP and rewards are just as great.` 
+                    },
+                    { 
+                        title: 'Current Instances Unlocked', 
+                        content: `<ul class="instance-list"><li>Crimson Peak Instance</li><li>Moontop Hollow Instance</li></ul>` 
+                    }
+                ]
+            },
+            grinding: {
+                title: '⚔️ Grinding',
+                color: '#3b82f6',
+                sections: [
+                    { 
+                        title: 'Overview', 
+                        content: `Nothing beats old-school grinding when you have limited playtime. The invigorate system is completely free, giving you the freedom to earn EXP even when you're not in front of your PC. You just need a proper setup, and you can leave it running overnight, before heading to work, and so on.` 
+                    }
+                ]
+            },
+            doping: {
+                title: '💊 Lawful Doping',
+                color: '#ec4899',
+                sections: [
+                    { 
+                        title: 'Overview', 
+                        content: `There are items like the Taichi Pill Pack that grant EXP when consumed — perfectly legit! You can obtain them by completing tasks, claiming web rewards, opening in-game reward boxes, and more.` 
+                    }
+                ]
+            },
+            battlegrounds: {
+                title: '🏆 Battlegrounds',
+                color: '#a855f7',
+                sections: [
+                    { 
+                        title: 'Overview', 
+                        content: `Players can also choose to enter battlegrounds and gain EXP by taking out towers. This requires decent gear, but the EXP reward is good. The maximum entry is 10 battlegrounds per day.` 
+                    },
+                    { 
+                        title: 'Veteran of War Quest', 
+                        content: `Additionally, players can pick up the quest <span class="quest-highlight">Veteran of War</span> before registering and entering a battleground. It is a battleground-related quest that awards EXP upon victory and completion. This quest can be completed 3 times per day.` 
+                    }
+                ]
+            }
+        };
+
+        // Modal functionality
+        const modal = document.getElementById('methodModal');
+        const modalContent = document.getElementById('modalContent');
+        const cards = document.querySelectorAll('.level-card');
+
+        function openModal(methodKey) {
+            const data = methodDetails[methodKey];
+            
+            // Build modal HTML
+            let sectionsHTML = '';
+            data.sections.forEach(section => {
+                sectionsHTML += `
+                    <div class="modal-section" style="--section-color: ${data.color}">
+                        <div class="modal-section-title">${section.title}</div>
+                        <div class="modal-section-content">${section.content}</div>
+                    </div>
+                `;
+            });
+
+            modalContent.innerHTML = `
+                <div class="modal-header" style="--header-start: ${data.color}; --header-end: ${data.color};">
+                    <span class="modal-title">
+                        <span>${data.title}</span>
+                    </span>
+                    <span class="modal-close" onclick="closeModal()">✕</span>
+                </div>
+                <div class="modal-body">
+                    ${sectionsHTML}
+                </div>
+            `;
+
+            modal.classList.add('active');
+        }
+
+        window.closeModal = function() {
+            modal.classList.remove('active');
+        };
+
+        // Close modal when clicking overlay (but not when clicking modal content)
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Open modal on card click
+        cards.forEach(card => {
+            card.addEventListener('click', function() {
+                const method = this.dataset.method;
+                openModal(method);
+            });
+        });
+
+        // Close on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    </script>
+
+    <script src="scripts.js"></script>
+    <script src="hero-assistant.js"></script>
+    <script src="classic-main-switch.js"></script>
+    <script src="footer.js"></script>
+    <script src="icon-loader.js"></script>
+</body>
+</html>
