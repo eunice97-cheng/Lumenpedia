@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumenpedia - Pet Evolution</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Images/favicon.png">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="hero-assistant.css">
+    <link rel="stylesheet" href="footer.css">
+    <script>
+        try {
+            const saved = localStorage.getItem('theme');
+            if (!saved) {
+                localStorage.setItem('theme', 'dark');
+                document.documentElement.classList.add('dark');
+                document.documentElement.style.colorScheme = 'dark';
+            } else if (saved === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.documentElement.style.colorScheme = 'dark';
+            }
+        } catch (e) { }
+    </script>
+
+    <style>
+        /* Page-specific styles for pet evolution */
+        .pet-evolution-container {
+            display: flex;
+            gap: 2rem;
+            max-width: 1800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            min-height: 900px;
+        }
+
+        /* Left Sidebar */
+        .pet-sidebar {
+            flex: 0 0 300px;
+            background: var(--bg-secondary, #1a1f2e);
+            border-radius: 20px;
+            padding: 1.5rem;
+            height: fit-content;
+            border: 1px solid var(--border-color, #3a4055);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .pet-sidebar h3 {
+            color: var(--accent-gold, #e6b450);
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--border-color, #3a4055);
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .pet-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-height: 650px;
+            overflow-y: auto;
+            padding-right: 0.3rem;
+        }
+
+        .pet-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .pet-list::-webkit-scrollbar-track {
+            background: var(--bg-tertiary, #0f1422);
+            border-radius: 10px;
+        }
+
+        .pet-list::-webkit-scrollbar-thumb {
+            background: var(--accent-gold, #e6b450);
+            border-radius: 10px;
+        }
+
+        .pet-item {
+            background: var(--bg-tertiary, #0f1422);
+            border: 1px solid var(--border-color, #3a4055);
+            border-radius: 30px;
+            padding: 0.8rem 1.2rem;
+            color: var(--text-primary, #f0e9d8);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .pet-item:hover {
+            background: var(--accent-dim, #2a3f5e);
+            border-color: var(--accent-gold, #e6b450);
+            transform: translateX(5px);
+        }
+
+        .pet-item.active {
+            background: linear-gradient(90deg, var(--accent-dim, #2a3f5e), var(--bg-tertiary, #0f1422));
+            border-left: 5px solid var(--accent-gold, #e6b450);
+            border-color: var(--accent-gold, #e6b450);
+            font-weight: 600;
+        }
+
+        /* Right Evolution Canvas */
+        .evolution-canvas {
+            flex: 1;
+            background: var(--bg-secondary, #1a1f2e);
+            border-radius: 30px;
+            padding: 2.5rem;
+            border: 1px solid var(--border-color, #3a4055);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            overflow-x: auto;
+        }
+
+        .evolution-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-gold, #e6b450);
+        }
+
+        .evolution-header h2 {
+            color: var(--accent-gold, #e6b450);
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .evolution-header span {
+            background: var(--accent-dim, #2a3f5e);
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            color: var(--text-primary, #f0e9d8);
+            border: 2px solid var(--accent-gold, #e6b450);
+        }
+
+        /* Evolution tree - simple spacing, no lines */
+        .tree-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4rem;
+            width: 100%;
+            padding: 1rem 0;
+            min-width: 1300px;
+        }
+
+        .tree-row {
+            display: flex;
+            justify-content: center;
+            gap: 8rem;
+            width: 100%;
+        }
+
+        /* Pet cards */
+        .pet-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 300px;
+            text-align: center;
+        }
+
+        .pet-card .image-wrapper {
+            width: 300px;
+            height: 300px;
+            border-radius: 40px;
+            border: 5px solid var(--accent-gold, #e6b450);
+            overflow: hidden;
+            background: var(--bg-tertiary, #0f1422);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 0 3px rgba(230, 180, 80, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .pet-card .image-wrapper:hover {
+            transform: scale(1.05);
+            border-color: #ffd966;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 0 4px rgba(255, 217, 102, 0.5);
+        }
+
+        .pet-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .pet-card .pet-name {
+            color: var(--text-primary, #f0e9d8);
+            font-size: 1.3rem;
+            font-weight: 600;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            border: 2px solid var(--accent-gold, #e6b450);
+            max-width: 280px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Evolution description text */
+        .evolution-description {
+            color: var(--text-secondary, #cbd5e1);
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            max-width: 280px;
+            border: 1px solid var(--border-color, #3a4055);
+        }
+
+        /* Placeholder */
+        .placeholder-message {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            min-height: 600px;
+            color: var(--text-secondary, #a0a8b8);
+            font-size: 1.5rem;
+            text-align: center;
+            background: var(--bg-tertiary, #0f1422);
+            border-radius: 40px;
+            padding: 3rem;
+            border: 2px dashed var(--border-color, #3a4055);
+        }
+
+        .placeholder-message svg {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 2rem;
+            opacity: 0.7;
+            stroke: var(--accent-gold, #e6b450);
+        }
+
+        .placeholder-message h3 {
+            color: var(--accent-gold, #e6b450);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .placeholder-message p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 1400px) {
+            .pet-card {
+                width: 250px;
+            }
+
+            .pet-card .image-wrapper {
+                width: 250px;
+                height: 250px;
+            }
+
+            .tree-row {
+                gap: 6rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="support-page">
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="Images/Lumenpedia Logo - No BG (2).png" alt="Lumenpedia" class="logo-image">
+                    <a href="index.html" class="header-logo-minimal">
+                        <span class="logo-text">Lumenpedia</span>
+                    </a>
+                </div>
+                <!-- Nav Buttons -->
+                <div class="header-actions">
+                    <!-- Nav Button to Browse.html -->
+                    <a href="browse.html" class="btn-secondary">Browse All Guides</a>
+
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
+                        <svg class="icon-sun" width="20" height="20">
+                            <use href="#icon-sun"></use>
+                        </svg>
+                        <svg class="icon-moon" width="20" height="20">
+                            <use href="#icon-moon"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-logo">
+                    <img src="Images/Lumenpedia Logo - No BG (2).png" alt="Lumenpedia" class="logo-hero">
+                    <span class="hero-tagline">Pet Evolution Guide</span>
+                </div>
+                <p class="hero-description">Select a pet to view its evolution path
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pet Evolution Content -->
+    <div class="pet-evolution-container">
+        <!-- Left Sidebar - Pet List -->
+        <aside class="pet-sidebar">
+            <h3>🐾 PET LIST</h3>
+            <div class="pet-list" id="petList"></div>
+        </aside>
+
+        <!-- Right Evolution Canvas -->
+        <section class="evolution-canvas" id="evolutionCanvas">
+            <!-- Placeholder - shown when no pet selected -->
+            <div class="placeholder-message" id="placeholder">
+                <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="30" cy="30" r="25" />
+                    <path d="M20 35 L30 22 L40 35" stroke-linecap="round" />
+                    <circle cx="22" cy="25" r="2" fill="currentColor" />
+                    <circle cx="38" cy="25" r="2" fill="currentColor" />
+                </svg>
+                <h3>Select a Pet</h3>
+                <p>Choose any pet from the list to see its<br>complete evolution line</p>
+            </div>
+
+            <!-- Evolution Tree - Hidden by default -->
+            <div class="tree-container" id="evolutionTree" style="display: none;">
+                <div class="evolution-header">
+                    <h2 id="selectedPetName"></h2>
+                    <span>Evolution Path</span>
+                </div>
+
+                <!-- Level 0: Base pet (1 image) -->
+                <div class="tree-row" id="level0"></div>
+
+                <!-- Level 1: First evolution (2 images) -->
+                <div class="tree-row" id="level1"></div>
+
+                <!-- Level 2: Second evolution (2 images) -->
+                <div class="tree-row" id="level2"></div>
+
+                <!-- Level 3: Third evolution (2 images) -->
+                <div class="tree-row" id="level3"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer - Exact copy from under-construction.html -->
+    <footer class="lumenpedia-footer">
+        <div class="footer-container">
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo">LUMENPEDIA</div>
+                    <p class="footer-tagline">Your all-in-one community guide for the Jade Dynasty Lumen Server.
+                        Discover game information, guides, and server updates in one convenient location.</p>
+
+                    <!-- Social Media -->
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/jadedynastylumen" class="social-link" target="_blank"
+                            aria-label="Facebook">
+                            <svg width="16" height="16">
+                                <use href="#icon-facebook"></use>
+                            </svg>
+                        </a>
+                        <a href="https://discord.com/invite/TeNbyexB6W" class="social-link" target="_blank"
+                            aria-label="Discord">
+                            <svg width="16" height="16">
+                                <use href="#icon-discord"></use>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/jadedynastylumen/" class="social-link" target="_blank"
+                            aria-label="Instagram">
+                            <svg width="16" height="16">
+                                <use href="#icon-instagram"></use>
+                            </svg>
+                        </a>
+                        <a href="https://www.twitch.tv/jadedynastylumen" class="social-link" target="_blank"
+                            aria-label="Twitch">
+                            <svg width="16" height="16">
+                                <use href="#icon-twitch"></use>
+                            </svg>
+                        </a>
+                        <a href="https://vk.com/lumendynasty" class="social-link" target="_blank" aria-label="VK">
+                            <svg width="16" height="16">
+                                <use href="#icon-vk"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Explore Section -->
+                <div class="footer-section">
+                    <h4>EXPLORE</h4>
+                    <div class="footer-links">
+                        <a href="latest-updates.html" class="footer-link">Latest Updates</a>
+                        <a href="browse.html" class="footer-link">Browse All Guides</a>
+                    </div>
+                </div>
+
+                <!-- Community Section -->
+                <div class="footer-section">
+                    <h4>COMMUNITY</h4>
+                    <div class="footer-links">
+                        <a href="https://www.facebook.com/jadedynastylumen" class="footer-link" target="_blank">
+                            <svg class="footer-icon" width="14" height="14">
+                                <use href="#icon-facebook"></use>
+                            </svg>Facebook</a>
+                        <a href="https://discord.com/invite/TeNbyexB6W" class="footer-link" target="_blank">
+                            <svg class="footer-icon" width="14" height="14">
+                                <use href="#icon-discord"></use>
+                            </svg>Discord</a>
+                        <a href="https://www.instagram.com/jadedynastylumen/" class="footer-link" target="_blank">
+                            <svg class="footer-icon" width="14" height="14">
+                                <use href="#icon-instagram"></use>
+                            </svg>Instagram</a>
+                        <a href="https://www.twitch.tv/jadedynastylumen" class="footer-link" target="_blank">
+                            <svg class="footer-icon" width="14" height="14">
+                                <use href="#icon-twitch"></use>
+                            </svg>Twitch.tv</a>
+                        <a href="https://vk.com/lumendynasty" class="footer-link" target="_blank">
+                            <svg class="footer-icon" width="14" height="14">
+                                <use href="#icon-vk"></use>
+                            </svg>VK</a>
+                    </div>
+                </div>
+
+                <!-- Support Section -->
+                <div class="footer-section">
+                    <h4>SUPPORT</h4>
+                    <div class="footer-links">
+                        <a href="support.html" class="footer-link">Help Center</a>
+                        <a href="support.html" class="footer-link">Report Issue</a>
+                        <a href="support.html" class="footer-link">Contribute</a>
+                        <a href="support.html" class="footer-link">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">© 2025 Lumenpedia. All rights reserved.</div>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script src="hero-assistant.js"></script>
+    <script src="classic-main-switch.js"></script>
+    <script src="footer.js"></script>
+    <script src="icon-loader.js"></script>
+
+    <!-- Pet Evolution Script -->
+    <script>
+        (function () {
+            // Complete pet database - alphabetical order (59 pets total including previous ones)
+            const pets = [
+                "Aissy Bear",
+                "Ambling Angler",
+                "Apocalypse Cow",
+                "Astral Drake",
+                "Bandit",
+                "Battleground Tiger",
+                "Blossoming Princess",
+                "Checkers",
+                "Christmas Snowman",
+                "Chrona Ultimate",
+                "Chromawing",
+                "Chubby Baby",
+                "Cloud Tiger",
+                "Dream Catty",
+                "Dream Weaver",
+                "Dryadling",
+                "Dystinor",
+                "Emerald Spirit",
+                "Etherflame Totem",
+                "Fairy Diah",
+                "Firerock Demon",
+                "Genghis Kong",
+                "Hades Watchmen",
+                "Hellfire Inferno",
+                "Holly",
+                "JD Bear",
+                "JD Mini Pet",
+                "Jessie",
+                "Jumping Squirrel",
+                "Junkyard Dog",
+                "Kuzge",
+                "Lazzie",
+                "Little Cow",
+                "Little Deer",
+                "Little Sheep",
+                "Maggie Fairy",
+                "MiuMiu",
+                "Monkey King",
+                "Night Owl",
+                "Octomum",
+                "Pengo",
+                "Phantasma",
+                "Plump Panda",
+                "Plump Toad",
+                "Raja",
+                "Rhex",
+                "Rubi Boar",
+                "Scorpus Ravager",
+                "Silver Fox",
+                "Sproutax",
+                "Stonus Protector",
+                "Tater Tot",
+                "Thunder Snake",
+                "Torin Kul",
+                "Underworld Judge",
+                "Wild Wolf",
+                "Wolfgang",
+                "Woody Pig",
+                "Yaksha Ranger"
+            ].sort();
+
+            // Get DOM elements
+            const petListEl = document.getElementById('petList');
+            const placeholder = document.getElementById('placeholder');
+            const evolutionTree = document.getElementById('evolutionTree');
+            const selectedPetName = document.getElementById('selectedPetName');
+
+            const level0 = document.getElementById('level0');
+            const level1 = document.getElementById('level1');
+            const level2 = document.getElementById('level2');
+            const level3 = document.getElementById('level3');
+
+            // Populate pet list
+            pets.forEach(pet => {
+                const petItem = document.createElement('div');
+                petItem.className = 'pet-item';
+                petItem.textContent = pet;
+                petItem.setAttribute('data-pet', pet);
+
+                petItem.addEventListener('click', function () {
+                    // Remove active class from all
+                    document.querySelectorAll('.pet-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+
+                    // Add active class to clicked item
+                    this.classList.add('active');
+
+                    // Show evolution tree and hide placeholder
+                    placeholder.style.display = 'none';
+                    evolutionTree.style.display = 'flex';
+
+                    // Update selected pet name
+                    selectedPetName.textContent = pet;
+
+                    // Generate evolution tree based on selected pet
+                    renderEvolutionTree(pet);
+                });
+
+                petListEl.appendChild(petItem);
+            });
+
+            // Function to render evolution tree based on selected pet
+            function renderEvolutionTree(basePet) {
+                // Generate image name from pet name (lowercase, no spaces)
+                const petImageName = basePet.toLowerCase().replace(/\s+/g, '');
+
+                // Level 0: Base pet (ONLY place with the name)
+                level0.innerHTML = createPetCard(
+                    `Images/pets/${petImageName}.jpg`,
+                    basePet,  // Only show name here
+                    "",
+                    true  // showName = true
+                );
+
+                // Level 1: First evolution - 2 images (g12A and g12B)
+                const level1Html = `
+                    ${createPetCard(
+                    `Images/pets/${petImageName}-g12A.jpg`,
+                    "",  // No name
+                    "Grade 12 + Blue Mushroom",
+                    false  // showName = false
+                )}
+                    ${createPetCard(
+                    `Images/pets/${petImageName}-g12B.jpg`,
+                    "",  // No name
+                    "Grade 12 + Blue Mushroom + Gem Mushroom",
+                    false  // showName = false
+                )}
+                `;
+                level1.innerHTML = level1Html;
+
+                // Level 2: Second evolution - 2 images (g18A from g12A, g18B from g12B)
+                const level2Html = `
+                    ${createPetCard(
+                    `Images/pets/${petImageName}-g18A.jpg`,
+                    "",  // No name
+                    "Grade 18 + Colorful Mushroom",
+                    false  // showName = false
+                )}
+                    ${createPetCard(
+                    `Images/pets/${petImageName}-g18B.jpg`,
+                    "",  // No name
+                    "Grade 18 + Colorful Mushroom",
+                    false  // showName = false
+                )}
+                `;
+                level2.innerHTML = level2Html;
+
+                // Level 3: Third evolution - 2 images (comingsoon-A and comingsoon-B)
+                const level3Html = `
+                    ${createPetCard(
+                    "Images/pets/comingsoon-A.jpg",
+                    "",  // No name
+                    "Pet Ascension Coming Soon",
+                    false  // showName = false
+                )}
+                    ${createPetCard(
+                    "Images/pets/comingsoon-B.jpg",
+                    "",  // No name
+                    "Pet Ascension Coming Soon",
+                    false  // showName = false
+                )}
+                `;
+                level3.innerHTML = level3Html;
+            }
+
+            // Helper function to create pet card HTML with image path, optional name, and description
+            function createPetCard(imagePath, petName = "", description = "", showName = false) {
+                const nameHtml = showName && petName ?
+                    `<span class="pet-name">${petName}</span>` : '';
+
+                return `
+                    <div class="pet-card">
+                        <div class="image-wrapper">
+                            <img src="${imagePath}" 
+                                 alt="${petName || 'Pet evolution'}"
+                                 onerror="this.onerror=null; this.src='Images/favicon.png';">
+                        </div>
+                        ${nameHtml}
+                        ${description ? `<div class="evolution-description">${description}</div>` : ''}
+                    </div>
+                `;
+            }
+
+            // Auto-select first pet (Aissy Bear)
+            setTimeout(() => {
+                const firstPet = document.querySelector('.pet-item');
+                if (firstPet) {
+                    firstPet.click();
+                }
+            }, 100);
+        })();
+    </script>
+</body>
+
+</html>

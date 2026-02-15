@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumenpedia – Daily Quests Guide</title>
+
+    <link rel="icon" type="image/png" href="Images/favicon.png">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="hero-assistant.css">
+    <link rel="stylesheet" href="classic-main-switch.css">
+    <link rel="stylesheet" href="footer.css">
+
+    <script>
+        try {
+            const saved = localStorage.getItem('theme');
+            if (!saved) {
+                localStorage.setItem('theme', 'dark');
+                document.documentElement.classList.add('dark');
+                document.documentElement.style.colorScheme = 'dark';
+            } else if (saved === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.documentElement.style.colorScheme = 'dark';
+            }
+        } catch (e) {}
+    </script>
+
+    <style>
+        /* --- QUEST CONTAINER --- */
+        .quests-compact-grid {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 20px !important;
+            margin: 20px 0 !important;
+        }
+
+        /* --- THE CARD --- */
+        .quest-compact-card {
+            background: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            border-left: 4px solid #0891b2 !important; 
+            border-radius: 12px !important;
+            overflow: hidden !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        .dark .quest-compact-card {
+            background: #111827 !important;
+            border-color: #1f2937 !important;
+            border-left-color: #22d3ee !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        /* --- HEADER --- */
+        .quest-compact-header {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 12px 20px !important;
+            background: rgba(248, 250, 252, 0.8) !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+        }
+
+        .dark .quest-compact-header {
+            background: rgba(31, 41, 55, 0.5) !important;
+            border-bottom-color: #374151 !important;
+        }
+
+        .quest-compact-name {
+            font-weight: 700 !important;
+            font-size: 1.1rem !important;
+            color: #1e293b !important;
+        }
+        .dark .quest-compact-name { color: #f8fafc !important; }
+
+        .quest-compact-npc {
+            font-size: 0.7rem !important;
+            font-weight: 800 !important;
+            padding: 4px 10px !important;
+            border-radius: 6px !important;
+            text-transform: uppercase !important;
+            background: #ecfeff !important; 
+            color: #0891b2 !important; 
+            border: 1px solid #a5f3fc !important;
+        }
+        .dark .quest-compact-npc { 
+            background: #083344 !important; 
+            color: #22d3ee !important; 
+            border-color: #0e7490 !important; 
+        }
+
+        /* --- DETAILS GRID --- */
+        .quest-compact-details {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr 1fr !important;
+            background: #f1f5f9 !important;
+            gap: 1px !important;
+        }
+        .dark .quest-compact-details { background: #374151 !important; }
+
+        @media (max-width: 800px) {
+            .quest-compact-details { grid-template-columns: 1fr !important; }
+        }
+
+        .detail-section {
+            background: #ffffff !important;
+            padding: 16px !important;
+        }
+        .dark .detail-section { background: #111827 !important; }
+
+        .label {
+            display: block !important;
+            font-size: 0.65rem !important;
+            font-weight: 800 !important;
+            text-transform: uppercase !important;
+            color: #94a3b8 !important;
+            margin-bottom: 10px !important;
+        }
+
+        /* --- ITEM ROWS --- */
+        .item-stack {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 6px !important;
+        }
+
+        .item-row {
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            font-size: 0.85rem !important;
+            font-weight: 600 !important;
+            padding: 7px 10px !important;
+            background: #f8fafc !important;
+            border-radius: 6px !important;
+            border: 1px solid #f1f5f9 !important;
+            color: #475569 !important;
+        }
+
+        .dark .item-row {
+            background: #1f2937 !important;
+            border-color: #374151 !important;
+            color: #cbd5e1 !important;
+        }
+
+        .item-icon {
+            width: 18px !important;
+            height: 18px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-shrink: 0 !important;
+        }
+
+        .reward-row { border-left: 3px solid #10b981 !important; color: #059669 !important; }
+        .random-row { border-left: 3px solid #8b5cf6 !important; color: #7c3aed !important; }
+        .dark .reward-row { color: #34d399 !important; }
+        .dark .random-row { color: #a78bfa !important; }
+
+        /* --- FOOTNOTE --- */
+        .detail-note {
+            margin-top: 20px !important;
+            padding: 14px !important;
+            background: #f8fafc !important;
+            border-radius: 8px !important;
+            font-size: 0.85rem !important;
+            border-left: 4px solid #0891b2 !important;
+            color: #64748b !important;
+        }
+        .dark .detail-note {
+            background: #1f2937 !important;
+            color: #94a3b8 !important;
+        }
+
+        /* --- LUMEN MAIN CUSTOM TEXT STYLES --- */
+        .detail-item {
+            margin-bottom: 15px;
+        }
+        .detail-label {
+            font-weight: 700;
+            color: var(--primary-color, #0891b2);
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body class="support-page">
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="Images/Lumenpedia Logo - No BG (2).png" alt="Lumenpedia" class="logo-image">
+                    <a href="index.html" class="header-logo-minimal">
+                        <span class="logo-text">Lumenpedia</span>
+                    </a>
+                </div>
+                <div class="header-actions">
+                    <a href="browse.html" class="btn-secondary">Browse All Guides</a>
+                    <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
+                        <svg class="icon-sun" width="20" height="20"><use href="#icon-sun"></use></svg>
+                        <svg class="icon-moon" width="20" height="20"><use href="#icon-moon"></use></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-with-assistants">
+        <div class="hero-assistants-container">
+            <div class="hero-assistant left">
+                <a href="javascript:void(0)" class="assistant-card" data-assistant="classic">
+                    <img src="Images/Lumen Classic Assistant.png" alt="Lumenpedia Classic Assistant" class="assistant-img" />
+                    <div class="assistant-info">
+                        <span class="assistant-name">Lumenpedia Classic Assistant</span>
+                    </div>
+                </a>
+            </div>
+            <div class="hero-assistants-content">
+                <h1>Daily Quests Guide</h1>
+                <p>Track your cultivation requirements and rewards</p>
+            </div>
+            <div class="hero-assistant right">
+                <a href="javascript:void(0)" class="assistant-card" data-assistant="main">
+                    <img src="Images/Lumen Main Assistant.png" alt="Lumenpedia Main Assistant" class="assistant-img" />
+                    <div class="assistant-info">
+                        <span class="assistant-name">Lumenpedia Main Assistant</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="server-comparison">
+        <div class="server-card">
+            <div class="server-card-header">
+                <h2>Lumen Classic</h2>
+                <span class="server-status active">Daily Path</span>
+            </div>
+            
+            <div class="server-details">
+                <div class="quests-compact-grid">
+                    
+                    <div class="quest-compact-card">
+                        <div class="quest-compact-header">
+                            <span class="quest-compact-name">Alliance Career</span>
+                            <span class="quest-compact-npc">NPC Alliance Master</span>
+                        </div>
+                        <div class="quest-compact-details">
+                            <div class="detail-section">
+                                <span class="label">Requirements</span>
+                                <div class="item-stack">
+                                    <div class="item-row"><span class="item-icon">⭐</span> Level 45</div>
+                                    <div class="item-row"><span class="item-icon">🛡️</span> Alliance Membership</div>
+                                    <div class="item-row"><span class="item-icon">💰</span> 20 Gold</div>
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <span class="label">Guaranteed Reward</span>
+                                <div class="item-stack">
+                                    <div class="item-row reward-row"><span class="item-icon">💊</span> 80 Taichi Pills</div>
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <span class="label">Random Reward</span>
+                                <div class="item-stack">
+                                    <div class="item-row random-row"><span class="item-icon">✨</span> Kirin Sigil Shard</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quest-compact-card">
+                        <div class="quest-compact-header">
+                            <span class="quest-compact-name">Taichi Pills</span>
+                            <span class="quest-compact-npc">NPC Heshanti</span>
+                        </div>
+                        <div class="quest-compact-details">
+                            <div class="detail-section">
+                                <span class="label">Requirements</span>
+                                <div class="item-stack">
+                                    <div class="item-row"><span class="item-icon">⭐</span> Level 45</div>
+                                    <div class="item-row"><span class="item-icon">💰</span> 20 Gold</div>
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <span class="label">Guaranteed Reward</span>
+                                <div class="item-stack">
+                                    <div class="item-row reward-row"><span class="item-icon">💊</span> 80 Taichi Pills</div>
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <span class="label">Random Reward</span>
+                                <div class="item-stack">
+                                    <div class="item-row random-row"><span class="item-icon">✨</span> Kirin Sigil Shard</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quest-compact-card">
+                        <div class="quest-compact-header">
+                            <span class="quest-compact-name">Donation</span>
+                            <span class="quest-compact-npc">NPC Nura</span>
+                        </div>
+                        <div class="quest-compact-details">
+                            <div class="detail-section">
+                                <span class="label">Requirements</span>
+                                <div class="item-stack">
+                                    <div class="item-row"><span class="item-icon">⭐</span> Level 45</div>
+                                    <div class="item-row"><span class="item-icon">💰</span> 15 Gold</div>
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <span class="label">Guaranteed Reward</span>
+                                <div class="item-stack">
+                                    <div class="item-row reward-row"><span class="item-icon">💊</span> 100 Taichi Pills</div>
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <span class="label">Random Reward</span>
+                                <div class="item-stack">
+                                    <div class="item-row random-row"><span class="item-icon">✨</span> Kirin Sigil Shard</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quest-compact-card">
+                        <div class="quest-compact-header">
+                            <span class="quest-compact-name">Treasure Hunt</span>
+                            <span class="quest-compact-npc">NPC Isamu</span>
+                        </div>
+                        <div class="quest-compact-details">
+                            <div class="detail-section">
+                                <span class="label">Requirements</span>
+                                <div class="item-stack">
+                                    <div class="item-row"><span class="item-icon">⭐</span> Level 45</div>
+                                    <div class="item-row"><span class="item-icon">💰</span> 15 Gold</div>
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <span class="label">Guaranteed Reward</span>
+                                <div class="item-stack">
+                                    <div class="item-row reward-row"><span class="item-icon">💊</span> 80 Taichi Pills</div>
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <span class="label">Random Reward</span>
+                                <div class="item-stack">
+                                    <div class="item-row random-row"><span class="item-icon">✨</span> Kirin Sigil Shard</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="detail-note">
+                    <strong>💡 Note:</strong> All daily quests reset at 00:00 server reset time.
+                </div>
+            </div>
+            <a href="#" class="server-link">View full daily rotation →</a>
+        </div>
+
+        <div class="server-card">
+            <div class="server-card-header">
+                <h2>Lumen Main Interface</h2>
+                <span class="server-status inactive">Unavailable</span>
+            </div>
+            <div class="server-details">
+                <div class="detail-item">
+                    <div class="detail-label">Server Status</div>
+                    <div class="detail-value">Lumen Main server is currently in development and not yet available to the public.</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Interface Documentation</div>
+                    <div class="detail-value">No interface documentation available at this time.</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Expected Launch Features</div>
+                    <div class="detail-value">When Lumen Main launches, expect updated UI elements, new menus, and revised interface documentation.</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Stay Updated</div>
+                    <div class="detail-value">Follow our social media channels and check back here for updates on Lumen Main server development and future interface documentation.</div>
+                </div>
+            </div>
+            <a href="#" class="server-link disabled">Coming Soon</a>
+        </div>
+    </div>
+
+    <footer class="lumenpedia-footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">LUMENPEDIA</div>
+                    <p class="footer-tagline">Your all-in-one community guide for the Jade Dynasty Lumen Server.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copyright">© 2025 Lumenpedia. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script src="hero-assistant.js"></script>
+    <script src="classic-main-switch.js"></script>
+    <script src="footer.js"></script>
+    <script src="icon-loader.js"></script>
+</body>
+</html>
