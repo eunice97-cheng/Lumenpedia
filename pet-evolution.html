@@ -479,199 +479,117 @@
     <!-- Pet Evolution Script -->
     <script>
         (function () {
-            // Complete pet database - alphabetical order (59 pets total including previous ones)
+            // Complete pet database
             const pets = [
-                "Aissy Bear",
-                "Ambling Angler",
-                "Apocalypse Cow",
-                "Astral Drake",
-                "Bandit",
-                "Battleground Tiger",
-                "Blossoming Princess",
-                "Checkers",
-                "X'mas Snowman",
-                "Chrona Ultimate",
-                "Chromawing",
-                "Chubby Baby",
-                "Cloud Tiger",
-                "Dream Catty",
-                "Dream Weaver",
-                "Dryadling",
-                "Dystinor",
-                "Emerald Spirit",
-                "Etherflame Totem",
-                "Fairy Diah",
-                "Firerock Demon",
-                "Genghis Kong",
-                "Hades Watchmen",
-                "Hellfire Inferno",
-                "Holly",
-                "JD Bear",
-                "JD Mini Pet",
-                "Jessie",
-                "Jumping Squirrel",
-                "Junkyard Dogg",
-                "Kuzge",
-                "Lazzie",
-                "Little Cow",
-                "Little Deer",
-                "Little Sheep",
-                "Maggie Fairy",
-                "MiuMiu",
-                "Monkey King",
-                "Night Owl",
-                "Octomum",
-                "Pengo",
-                "Phantasma",
-                "Plump Panda",
-                "Plump Toad",
-                "Raja",
-                "Rhex",
-                "Rubi Boar",
-                "Scorpus Ravager",
-                "Silver Fox",
-                "Sproutax",
-                "Stonus Protector",
-                "Tater Tot",
-                "Thunder Snake",
-                "Torin Kul",
-                "Underworld Judge",
-                "Wild Wolf",
-                "Wolfgang",
-                "Woody Pig",
-                "Yaksha Ranger"
+                "Aissy Bear", "Ambling Angler", "Apocalypse Cow", "Astral Drake", "Bandit",
+                "Battleground Tiger", "Blossoming Princess", "Checkers", "X'mas Snowman",
+                "Chrona Ultimate", "Chromawing", "Chubby Baby", "Cloud Tiger", "Dream Catty",
+                "Dream Weaver", "Dryadling", "Dystinor", "Emerald Spirit", "Etherflame Totem",
+                "Fairy Diah", "Firerock Demon", "Genghis Kong", "Hades Watchmen", "Hellfire Inferno",
+                "Holly", "JD Bear", "JD Mini Pet", "Jessie", "Jumping Squirrel", "Junkyard Dogg",
+                "Kuzge", "Lazzie", "Little Cow", "Little Deer", "Little Sheep", "Maggie Fairy",
+                "MiuMiu", "Monkey King", "Night Owl", "Octomum", "Pengo", "Phantasma",
+                "Plump Panda", "Plump Toad", "Raja", "Rhex", "Rubi Boar", "Scorpus Ravager",
+                "Silver Fox", "Sproutax", "Stonus Protector", "Tater Tot", "Thunder Snake",
+                "Torin Kul", "Underworld Judge", "Wild Wolf", "Wolfgang", "Woody Pig", "Yaksha Ranger"
             ].sort();
 
-            // Get DOM elements
             const petListEl = document.getElementById('petList');
             const placeholder = document.getElementById('placeholder');
             const evolutionTree = document.getElementById('evolutionTree');
             const selectedPetName = document.getElementById('selectedPetName');
+            const levels = [
+                document.getElementById('level0'),
+                document.getElementById('level1'),
+                document.getElementById('level2'),
+                document.getElementById('level3')
+            ];
 
-            const level0 = document.getElementById('level0');
-            const level1 = document.getElementById('level1');
-            const level2 = document.getElementById('level2');
-            const level3 = document.getElementById('level3');
+            // --- THE FALLBACK LOGIC ---
+            // Global function to handle image errors by cycling through extensions
+            window.handleImageError = function (img) {
+                const extensions = ['.jpg', '.JPG', '.png', '.PNG'];
+                // Get current index from data attribute or default to 0
+                let currentIndex = parseInt(img.getAttribute('data-ext-index') || 0);
+                const basePath = img.getAttribute('data-base');
+
+                if (currentIndex < extensions.length - 1) {
+                    currentIndex++;
+                    img.setAttribute('data-ext-index', currentIndex);
+                    img.src = basePath + extensions[currentIndex];
+                } else {
+                    // If all extensions failed, use the final fallback icon
+                    img.onerror = null;
+                    img.src = 'Images/favicon.png';
+                    img.style.opacity = "0.5"; // Subtle hint it's a placeholder
+                }
+            };
+
+            // Helper to create the HTML string
+            function createPetCard(basePath, petName = "", description = "", showName = false) {
+                const nameHtml = showName && petName ? `<span class="pet-name">${petName}</span>` : '';
+
+                // Start by trying .jpg as the default
+                return `
+                <div class="pet-card">
+                    <div class="image-wrapper">
+                        <img src="${basePath}.jpg" 
+                             data-base="${basePath}" 
+                             data-ext-index="0" 
+                             onerror="handleImageError(this)" 
+                             alt="${petName || 'Pet evolution'}">
+                    </div>
+                    ${nameHtml}
+                    ${description ? `<div class="evolution-description">${description}</div>` : ''}
+                </div>
+            `;
+            }
 
             // Populate pet list
             pets.forEach(pet => {
                 const petItem = document.createElement('div');
                 petItem.className = 'pet-item';
                 petItem.textContent = pet;
-                petItem.setAttribute('data-pet', pet);
-
                 petItem.addEventListener('click', function () {
-                    // Remove active class from all
-                    document.querySelectorAll('.pet-item').forEach(item => {
-                        item.classList.remove('active');
-                    });
-
-                    // Add active class to clicked item
+                    document.querySelectorAll('.pet-item').forEach(item => item.classList.remove('active'));
                     this.classList.add('active');
 
-                    // Show evolution tree and hide placeholder
                     placeholder.style.display = 'none';
                     evolutionTree.style.display = 'flex';
-
-                    // Update selected pet name
                     selectedPetName.textContent = pet;
 
-                    // Generate evolution tree based on selected pet
                     renderEvolutionTree(pet);
                 });
-
                 petListEl.appendChild(petItem);
             });
 
-            // Function to render evolution tree based on selected pet
             function renderEvolutionTree(basePet) {
-                // Generate image name from pet name (lowercase, no spaces)
-                const petImageName = basePet.toLowerCase().replace(/\s+/g, '');
+                const petFileName = basePet.toLowerCase().replace(/\s+/g, '');
+                const path = `Images/pets/${petFileName}`;
 
-                // Level 0: Base pet (ONLY place with the name)
-                level0.innerHTML = createPetCard(
-                    `Images/pets/${petImageName}.jpg`,
-                    basePet,  // Only show name here
-                    "",
-                    true  // showName = true
-                );
+                // Level 0
+                levels[0].innerHTML = createPetCard(path, basePet, "", true);
 
-                // Level 1: First evolution - 2 images (g12A and g12B)
-                const level1Html = `
-                    ${createPetCard(
-                    `Images/pets/${petImageName}-g12A.jpg`,
-                    "",  // No name
-                    "Grade 12 + Blue Mushroom",
-                    false  // showName = false
-                )}
-                    ${createPetCard(
-                    `Images/pets/${petImageName}-g12B.jpg`,
-                    "",  // No name
-                    "Grade 12 + Blue Mushroom + Gem Mushroom",
-                    false  // showName = false
-                )}
-                `;
-                level1.innerHTML = level1Html;
+                // Level 1
+                levels[1].innerHTML =
+                    createPetCard(`${path}-g12A`, "", "Grade 12 + Blue Mushroom") +
+                    createPetCard(`${path}-g12B`, "", "Grade 12 + Blue Mushroom + Gem Mushroom");
 
-                // Level 2: Second evolution - 2 images (g18A from g12A, g18B from g12B)
-                const level2Html = `
-                    ${createPetCard(
-                    `Images/pets/${petImageName}-g18A.jpg`,
-                    "",  // No name
-                    "Grade 18 + Colorful Mushroom",
-                    false  // showName = false
-                )}
-                    ${createPetCard(
-                    `Images/pets/${petImageName}-g18B.jpg`,
-                    "",  // No name
-                    "Grade 18 + Colorful Mushroom",
-                    false  // showName = false
-                )}
-                `;
-                level2.innerHTML = level2Html;
+                // Level 2
+                levels[2].innerHTML =
+                    createPetCard(`${path}-g18A`, "", "Grade 18 + Colorful Mushroom") +
+                    createPetCard(`${path}-g18B`, "", "Grade 18 + Colorful Mushroom");
 
-                // Level 3: Third evolution - 2 images (comingsoon-A and comingsoon-B)
-                const level3Html = `
-                    ${createPetCard(
-                    "Images/pets/comingsoon-A.jpg",
-                    "",  // No name
-                    "Pet Ascension Coming Soon",
-                    false  // showName = false
-                )}
-                    ${createPetCard(
-                    "Images/pets/comingsoon-B.jpg",
-                    "",  // No name
-                    "Pet Ascension Coming Soon",
-                    false  // showName = false
-                )}
-                `;
-                level3.innerHTML = level3Html;
+                // Level 3
+                levels[3].innerHTML =
+                    createPetCard(`Images/pets/comingsoon-A`, "", "Pet Ascension Coming Soon") +
+                    createPetCard(`Images/pets/comingsoon-B`, "", "Pet Ascension Coming Soon");
             }
 
-            // Helper function to create pet card HTML with image path, optional name, and description
-            function createPetCard(imagePath, petName = "", description = "", showName = false) {
-                const nameHtml = showName && petName ?
-                    `<span class="pet-name">${petName}</span>` : '';
-
-                return `
-                    <div class="pet-card">
-                        <div class="image-wrapper">
-                            <img src="${imagePath}" 
-                                 alt="${petName || 'Pet evolution'}"
-                                 onerror="this.onerror=null; this.src='Images/favicon.png';">
-                        </div>
-                        ${nameHtml}
-                        ${description ? `<div class="evolution-description">${description}</div>` : ''}
-                    </div>
-                `;
-            }
-
-            // Auto-select first pet (Aissy Bear)
+            // Auto-select first pet
             setTimeout(() => {
                 const firstPet = document.querySelector('.pet-item');
-                if (firstPet) {
-                    firstPet.click();
-                }
+                if (firstPet) firstPet.click();
             }, 100);
         })();
     </script>
