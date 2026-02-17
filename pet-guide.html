@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumenpedia - Pet Companion Guide</title>
+
+    <link rel="icon" type="image/png" href="Images/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
+    <script>
+        try {
+            const saved = localStorage.getItem('theme');
+            if (!saved || saved === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.documentElement.style.colorScheme = 'dark';
+            }
+        } catch (e) { }
+    </script>
+    <style>
+        :root {
+            --pet-accent: #b8860b;
+            --pet-purple: #7038e0;
+            --pet-card-bg: #fdfaf3;
+            --pet-inner-bg: #f4eee0;
+            --pet-border: #e2d5b5;
+            --pet-text: #2d2d2d;
+        }
+
+        .dark {
+            --pet-purple: #b486ff;
+            --pet-card-bg: rgba(255, 255, 255, 0.02);
+            --pet-inner-bg: rgba(0, 0, 0, 0.2);
+            --pet-border: var(--color-border);
+            --pet-text: var(--color-foreground);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* FIX: This prevents the header from covering your titles when clicking links */
+        [id] {
+            scroll-margin-top: 100px;
+        }
+
+        /* Layout Wrapper for Sidebar */
+        .guide-layout {
+            display: flex;
+            gap: 2.5rem;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        /* Better Browsing: Sticky Sidebar */
+        .sticky-sidebar {
+            position: sticky;
+            top: 100px;
+            /* Keeps it below your header */
+            width: 260px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            padding-right: 10px;
+            z-index: 10;
+        }
+
+        .sticky-sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .sticky-sidebar::-webkit-scrollbar-thumb {
+            background: var(--pet-border);
+            border-radius: 10px;
+        }
+
+        .main-content {
+            flex: 1;
+            min-width: 0;
+            /* Prevents flex items from overflowing */
+        }
+
+        .hero-tagline {
+            display: block;
+            font-size: 1.3rem;
+            color: #ffffff;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .guide-card {
+            background: var(--pet-card-bg);
+            border: 1px solid var(--pet-border);
+            border-radius: 20px;
+            padding: clamp(1.5rem, 5vw, 3rem);
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            color: var(--pet-text);
+        }
+
+        .guide-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #b8860b, #ffd700, #b8860b);
+        }
+
+        /* Updated Nav Items for Sidebar */
+        .nav-item {
+            background: var(--pet-inner-bg);
+            border: 1px solid var(--pet-border);
+            border-radius: 10px;
+            padding: 0.7rem 1rem;
+            text-decoration: none;
+            color: var(--pet-text);
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            border-color: var(--pet-accent);
+            background: var(--pet-card-bg);
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.1);
+        }
+
+        .nav-item.active {
+            color: var(--pet-accent);
+            border-left: 4px solid var(--pet-accent);
+        }
+
+        .nav-item span {
+            color: var(--pet-accent);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 35px;
+        }
+
+        .guide-card-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--pet-border);
+            padding-bottom: 1.5rem;
+        }
+
+        .guide-card-title {
+            font-size: 2.2rem;
+            margin: 0 0 0.5rem 0;
+            color: var(--pet-text);
+            font-weight: 700;
+        }
+
+        .guide-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .guide-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            padding: 1rem;
+            border-radius: 10px;
+            background: var(--pet-inner-bg);
+            border: 1px solid var(--pet-border);
+        }
+
+        .guide-list li::before {
+            content: "✦";
+            color: var(--pet-accent);
+        }
+
+        .table-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .table-container::-webkit-scrollbar-thumb {
+            background: var(--pet-accent);
+            border-radius: 10px;
+        }
+
+        .evo-pill {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--pet-purple);
+            color: white !important;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile handling for the sidebar */
+        @media (max-width: 1100px) {
+            .guide-layout {
+                flex-direction: column;
+            }
+
+            .sticky-sidebar {
+                position: relative;
+                top: 0;
+                width: 100%;
+                max-height: none;
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+            }
+
+            .nav-item {
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="Images/Lumenpedia Logo - No BG (2).png" alt="Lumenpedia" class="logo-image">
+                    <a href="index.html" class="header-logo-minimal"><span class="logo-text">Lumenpedia</span></a>
+                </div>
+                <div class="header-actions">
+                    <a href="browse.html" class="btn btn-secondary">Browse All Guides</a>
+                    <button id="theme-toggle" class="btn-icon">
+                        <svg class="icon-sun" width="20" height="20">
+                            <use href="#icon-sun"></use>
+                        </svg>
+                        <svg class="icon-moon" width="20" height="20">
+                            <use href="#icon-moon"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-logo">
+                    <img src="Images/Lumenpedia Logo - No BG (2).png" alt="Lumenpedia" class="logo-hero">
+                    <span class="hero-tagline">Pet Companion Guide</span>
+                </div>
+                <p class="hero-description">Everything you need to know about obtaining and raising pets on Lumen.</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="section">
+        <div class="container">
+
+            <div class="guide-layout">
+
+                <aside class="sticky-sidebar">
+                    <div
+                        style="color: var(--pet-accent); font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin: 0.5rem 0 0.5rem 0.5rem;">
+                        Navigation</div>
+                    <a href="#acquisition" class="nav-item"><span>Start</span>Acquisition</a>
+                    <a href="#star-signs" class="nav-item"><span>01</span>Star Signs</a>
+                    <a href="#passives" class="nav-item"><span>02</span>Passives</a>
+                    <a href="#titles" class="nav-item"><span>03</span>Titles</a>
+                    <a href="#specialty" class="nav-item"><span>04</span>Skills</a>
+                    <a href="#spirit" class="nav-item"><span>05</span>Fighting Spirit</a>
+                    <a href="#myna" class="nav-item"><span>06</span>Myna Orbs</a>
+                    <a href="#trait" class="nav-item"><span>07</span>Traits</a>
+                    <a href="#age" class="nav-item"><span>08</span>Age/Life</a>
+                    <a href="#growth" class="nav-item"><span>09</span>Growth/Grade</a>
+                    <a href="#jades" class="nav-item"><span>10</span>Pet Jades</a>
+                    <a href="#skills" class="nav-item"><span>11</span>Skill Jades</a> <a href="#evolution"
+                        class="nav-item"><span>12</span>Evolution</a>
+                    <a href="#aptitudes" class="nav-item"><span>13</span>Aptitudes</a>
+                    <a href="#workshop" class="nav-item"><span>Gear</span>Workshop</a>
+                    <a href="#fortify" class="nav-item"><span>Gear</span>Fortify</a>
+                </aside>
+
+                <div class="main-content">
+                    <div id="acquisition" class="guide-card">
+                        <div class="guide-card-header">
+                            <h2 class="guide-card-title">How to Obtain a Pet</h2>
+                            <p class="guide-card-description" style="color: var(--color-muted);">Common ways to find
+                                your first companion.</p>
+                        </div>
+                        <ul class="guide-list">
+                            <li><span><strong style="color: var(--pet-accent);">Free Pets</strong> – Woody Pigs can be
+                                    found inside Beginner and Induction boxes.</span></li>
+                            <li><span><strong style="color: var(--pet-accent);">Companion for Life</strong> – A quest
+                                    from Pet Tamer Lonno rewards a random starter pet (Plump Toad, Wild Wolf, Dryadling,
+                                    or Woody Pig).</span></li>
+                            <li><span><strong style="color: var(--pet-accent);">Pet Master Ellan</strong> – You can
+                                    purchase four specific pets from Pet Master Ellan: Dryadling, Sproutax, Woody Pig,
+                                    and Rubi Boar.</span></li>
+                            <li><span><strong style="color: var(--pet-accent);">Wild Capture</strong> – Special species
+                                    can be captured directly in the wild.</span></li>
+                            <li><span><strong style="color: var(--pet-accent);">Jaden Shop</strong> – Premium species
+                                    are available for purchase in the Jaden Shop and Bonus Market.</span></li>
+                            <li><span><strong style="color: var(--pet-accent);">Jaden Mart</strong> – Rare pets are
+                                    occasionally available through auctions in the Jaden Mart.</span></li>
+                            <li><span><strong style="color: var(--pet-accent);">Promo Codes</strong> – Exclusive pets
+                                    are often distributed via <a href="rewards-promocodes.html"
+                                        style="color: var(--pet-purple); text-decoration: underline;">Promo
+                                        Codes</a>.</span></li>
+                            <li><span><strong style="color: var(--pet-accent);">Events</strong> – Limited-edition pets
+                                    are sometimes offered as rewards during special server events.</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="guide-card">
+                        <div class="guide-card-header" style="border-bottom: none; margin-bottom: 0;">
+                            <h2 class="guide-card-title">Understanding Your Pet</h2>
+                            <p class="guide-card-description" style="color: var(--color-muted);">Deep dive into growth,
+                                stats, and endgame progression.</p>
+                        </div>
+
+                        <div style="border-top: 2px solid var(--pet-border); margin: 1.5rem 0 2.5rem 0;"></div>
+
+                        <div id="star-signs" class="guide-subsection">
+                            <h3 style="color: var(--pet-accent); font-size: 1.4rem; margin-bottom: 1rem;">01. Star Signs
+                                & Growth Limits</h3>
+                            <div class="table-container"
+                                style="overflow-x: auto; background: var(--pet-inner-bg); border-radius: 12px; padding: 1rem; border: 1px solid var(--pet-border);">
+                                <table
+                                    style="width: 100%; border-collapse: collapse; color: var(--pet-text); font-size: 0.85rem; text-align: center; min-width: 800px;">
+                                    <thead>
+                                        <tr style="border-bottom: 2px solid var(--pet-border);">
+                                            <th style="padding: 10px; color: var(--pet-accent); text-align: left;">
+                                                Attribute</th>
+                                            <th>Solaris</th>
+                                            <th>Luna</th>
+                                            <th>Auris</th>
+                                            <th>Arborik</th>
+                                            <th>Flowen</th>
+                                            <th>Magmas</th>
+                                            <th>Terro</th>
+                                            <th>Nestun</th>
+                                            <th>Logi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <script>
+                                            const rows = [
+                                                ["Health", 5310, 4520, 7130, 6410, 3980, 1770, 3980, 5955, 3035],
+                                                ["Spirit", 3645, 3980, 3035, 3810, 5310, 6645, 4710, 5105, 7130],
+                                                ["Min ATK", 2895, 3330, 2760, 3810, 2505, 5735, 3980, 2270, 3035],
+                                                ["Max ATK", 4335, 5105, 3645, 3980, 2895, 7130, 5310, 5955, 5520],
+                                                ["Defense", 4905, 3980, 5105, 3180, 7130, 1955, 3035, 2630, 3035],
+                                                ["Accuracy", 2505, 1685, 3180, 2505, 2505, 4335, 7130, 3980, 3645],
+                                                ["Evasion", 2505, 2270, 3180, 1955, 3180, 1955, 4905, 7130, 3330],
+                                                ["Stun Res", 7130, 3180, 5310, 7130, 3180, 2505, 3180, 7130, 3810],
+                                                ["Weaken Res", 7130, 7130, 3485, 7130, 4905, 5310, 3180, 3645, 7130],
+                                                ["Silence Res", 7130, 7130, 2895, 3180, 4905, 4155, 1530, 3180, 7130],
+                                                ["Sleep Res", 2505, 7130, 5310, 1955, 4905, 5310, 7130, 2505, 4155],
+                                                ["Paralyze Res", 1955, 2505, 5105, 7130, 4905, 5520, 3180, 7130, 2270]
+                                            ];
+                                            document.write(rows.map(r => `<tr style="border-bottom: 1px solid var(--pet-border);"><td style="padding: 8px; font-weight: bold; text-align: left;">${r[0]}</td>${r.slice(1).map(v => `<td>${v}</td>`).join('')}</tr>`).join(''));
+                                        </script>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div style="border-top: 2px dotted var(--pet-border); margin: 3rem 0;"></div>
+
+                        <div id="passives" class="guide-subsection">
+                            <h3 style="color: var(--pet-accent); font-size: 1.4rem; margin-bottom: 1rem;">02. Pet Types
+                                & Passives</h3>
+                            <div
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem;">
+                                <script>
+                                    const petTypes = [
+                                        { type: "Aquatic", passive: "Limitless Ego: Reduces chance of freeze/slow." },
+                                        { type: "Avian", passive: "Eagle Eye: Base Accuracy +15." },
+                                        { type: "Beast", passive: "Brute Force: Base CritStrike Bonus +10%." },
+                                        { type: "Celestial", passive: "Beyond Nature: All base attributes +3." },
+                                        { type: "Delusion", passive: "Empty Conclusion: Doubled Spirit Regen." },
+                                        { type: "Elemental", passive: "Despicable Fate: Weaken Res/Defense +10." },
+                                        { type: "Fairy", passive: "Monstrous Mind: Base Silence Resistance +15." },
+                                        { type: "Ghost", passive: "Will of the Doomed: Base Stun Resistance +15." },
+                                        { type: "Humanoid", passive: "Language Exchange: Better training success." },
+                                        { type: "Insect", passive: "Futile Effort: +20 Bonus Damage." },
+                                        { type: "Mutant", passive: "Rampart Concentration: Damage received -10." },
+                                        { type: "Nature", passive: "Radiant Strength: Doubled HP Regen." },
+                                        { type: "Special", passive: "Innate Fortune: Base Evasion +15." },
+                                        { type: "Yasho", passive: "Demonic Intuition: Base Sleep Resistance +15." }
+                                    ];
+                                    document.write(petTypes.map(p => `<div style="background: var(--pet-inner-bg); border: 1px solid var(--pet-border); border-radius: 12px; padding: 1.2rem;"><h4 style="color: var(--pet-accent); margin: 0 0 0.5rem 0;">${p.type}</h4><p style="font-size: 0.9rem; margin: 0;">${p.passive}</p></div>`).join(''));
+                                </script>
+                            </div>
+                        </div>
+
+                        <div style="border-top: 2px dotted var(--pet-border); margin: 3rem 0;"></div>
+
+                        <div id="titles" class="guide-subsection">
+                            <h3 style="color: var(--pet-accent); font-size: 1.4rem; margin-bottom: 1rem;">03. Pet Titles
+                            </h3>
+                            <div
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px;">
+                                <script>
+                                    const petTitles = [
+                                        { name: "Best Friend", effect: "Affection > 20k: +1% ATK." },
+                                        { name: "Blossoming Flower", effect: "Total Res Growth > 15k: +2% Res." },
+                                        { name: "Crusader", effect: "Def Growth > 3500: +2% All Res." },
+                                        { name: "Elemental Master", effect: "Grade Rank: +1% Para Res." },
+                                        { name: "Eternal Optimist", effect: "Grade 8+: -25% Affection loss." },
+                                        { name: "Honest One", effect: "Acc/Eva Growth > 3500: +1% ATK & +2% Spirit." },
+                                        { name: "Insomniac", effect: "Sleep Growth > 3000: +1% Def & +2% Spirit." },
+                                        { name: "Jack of All Trades", effect: "Lvl 90: All Aptitudes +2." },
+                                        { name: "Latent Talent", effect: "Grade 12+: +1% HP and ATK." },
+                                        { name: "Master of Opposites", effect: "Even Grade: +2% ATK | Odd: +2% HP." },
+                                        { name: "Miracle Worker", effect: "1500 Weaken Growth: +1% Other Res." },
+                                        { name: "Nimble Spider", effect: "Eva/Para Growth > 3500: +1% HP/Spirit." },
+                                        { name: "Nosferatu", effect: "HP Growth > 3500: +1% Defense." },
+                                        { name: "Prize Fighter", effect: "ATK Growth > 3500: +1% ATK & +5% Crit Bonus." },
+                                        { name: "Relentless Warrior", effect: "Every 15 lvls: +1% Stun Res." },
+                                        { name: "Skilled Farmer", effect: "Lvl 90: Farming +5." },
+                                        { name: "Skilled Fisherman", effect: "Lvl 90: Fishing +5." },
+                                        { name: "Skilled Hunter", effect: "Lvl 90: Hunting +5." },
+                                        { name: "Skilled Miner", effect: "Lvl 90: Mining +5." },
+                                        { name: "Skilled Woodworker", effect: "Lvl 90: Woodworking +5." },
+                                        { name: "Sleeping Dragon", effect: "Grade 10+: +1% Crit & +5% Crit Bonus." },
+                                        { name: "Sniper Shot", effect: "Acc Growth > 3500: +2% HP." },
+                                        { name: "Superior One", effect: "All Growth > 2000: +2% ATK." },
+                                        { name: "Superstitious One", effect: "Every 666 Growth: +1% Silence Res." },
+                                        { name: "Talented One", effect: "Grade > 1/10 Lvl: +1% Crit & +5 Eva." },
+                                        { name: "The Magician", effect: "Spirit Growth > 3500: +2% ATK." },
+                                        { name: "Treasure Seeker", effect: "Lvl 90: Treasure +5." },
+                                        { name: "Undying Phoenix", effect: "Grade 8+: -25% Life lost." },
+                                        { name: "Young Prodigy", effect: "Age < 1/10 Life: +15% Crit Bonus." }
+                                    ];
+                                    document.write(petTitles.map(t => `<div style="background: var(--pet-card-bg); border: 1px solid var(--pet-border); padding: 12px; border-radius: 8px;"><div style="color: var(--pet-purple); font-size: 0.85rem; font-weight: bold; text-transform: uppercase;">${t.name}</div><div style="color: var(--color-muted); font-size: 0.8rem;">${t.effect}</div></div>`).join(''));
+                                </script>
+                            </div>
+                        </div>
+
+                        <div style="border-top: 2px dotted var(--pet-border); margin: 3rem 0;"></div>
+
+                        <div id="specialty" class="guide-subsection">
+                            <h3 style="color: var(--pet-accent); font-size: 1.4rem; margin-bottom: 1rem;">04. Pet
+                                Specialty & Skills</h3>
+                            <div
+                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+                                <script>
+                                    const specs = [
+                                        { n: "Thunder Rush", s: "Profundity, Cyclone Dust, Void Essence", k: "Withheld Excitement, Sublimate, Sprinkle Spray, etc." },
+                                        { n: "Spirit Essence", s: "Cleverness, Heavenfire", k: "Shooting Star, Clear Sight, Quick Dodge" },
+                                        { n: "Heavenfire", s: "Spirit Essence, Cyclone Dust", k: "Radiant Glory, New Moon, Prickle, Howl of Rage, etc." },
+                                        { n: "Cyclone Dust", s: "Heavenfire, Thunder Rush, Nether Essence", k: "Essential Spirit, Reegsly Fireshield, Drunken Shout" },
+                                        { n: "Nether Essence", s: "Cyclone Dust, True Blood", k: "Water Moon, Provoke, Trueflame Coal" },
+                                        { n: "True Blood", s: "Nether Essence, Nerves", k: "Defender, Gathering of Spirits, Tree Shade, etc." },
+                                        { n: "Nerves", s: "True Blood, Void Essence", k: "Hindering Yoke, Desperate Pursuit, Sink Hole, Despise" },
+                                        { n: "Void Essence", s: "Thunder Rush, Nerves, Reality", k: "Steady Repairs, Exhaustion, Sincere Prayer, Happy Daze" },
+                                        { n: "Reality", s: "Void Essence, Clarity", k: "Meridian Passage, Degrading Vice, Confession" },
+                                        { n: "Clarity", s: "Reality, Universality", k: "Rend, Bowan Streamflow, Contemplate, etc." },
+                                        { n: "Universality", s: "Profundity, Clarity", k: "Peculiar Deduction, Waning Moon, Dami Gloom, etc." },
+                                        { n: "Profundity", s: "Cleverness, Thunder Rush, Universality", k: "Earnest Enthusiasm, Village of the Sun, Springwell Quaff" },
+                                        { n: "Cleverness", s: "Spirit Essence, Profundity", k: "Blazing Hot, Celebration Wish" }
+                                    ];
+                                    document.write(specs.map(sp => `<div style="background: var(--pet-inner-bg); border-left: 4px solid var(--pet-purple); padding: 1.5rem; border-radius: 4px; border: 1px solid var(--pet-border); border-left-width: 4px;"><h4 style="color: var(--pet-purple); margin: 0 0 0.5rem 0;">${sp.n}</h4><div style="font-size: 0.8rem; color: var(--pet-accent); margin-bottom: 0.5rem;">Subs: ${sp.s}</div><div style="font-size: 0.8rem; background: var(--color-card); padding: 8px; border-radius: 4px; border: 1px solid var(--pet-border);">Skills: ${sp.k}</div></div>`).join(''));
+                                </script>
+                            </div>
+                        </div>
+
+                        <div style="border-top: 2px dotted var(--pet-border); margin: 3rem 0;"></div>
+
+                        <div id="spirit" class="guide-subsection">
+                            <h3 style="color: var(--pet-accent); font-size: 1.4rem; margin-bottom: 1rem;">05. Fighting
+                                Spirit</h3>
+                            <p style="color: var(--color-muted); margin-bottom: 1.5rem; line-height: 1.6;">Increases Max
+                                Attack and Defense. Herbs are sold in the Fighting Spirit window.</p>
+
+                            <div
+                                style="background: var(--pet-inner-bg); border: 1px solid var(--pet-border); border-radius: 15px; padding: 2rem;">
+
+                                <h4
+                                    style="color: var(--pet-accent); font-size: 0.9rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px;">
+                                    Growth Materials</h4>
+
+                                <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem;">
+
+                                    <div
+                                        style="flex: 1; min-width: 250px; background: var(--color-card); padding: 20px; border-radius: 10px; border: 1px solid var(--pet-border); border-left: 4px solid var(--pet-accent);">
+                                        <strong
+                                            style="color: var(--pet-text); display: block; font-size: 1.1rem;">Dragonfang
+                                            Herb</strong>
+                                        <div
+                                            style="font-size: 0.85rem; color: var(--pet-accent); font-weight: bold; margin-top: 5px;">
+                                            Cost: 2 Celebeans OR 10 Sunny Jade</div>
+                                    </div>
+
+                                    <div
+                                        style="flex: 1; min-width: 250px; background: var(--color-card); padding: 20px; border-radius: 10px; border: 1px solid var(--pet-border); border-left: 4px solid var(--pet-purple);">
+                                        <strong
+                                            style="color: var(--pet-text); display: block; font-size: 1.1rem;">Dragon
+                                            Dance Herb</strong>
+                                        <div
+                                            style="font-size: 0.85rem; color: var(--pet-purple); font-weight: bold; margin-top: 5px;">
+                                            Cost: 40 Dragonfang, 2 Crystal Emeralds</div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background: var(--color-card); padding: 1.5rem; border-radius: 10px; border: 1px dashed var(--pet-accent); margin-bottom: 2rem;">
+                                    <h4 style="color: var(--pet-accent); font-size: 1rem; margin-bottom: 10px;">Rank
+                                        System</h4>
+                                    <p style="font-size: 0.95rem; line-height: 1.6; margin: 0;">9 Ranks (I-IX) with 99
+                                        levels each. Rank I Lvl 99 &rarr; Rank II Lvl 1.</p>
+                                </div>
+
+                                <div
+                                    style="text-align: center; border-top: 1px solid var(--pet-border); padding-top: 2rem;">
+                                    <div
+                                        style="font-size: 2.2rem; color: var(--pet-text); font-weight: 800; letter-spacing: -1px;">
+                                        RANK IX LVL 99</div>
+                                    <div
+                                        style="margin-top: 15px; background: var(--color-card); border: 2px solid var(--pet-purple); padding: 12px 30px; border-radius: 50px; display: inline-block; color: var(--pet-purple); font-weight: 800; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(112, 56, 224, 0.2);">
+                                        +72% Crit Bonus Damage
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="border-top: 2px dotted var(--pet-border); margin: 3rem 0;"></div>
+
+                        <div id="myna" class="guide-subsection">
+                            <h3 style="color: var(--pet-accent); font-size: 1.4rem; margin-bottom: 1rem;">06. Myna</h3>
+                            <p style="color: var(--color-muted); line-height: 1.6;">Affinity items providing temporary
+                                Attack or Defense bonuses. Scales with Affinity level and Pet Grade.</p>
+                            <div
+                                style="background: var(--pet-inner-bg); border: 1px solid var(--pet-border); padding: 1.5rem; border-radius: 12px; margin-top: 1rem;">
+                                <p style="font-size: 0.9rem; margin: 0;">Exchange <strong>Rough Myna Orbs</strong> for
+                                    Myna. Costs <strong>Red Mushrooms</strong> based on orb quality.</p>
+                            </div>
+                        </div>
+
+                        <div style="border-top: 2px dotted var(--pet-border); margin: 3rem 0;"></div>
+
+                        <div id="trait" class="guide-subsection">
+                            <h3 style="color: var(--pet-accent); font-size: 1.4rem; margin-bottom: 1rem;">07. Trait</h3>
+                            <div
+                                style="background: var(--pet-inner-bg); border: 1px solid var(--pet-border); border-radius: 15px; padding: 2rem;">
+                                <p style="line-height: 1.6;">Trait stats can be trained <strong>~1300 points above max
+                                        growth</strong>.</p>
+                                <div
+                                    style="background: var(--color-card); border: 1px dashed var(--pet-accent); padding: 15px; border-radius: 10px; margin: 15px 0;">
+                                    <strong style="color: var(--pet-purple);">Example:</strong> Arborik 7130 Weaken Res
+                                    + Weaken Trait &rarr; <strong>8340</strong>.
+                                </div>
+                                <p style="font-size: 0.9rem;">Release pets to get Jades matching their Trait. Use
+                                    <strong>Body Strengthen Potion</strong> to reroll Traits (50 Sunny Jade).
+                                </p>
+                            </div>
+                        </div>
+
+                        <div style="border-top: 2px dotted var(--pet-border); margin: 3rem 0;"></div>
+
+                        <div id="age" class="guide-subsection">
+                            <h3 style="color: var(--pet-accent); font-size: 1.4rem; margin-bottom: 1rem;">08. Pet Age
+                            </h3>
+                            <div
+                                style="background: var(--pet-inner-bg); border: 1px solid var(--pet-border); border-radius: 12px; padding: 1.5rem;">
+                                <p style="margin: 0;">If Age reaches max, the pet dies. Buy Age-reducing or
+                                    Life-increasing items at the <strong>Pet Master Shop</strong>.</p>
+                            </div>
+                        </div>
+
+                        <div style="border-top: 2px dotted var(--pet-border); margin: 3rem 0;"></div>
+
+                        <div id="growth" class="guide-subsection">
+                            <h3 style="color: var(--pet-accent); font-size: 1.4rem; margin-bottom: 1rem;">09. Pet Growth
+                                and Grade</h3>
+                            <div
+                                style="background: var(--pet-inner-bg); border: 1px solid var(--pet-border); border-radius: 15px; padding: 2rem;">
+                                <p style="line-height: 1.6; margin-bottom: 1.5rem;">
+                                    Higher Growth = Higher Grade. Grade allows appearance Evolution. Use Pet Jade or
+                                    Celebeans to train. Failures yield minimal points; success chances drop at high
+                                    growth.
+                                </p>
+
+                                <div
+                                    style="background: var(--color-card); border-left: 4px solid var(--pet-accent); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--pet-border); border-left-width: 4px;">
+                                    <p style="font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                                        Reaching <strong>Grade 12</strong> and <strong>Grade 18</strong> are the most
+                                        critical milestones. These grades unlock the ability to use Evolution Mushrooms
+                                        to transform your pet's physical form.
+                                    </p>
+                                    <div style="margin-top: 15px;">
+                                        <a href="pet-evolution.html"
+                                            style="color: var(--pet-purple); font-weight: bold; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 5px;">
+                                            <span>For more details, check out pet evolution</span>
+                                            <span style="font-size: 1.2rem;">→</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="border-top: 2px dotted var(--pet-border); margin: 3rem 0;"></div>
+
+                        <div id="jades" class="guide-subsection">
+                            <h3 style="color: var(--pet-accent); font-size: 1.4rem; margin-bottom: 1rem;">10. Pet Jade
+                            </h3>
+                            <div
+                                style="background: var(--pet-inner-bg); border: 1px solid var(--pet-border); border-radius: 15px; padding: 1.5rem;">
+                                <div
+                                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; margin-bottom: 1.5rem;">
+                                    <script>
+                                        const jades = [["Bloodspirit", "HP"], ["Glory", "Spirit"], ["Dragon", "Min ATK"], ["Imperial", "Max ATK"], ["Tortoise", "DEF"], ["Heaveneye", "ACC"], ["Windwhirl", "EVA"], ["Tiger", "Stun Res"], ["Bear", "Weaken Res"], ["Flyshadow", "Silence Res"], ["Windsong", "Sleep Res"], ["Serpent", "Para Res"]];
+                                        document.write(jades.map(j => `<div style="background: var(--color-card); padding: 8px; border-radius: 6px; border: 1px solid var(--pet-border); font-size: 0.8rem;"><strong>${j[0]}:</strong> ${j[1]}</div>`).join(''));
+                                    </script>
+                                </div>
+                                <h4 style="color: var(--pet-accent); margin-bottom: 0.5rem;">Ranks</h4>
+                                <ul style="font-size: 0.85rem; padding-left: 20px;">
+                                    <li><strong>Minor:</strong> +20 (Up to Grade 11)</li>
+                                    <li><strong>Normal:</strong> +40 (Up to Grade 17)</li>
+                                    <li><strong>Improved:</strong> +100 (Any Grade)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div style="border-top: 2px dotted var(--pet-border); margin: 3rem 0;"></div>
+
+                        <div id="skills" class="guide-subsection">
+                            <h3 style="color: var(--pet-accent); font-size: 1.4rem; margin-bottom: 1rem;">11. Skill
+                                Jades</h3>
+                            <div
+                                style="background: var(--pet-inner-bg); border: 1px solid var(--pet-border); border-radius: 12px; padding: 1.5rem;">
+                                <p>Replace/Upgrade skills with Skill Jades. Advanced Jades cost <strong>History of
+                                        Domestication</strong> (Item Exchange).</p>
+                            </div>
+                        </div>
+
+                        <div style="border-top: 2px dotted var(--pet-border); margin: 3rem 0;"></div>
+
+                        <div id="evolution" class="guide-subsection">
+                            <h3 style="color: var(--pet-accent); font-size: 1.4rem; margin-bottom: 1rem;">12. Pet Soul,
+                                Evolution and Mutation</h3>
+                            <div
+                                style="background: var(--pet-inner-bg); border: 1px solid var(--pet-border); border-radius: 15px; padding: 2rem;">
+                                <p style="line-height: 1.6; margin-bottom: 1.5rem;">
+                                    Pet Souls are purchased from the Marketplace, and will change your pet's appearance
+                                    to look like a different pet.
+                                </p>
+
+                                <div
+                                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+                                    <div
+                                        style="background: var(--color-card); border: 1px solid var(--pet-border); padding: 1.2rem; border-radius: 10px;">
+                                        <span class="evo-pill"
+                                            style="background: #2563eb; color: #fff;">Evolution</span>
+                                        <p style="font-size: 0.9rem; margin-top: 10px;">
+                                            Once your pet has reached the appropriate grades, use <strong>Blue
+                                                Mushrooms</strong> (Evolution at Grade 12) or <strong>Colorful
+                                                Mushrooms</strong> (Evolution at Grade 18) to change your pet's
+                                            appearance.
+                                        </p>
+                                    </div>
+                                    <div
+                                        style="background: var(--color-card); border: 1px solid var(--pet-border); padding: 1.2rem; border-radius: 10px;">
+                                        <span class="evo-pill" style="background: #db2777; color: #fff;">Mutation</span>
+                                        <p style="font-size: 0.9rem; margin-top: 10px;">
+                                            Use <strong>Gem Mushrooms</strong> at Grade 12 or Grade 18 to trigger
+                                            mutations for alternate skins.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background: var(--pet-card-bg); border-left: 4px solid var(--pet-accent); padding: 1rem; border-radius: 4px; font-size: 0.9rem;">
+                                    <p>You can also use <strong>Red Mushrooms</strong> to revert the effects of the
+                                        other mushrooms. Buy these from the <strong>Pet Master's Pet Shop</strong> and
+                                        <strong>Item Exchange</strong>.
+                                    </p>
+                                    <a href="pet-evolution.html"
+                                        style="color: var(--pet-purple); font-weight: bold; text-decoration: none; display: inline-block; margin-top: 10px;">For
+                                        more details, check out pet evolution →</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="border-top: 2px dotted var(--pet-border); margin: 3rem 0;"></div>
+
+                        <div id="aptitudes" class="guide-subsection">
+                            <h3 style="color: var(--pet-accent); font-size: 1.4rem; margin-bottom: 1rem;">13. Aptitudes
+                            </h3>
+                            <div
+                                style="background: var(--pet-inner-bg); border: 1px solid var(--pet-border); border-radius: 12px; padding: 1.5rem;">
+                                <p style="line-height: 1.6; margin: 0;">
+                                    Depending on their type, pets are proficient in different aptitudes. A random value
+                                    will be assigned to the respective aptitude and these change when using a
+                                    <strong>Menggu Relic</strong>.
+                                </p>
+                                <div
+                                    style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+                                    <span
+                                        style="background: var(--color-card); border: 1px solid var(--pet-border); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">Farming</span>
+                                    <span
+                                        style="background: var(--color-card); border: 1px solid var(--pet-border); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">Fishing</span>
+                                    <span
+                                        style="background: var(--color-card); border: 1px solid var(--pet-border); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">Mining</span>
+                                    <span
+                                        style="background: var(--color-card); border: 1px solid var(--pet-border); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">Hunting</span>
+                                    <span
+                                        style="background: var(--color-card); border: 1px solid var(--pet-border); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">Woodworking</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="guide-card">
+                        <div class="guide-card-header">
+                            <h2 class="guide-card-title">Pet Gear</h2>
+                            <p class="guide-card-description" style="color: var(--color-muted);">Consisting of the Pet
+                                Workshop and Gear Fortification.</p>
+                        </div>
+
+                        <div id="workshop" class="guide-subsection">
+                            <h3 style="color: var(--pet-accent); font-size: 1.4rem; margin-bottom: 1rem;">Pet Workshop
+                            </h3>
+                            <div
+                                style="background: var(--pet-inner-bg); border: 1px solid var(--pet-border); border-radius: 15px; padding: 2rem;">
+                                <p style="line-height: 1.6; margin-bottom: 1.5rem;">
+                                    The Workshop uses items gathered by pets while foraging to craft Pet Gear and
+                                    remedies, including <strong>Mirage Candy</strong> that grants EXP to your pets. It
+                                    is the only way to craft the best gear, requiring high Tech Stats and Development.
+                                </p>
+
+                                <div
+                                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+                                    <div
+                                        style="background: var(--color-card); border: 1px solid var(--pet-border); padding: 1.2rem; border-radius: 10px;">
+                                        <h4 style="color: var(--pet-accent); margin-top: 0; font-size: 1rem;">Craft
+                                            Levels</h4>
+                                        <ul style="font-size: 0.85rem; padding-left: 1.2rem; line-height: 1.4;">
+                                            <li><strong>Level 1:</strong> Basic Pet Gear.</li>
+                                            <li><strong>Level 2:</strong> +1 and +2 Pet Gear.</li>
+                                            <li><strong>Tech Stats:</strong> Automatically added by Level 60+ pets
+                                                (marked with *).</li>
+                                        </ul>
+                                    </div>
+                                    <div
+                                        style="background: var(--color-card); border: 1px solid var(--pet-border); padding: 1.2rem; border-radius: 10px;">
+                                        <h4 style="color: var(--pet-accent); margin-top: 0; font-size: 1rem;">Foraging
+                                            Recipes</h4>
+                                        <p style="font-size: 0.85rem; margin: 0;">Obtain specific recipes through
+                                            Foraging types:</p>
+                                        <div
+                                            style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px; font-size: 0.75rem; margin-top: 10px;">
+                                            <div><strong>Farming:</strong> Claw + Relic</div>
+                                            <div><strong>Woodwork:</strong> Armor + Vest</div>
+                                            <div><strong>Hunting:</strong> Aura + Dream</div>
+                                            <div><strong>Fishing:</strong> Gem + Legacy</div>
+                                            <div><strong>Mining:</strong> Mask + Pendant</div>
+                                            <div><strong>Treasure:</strong> Sutra + Mystery</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h4 style="color: var(--pet-purple); font-size: 1rem; margin-bottom: 10px;">Mirage Candy
+                                    (EXP) Milestones</h4>
+                                <div
+                                    style="background: var(--color-card); padding: 1rem; border-radius: 10px; border: 1px solid var(--pet-border); font-size: 0.85rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;">
+                                    <div><strong>Lv30:</strong> Candy I (20k)</div>
+                                    <div><strong>Lv70:</strong> Candy II (30k)</div>
+                                    <div><strong>Lv100:</strong> Candy III (40k)</div>
+                                    <div><strong>Lv115:</strong> Candy IV (60k)</div>
+                                    <div><strong>Lv130:</strong> Candy V (90k)</div>
+                                    <div><strong>Lv140:</strong> Candy VI (130k)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="border-top: 2px dotted var(--pet-border); margin: 3rem 0;"></div>
+
+                        <div id="fortify" class="guide-subsection">
+                            <h3 style="color: var(--pet-accent); font-size: 1.4rem; margin-bottom: 1rem;">Fortify Pet
+                                Gear</h3>
+                            <div
+                                style="background: var(--pet-inner-bg); border: 1px solid var(--pet-border); border-radius: 15px; padding: 2rem;">
+                                <p style="line-height: 1.6; margin-bottom: 1rem;">Upgrade your gear at a Pet Master
+                                    using the "Fortify Gear" option. Gear will <strong>not</strong> be destroyed if it
+                                    fails.</p>
+
+                                <table
+                                    style="width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 0.9rem;">
+                                    <tr style="border-bottom: 1px solid var(--pet-border);">
+                                        <th style="text-align: left; padding: 10px;">Rank</th>
+                                        <th style="text-align: left; padding: 10px;">Required Grade</th>
+                                        <th style="text-align: left; padding: 10px;">Upgrade Stone</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px;">Basic</td>
+                                        <td style="padding: 10px;">Grade 4</td>
+                                        <td style="padding: 10px;">—</td>
+                                    </tr>
+                                    <tr style="border-top: 1px solid var(--pet-border);">
+                                        <td style="padding: 10px;">+1 Gear</td>
+                                        <td style="padding: 10px;">Grade 8</td>
+                                        <td style="padding: 10px; color: var(--pet-accent);">Jadefog Stone</td>
+                                    </tr>
+                                    <tr style="border-top: 1px solid var(--pet-border);">
+                                        <td style="padding: 10px;">+2 Gear</td>
+                                        <td style="padding: 10px;">Grade 12</td>
+                                        <td style="padding: 10px; color: var(--pet-purple);">Bluemoon Stone</td>
+                                    </tr>
+                                </table>
+
+                                <div
+                                    style="background: rgba(184, 134, 11, 0.1); border: 1px dashed var(--pet-accent); padding: 1rem; border-radius: 8px; font-size: 0.85rem; text-align: center;">
+                                    Jadefog and Bluemoon stones are found randomly while <strong>Foraging</strong> for
+                                    materials.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <a href="#" class="back-to-top">↑</a>
+
+    <!-- Footer -->
+    <footer class="lumenpedia-footer">
+        <div class="footer-container">
+
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo">LUMENPEDIA</div>
+                    <p class="footer-tagline">Your all-in-one community guide for the Jade Dynasty Lumen Server.
+                        Discover game information, guides, and server updates in one convenient location.</p>
+
+                    <!-- Social Media -->
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/jadedynastylumen" class="social-link" target="_blank"
+                            aria-label="Facebook">
+                            <svg width="16" height="16">
+                                <use href="#icon-facebook"></use>
+                            </svg>
+                        </a>
+                        <a href="https://discord.com/invite/TeNbyexB6W" class="social-link" target="_blank"
+                            aria-label="Discord">
+                            <svg width="16" height="16">
+                                <use href="#icon-discord"></use>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/jadedynastylumen/" class="social-link" target="_blank"
+                            aria-label="Instagram">
+                            <svg width="16" height="16">
+                                <use href="#icon-instagram"></use>
+                            </svg>
+                        </a>
+                        <a href="https://www.twitch.tv/jadedynastylumen" class="social-link" target="_blank"
+                            aria-label="Twitch">
+                            <svg width="16" height="16">
+                                <use href="#icon-twitch"></use>
+                            </svg>
+                        </a>
+                        <a href="https://vk.com/lumendynasty" class="social-link" target="_blank" aria-label="VK">
+                            <svg width="16" height="16">
+                                <use href="#icon-vk"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Explore Section -->
+                <div class="footer-section">
+                    <h4>EXPLORE</h4>
+                    <div class="footer-links">
+                        <a href="latest-updates.html" class="footer-link">Latest Updates</a>
+                        <a href="browse.html" class="footer-link">Browse All Guides</a>
+                        <!-- <a href="classes.html" class="footer-link">Classes & Factions</a>
+                        <a href="quests.html" class="footer-link">Quest Database</a>
+                        <a href="items.html" class="footer-link">Item Database</a> -->
+                    </div>
+                </div>
+
+                <!-- Community Section -->
+                <div class="footer-section">
+                    <h4>COMMUNITY</h4>
+                    <div class="footer-links">
+                        <a href="https://www.facebook.com/jadedynastylumen" class="footer-link" target="_blank">
+                            <svg class="footer-icon" width="14" height="14">
+                                <use href="#icon-facebook"></use>
+                            </svg>Facebook</a>
+                        <a href="https://discord.com/invite/TeNbyexB6W" class="footer-link" target="_blank">
+                            <svg class="footer-icon" width="14" height="14">
+                                <use href="#icon-discord"></use>
+                            </svg>Discord</a>
+                        <a href="https://www.instagram.com/jadedynastylumen/" class="footer-link" target="_blank">
+                            <svg class="footer-icon" width="14" height="14">
+                                <use href="#icon-instagram"></use>
+                            </svg>Instagram</a>
+                        <a href="https://www.twitch.tv/jadedynastylumen" class="footer-link" target="_blank">
+                            <svg class="footer-icon" width="14" height="14">
+                                <use href="#icon-twitch"></use>
+                            </svg>Twitch.tv</a>
+                        <a href="https://vk.com/lumendynasty" class="footer-link" target="_blank">
+                            <svg class="footer-icon" width="14" height="14">
+                                <use href="#icon-vk"></use>
+                            </svg>VK</a>
+                    </div>
+                </div>
+
+                <!-- Support Section -->
+                <div class="footer-section">
+                    <h4>SUPPORT</h4>
+                    <div class="footer-links">
+                        <a href="support.html" class="footer-link">Help Center</a>
+                        <a href="support.html" class="footer-link">Report Issue</a>
+                        <a href="support.html" class="footer-link">Contribute</a>
+                        <a href="support.html" class="footer-link">Contact Us</a>
+                        <!-- <a href="faq.html" class="footer-link">FAQ</a> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">© 2025 Lumenpedia. All rights reserved.</div>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="cookies.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script src="footer.js"></script>
+    <script src="icon-loader.js"></script>
+
+    <script>
+        // FIX: Scroll-Spy logic to highlight the sidebar as you scroll
+        const sections = document.querySelectorAll('div[id]');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
