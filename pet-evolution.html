@@ -40,13 +40,17 @@
 
         /* Left Sidebar */
         .pet-sidebar {
-            flex: 0 0 300px;
+            flex: 0 0 320px;
             background: var(--bg-secondary, #1a1f2e);
             border-radius: 20px;
             padding: 1.5rem;
             height: fit-content;
             border: 1px solid var(--border-color, #3a4055);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            overscroll-behavior: contain;
+            position: sticky;
+            top: 2rem;
+            align-self: flex-start;
         }
 
         .pet-sidebar h3 {
@@ -60,17 +64,117 @@
             letter-spacing: 1px;
         }
 
+        /* Search bar */
+        .pet-search {
+            margin-bottom: 1rem;
+        }
+
+        .pet-search input {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            background: var(--bg-tertiary, #0f1422);
+            border: 2px solid var(--border-color, #3a4055);
+            border-radius: 30px;
+            color: var(--text-primary, #f0e9d8);
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        .pet-search input:focus {
+            outline: none;
+            border-color: var(--accent-gold, #e6b450);
+            box-shadow: 0 0 0 3px rgba(230, 180, 80, 0.2);
+        }
+
+        .pet-search input::placeholder {
+            color: var(--text-secondary, #a0a8b8);
+            font-style: italic;
+        }
+
+        /* A-Z Filter */
+        .az-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-bottom: 1rem;
+            justify-content: center;
+            background: var(--bg-tertiary, #0f1422);
+            padding: 0.8rem;
+            border-radius: 40px;
+            border: 1px solid var(--border-color, #3a4055);
+        }
+
+        .az-letter {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-secondary, #1a1f2e);
+            border: 1px solid var(--border-color, #3a4055);
+            border-radius: 50%;
+            color: var(--text-primary, #f0e9d8);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .az-letter:hover {
+            background: var(--accent-dim, #2a3f5e);
+            border-color: var(--accent-gold, #e6b450);
+            transform: scale(1.1);
+        }
+
+        .az-letter.active {
+            background: var(--accent-gold, #e6b450);
+            border-color: var(--accent-gold, #e6b450);
+            color: #000;
+        }
+
+        .az-letter.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .filter-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary, #a0a8b8);
+        }
+
+        .clear-filter {
+            color: var(--accent-gold, #e6b450);
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .clear-filter:hover {
+            color: #ffd966;
+        }
+
         .pet-list {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
-            max-height: 650px;
+            max-height: 500px;
             overflow-y: auto;
             padding-right: 0.3rem;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-gold, #e6b450) var(--bg-tertiary, #0f1422);
         }
 
         .pet-list::-webkit-scrollbar {
-            width: 6px;
+            width: 8px;
         }
 
         .pet-list::-webkit-scrollbar-track {
@@ -81,6 +185,11 @@
         .pet-list::-webkit-scrollbar-thumb {
             background: var(--accent-gold, #e6b450);
             border-radius: 10px;
+            border: 2px solid var(--bg-tertiary, #0f1422);
+        }
+
+        .pet-list::-webkit-scrollbar-thumb:hover {
+            background: #ffd966;
         }
 
         .pet-item {
@@ -109,6 +218,13 @@
             font-weight: 600;
         }
 
+        .no-results {
+            text-align: center;
+            color: var(--text-secondary, #a0a8b8);
+            padding: 2rem;
+            font-style: italic;
+        }
+
         /* Right Evolution Canvas */
         .evolution-canvas {
             flex: 1;
@@ -120,6 +236,7 @@
             display: flex;
             flex-direction: column;
             overflow-x: auto;
+            overflow-y: hidden;
         }
 
         .evolution-header {
@@ -154,9 +271,10 @@
             flex-direction: column;
             align-items: center;
             gap: 4rem;
-            width: 100%;
+            width: fit-content;
+            min-width: 100%;
             padding: 1rem 0;
-            min-width: 1300px;
+            margin: 0 auto;
         }
 
         .tree-row {
@@ -185,6 +303,7 @@
             background: var(--bg-tertiary, #0f1422);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 0 3px rgba(230, 180, 80, 0.3);
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .pet-card .image-wrapper:hover {
@@ -261,6 +380,166 @@
             line-height: 1.8;
         }
 
+        /* Distinct style for Coming Soon / Locked paths */
+        .pet-card.coming-soon .image-wrapper {
+            filter: grayscale(1) contrast(0.8);
+            opacity: 0.5;
+            border-style: dashed;
+            border-color: #555;
+            box-shadow: none;
+        }
+
+        .pet-card.coming-soon .evolution-description {
+            color: #777;
+            border-color: #444;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        .pet-card.coming-soon:hover .image-wrapper {
+            filter: grayscale(0.5);
+            opacity: 0.7;
+            transform: scale(1.02);
+        }
+
+        /* Non-evolvable pet style with terminal overlay (Group 1) */
+        .pet-card.non-evolvable .image-wrapper {
+            position: relative;
+            border-color: #ff3333;
+            box-shadow: 0 0 20px rgba(255, 51, 51, 0.3);
+            animation: borderPulse 1.5s infinite;
+        }
+
+        @keyframes borderPulse {
+            0% { border-color: #ff3333; box-shadow: 0 0 20px rgba(255, 51, 51, 0.3); }
+            50% { border-color: #ff8888; box-shadow: 0 0 30px rgba(255, 136, 136, 0.6); }
+            100% { border-color: #ff3333; box-shadow: 0 0 20px rgba(255, 51, 51, 0.3); }
+        }
+
+        .terminal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            box-sizing: border-box;
+            border-radius: 35px;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+
+        .terminal-top {
+            text-align: center;
+            margin-bottom: auto;
+        }
+
+        .terminal-line.searching {
+            color: #33ff33;
+            font-size: 1.2rem;
+            text-shadow: 0 0 5px #33ff33;
+            animation: pulse 1.5s infinite;
+            margin-bottom: 0.5rem;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            font-weight: 500;
+        }
+
+        .terminal-line.no-image {
+            color: #33ff33;
+            font-size: 1.1rem;
+            text-shadow: 0 0 5px #33ff33;
+            border-right: none;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            font-weight: 600;
+        }
+
+        .terminal-bottom {
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .terminal-line.error-blink {
+            color: #ff3333;
+            font-size: 0.9rem;
+            text-shadow: 0 0 5px #ff3333;
+            font-weight: bold;
+            margin: 0.2rem 0;
+            animation: textBlink 1s infinite;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+
+        /* Group 2, 3, 4, 5 - Overlay styles */
+        .pet-card.no-evolution .image-wrapper {
+            position: relative;
+        }
+
+        .pet-card.no-evolution.dimmed .image-wrapper img {
+            filter: brightness(0.5);
+        }
+
+        .no-evolution-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            box-sizing: border-box;
+            border-radius: 35px;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            pointer-events: none;
+            background: transparent;
+        }
+
+        .overlay-top {
+            text-align: center;
+            color: #ffaa00;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-shadow: 0 0 8px #ffaa00;
+            animation: textBlink 1s infinite;
+            margin-bottom: auto;
+            background: transparent;
+        }
+
+        .overlay-bottom {
+            text-align: center;
+            color: #ffaa00;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-shadow: 0 0 8px #ffaa00;
+            animation: textBlink 1s infinite;
+            margin-top: auto;
+            background: transparent;
+        }
+
+        .overlay-bottom-green {
+            text-align: center;
+            color: #33ff33;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-shadow: 0 0 8px #33ff33;
+            animation: textBlink 1s infinite;
+            margin-top: auto;
+            background: transparent;
+        }
+
+        @keyframes textBlink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
         /* Responsive */
         @media (max-width: 1400px) {
             .pet-card {
@@ -274,6 +553,22 @@
 
             .tree-row {
                 gap: 6rem;
+            }
+
+            .terminal-line.searching {
+                font-size: 1rem;
+            }
+
+            .terminal-line.no-image {
+                font-size: 0.9rem;
+            }
+
+            .terminal-line.error-blink {
+                font-size: 0.8rem;
+            }
+
+            .overlay-top, .overlay-bottom, .overlay-bottom-green {
+                font-size: 1rem;
             }
         }
     </style>
@@ -323,9 +618,25 @@
 
     <!-- Pet Evolution Content -->
     <div class="pet-evolution-container">
-        <!-- Left Sidebar - Pet List -->
+        <!-- Left Sidebar - Pet List with Search and A-Z -->
         <aside class="pet-sidebar">
             <h3>🐾 PET LIST</h3>
+            
+            <!-- Search Bar -->
+            <div class="pet-search">
+                <input type="text" id="petSearch" placeholder="🔍 Search pets..." autocomplete="off">
+            </div>
+
+            <!-- A-Z Filter -->
+            <div class="az-filter" id="azFilter"></div>
+
+            <!-- Filter Stats -->
+            <div class="filter-stats">
+                <span id="petCount">Showing 74 pets</span>
+                <span class="clear-filter" id="clearFilter" style="display: none;">Clear filters</span>
+            </div>
+
+            <!-- Pet List -->
             <div class="pet-list" id="petList"></div>
         </aside>
 
@@ -365,7 +676,7 @@
         </section>
     </div>
 
-    <!-- Footer - Exact copy from under-construction.html -->
+    <!-- Footer -->
     <footer class="lumenpedia-footer">
         <div class="footer-container">
             <!-- Main Footer Content -->
@@ -479,19 +790,22 @@
     <!-- Pet Evolution Script -->
     <script>
         (function () {
-            // Complete pet database
+            // Complete pet database - REMOVED Etherflame Totem and Hellfire Inferno
             const pets = [
                 "Aissy Bear", "Ambling Angler", "Apocalypse Cow", "Astral Drake", "Bandit",
-                "Battleground Tiger", "Blossoming Princess", "Checkers", "X'mas Snowman",
-                "Chrona Ultimate", "Chromawing", "Chubby Baby", "Cloud Tiger", "Dream Catty",
-                "Dream Weaver", "Dryadling", "Dystinor", "Emerald Spirit", "Etherflame Totem",
-                "Fairy Diah", "Firerock Demon", "Genghis Kong", "Hades Watchmen", "Hellfire Inferno",
-                "Holly", "JD Bear", "JD Mini Pet", "Jessie", "Jumping Squirrel", "Junkyard Dogg",
-                "Kuzge", "Lazzie", "Little Cow", "Little Deer", "Little Sheep", "Maggie Fairy",
-                "MiuMiu", "Monkey King", "Night Owl", "Octomum", "Pengo", "Phantasma",
-                "Plump Panda", "Plump Toad", "Raja", "Rhex", "Rubi Boar", "Scorpus Ravager",
-                "Silver Fox", "Sproutax", "Stonus Protector", "Tater Tot", "Thunder Snake",
-                "Torin Kul", "Underworld Judge", "Wild Wolf", "Wolfgang", "Woody Pig", "Yaksha Ranger"
+                "Battleground Tiger", "Blossoming Princess", "Checkers", "Chibi-chan", "X'mas Snowman",
+                "Chrono Ultimate", "Chromawing", "Chubby Baby", "Cloud Tiger", "Darkplume",
+                "Dragon Scout", "Dream Catty", "Dream Weaver", "Dryadling", "Dystinor",
+                "Emerald Spirit", "Fairy Diah", "Firerock Demon", "Genghis Kong",
+                "Hades Watchman", "Holly", "JD Mini Pet",
+                "Jessie", "Jumping Squirrel", "Junkyard Dogg", "Kuzge", "Lazzie",
+                "Little Cow", "Little Deer", "Little Sheep", "Lovebird", "Maggie Fairy",
+                "Mini Bilu", "Mini JD (2012 PK Version)", "Mini Velonus", "MiuMiu",
+                "Night Owl", "Octomum", "Pengo", "Phantasma", "Plump Panda",
+                "Plump Toad", "Raccoon Rascal ♀", "Raccoon Rascal ♂", "Raja", "Rattlesnake",
+                "Rhex", "Rubi Boar", "Scorpus Ravager", "Silver Fox", "Sproutax",
+                "Stonus Protector", "Tater Tot", "Thunder Snake", "Torin Kul", "Underworld Judge",
+                "Warlord's Bodyguard", "Wild Wolf", "Wolfgang", "Woody Pig", "Yaksha Ranger"
             ].sort();
 
             const petListEl = document.getElementById('petList');
@@ -504,6 +818,16 @@
                 document.getElementById('level2'),
                 document.getElementById('level3')
             ];
+
+            // Search and filter elements
+            const searchInput = document.getElementById('petSearch');
+            const azFilter = document.getElementById('azFilter');
+            const petCount = document.getElementById('petCount');
+            const clearFilter = document.getElementById('clearFilter');
+
+            // State
+            let currentFilter = '';
+            let currentSearch = '';
 
             // --- THE FALLBACK LOGIC ---
             // Global function to handle image errors by cycling through extensions
@@ -526,65 +850,320 @@
             };
 
             // Helper to create the HTML string
-            function createPetCard(basePath, petName = "", description = "", showName = false) {
+            function createPetCard(basePath, petName = "", description = "", showName = false, isComingSoon = false, isNonEvolvable = false, isNoEvolution = false, overlayTop = "", overlayBottom = "", dimImage = false, greenBottom = false) {
                 const nameHtml = showName && petName ? `<span class="pet-name">${petName}</span>` : '';
-
-                // Start by trying .jpg as the default
-                return `
-                <div class="pet-card">
-                    <div class="image-wrapper">
-                        <img src="${basePath}.jpg" 
-                             data-base="${basePath}" 
-                             data-ext-index="0" 
-                             onerror="handleImageError(this)" 
-                             alt="${petName || 'Pet evolution'}">
+                let comingSoonClass = isComingSoon ? "coming-soon" : "";
+                
+                // Group 1: Non-evolvable pets (Plump Toad, Wild Wolf) - levels 1-2 only
+                if (isNonEvolvable) {
+                    return `
+        <div class="pet-card non-evolvable">
+            <div class="image-wrapper">
+                <img src="Images/pets/no-image.png" 
+                     data-base="Images/pets/no-image" 
+                     data-ext-index="0" 
+                     onerror="handleImageError(this)" 
+                     alt="Evolution not possible">
+                <div class="terminal-overlay">
+                    <div class="terminal-top">
+                        <div class="terminal-line searching">searching...</div>
+                        <div class="terminal-line no-image">NO IMAGE FOUND</div>
                     </div>
-                    ${nameHtml}
-                    ${description ? `<div class="evolution-description">${description}</div>` : ''}
+                    <div class="terminal-bottom">
+                        <div class="terminal-line error-blink">GRADING NOT POSSIBLE...</div>
+                        <div class="terminal-line error-blink">EVOLUTION NOT POSSIBLE...</div>
+                        <div class="terminal-line error-blink">MUTATION NOT POSSIBLE...</div>
+                    </div>
                 </div>
-            `;
+            </div>
+            ${nameHtml}
+            ${description ? `<div class="evolution-description">${description}</div>` : ''}
+        </div>
+    `;
+                }
+                
+                // Groups 2-5: Overlay cards (keep original image)
+                if (isNoEvolution) {
+                    const dimClass = dimImage ? "dimmed" : "";
+                    const bottomClass = greenBottom ? "overlay-bottom-green" : "overlay-bottom";
+                    return `
+        <div class="pet-card no-evolution ${dimClass}">
+            <div class="image-wrapper">
+                <img src="${basePath}.jpg" 
+                     data-base="${basePath}" 
+                     data-ext-index="0" 
+                     onerror="handleImageError(this)" 
+                     alt="${petName || 'Pet evolution'}">
+                <div class="no-evolution-overlay">
+                    ${overlayTop ? `<div class="overlay-top">${overlayTop}</div>` : ''}
+                    ${overlayBottom ? `<div class="${bottomClass}">${overlayBottom}</div>` : ''}
+                </div>
+            </div>
+            ${nameHtml}
+            ${description ? `<div class="evolution-description">${description}</div>` : ''}
+        </div>
+    `;
+                }
+                
+                // Regular card (Group 6)
+                return `
+        <div class="pet-card ${comingSoonClass}">
+            <div class="image-wrapper">
+                <img src="${basePath}.jpg" 
+                     data-base="${basePath}" 
+                     data-ext-index="0" 
+                     onerror="handleImageError(this)" 
+                     alt="${petName || 'Pet evolution'}">
+            </div>
+            ${nameHtml}
+            ${description ? `<div class="evolution-description">${description}</div>` : ''}
+        </div>
+    `;
             }
 
-            // Populate pet list
-            pets.forEach(pet => {
-                const petItem = document.createElement('div');
-                petItem.className = 'pet-item';
-                petItem.textContent = pet;
-                petItem.addEventListener('click', function () {
-                    document.querySelectorAll('.pet-item').forEach(item => item.classList.remove('active'));
-                    this.classList.add('active');
+            // Build A-Z filter
+            function buildAZFilter() {
+                const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+                const availableLetters = new Set(pets.map(pet => pet.charAt(0).toUpperCase()));
+                
+                azFilter.innerHTML = letters.map(letter => 
+                    `<span class="az-letter ${!availableLetters.has(letter) ? 'disabled' : ''}" data-letter="${letter}">${letter}</span>`
+                ).join('');
 
-                    placeholder.style.display = 'none';
-                    evolutionTree.style.display = 'flex';
-                    selectedPetName.textContent = pet;
-
-                    renderEvolutionTree(pet);
+                // Add click handlers
+                document.querySelectorAll('.az-letter:not(.disabled)').forEach(el => {
+                    el.addEventListener('click', function() {
+                        const letter = this.dataset.letter;
+                        if (currentFilter === letter) {
+                            // If same letter clicked, clear filter
+                            currentFilter = '';
+                            document.querySelectorAll('.az-letter').forEach(l => l.classList.remove('active'));
+                        } else {
+                            // Set new filter
+                            currentFilter = letter;
+                            document.querySelectorAll('.az-letter').forEach(l => l.classList.remove('active'));
+                            this.classList.add('active');
+                        }
+                        updatePetList();
+                    });
                 });
-                petListEl.appendChild(petItem);
+            }
+
+            // Update pet list based on search and filter
+            function updatePetList() {
+                const filtered = pets.filter(pet => {
+                    const matchesSearch = currentSearch === '' || 
+                        pet.toLowerCase().includes(currentSearch.toLowerCase());
+                    const matchesFilter = currentFilter === '' || 
+                        pet.charAt(0).toUpperCase() === currentFilter;
+                    return matchesSearch && matchesFilter;
+                });
+
+                // Update count
+                petCount.textContent = `Showing ${filtered.length} of ${pets.length} pets`;
+                
+                // Show/hide clear filter button
+                if (currentFilter || currentSearch) {
+                    clearFilter.style.display = 'inline';
+                } else {
+                    clearFilter.style.display = 'none';
+                }
+
+                // Clear pet list
+                petListEl.innerHTML = '';
+
+                if (filtered.length === 0) {
+                    const noResults = document.createElement('div');
+                    noResults.className = 'no-results';
+                    noResults.textContent = 'No pets found matching your criteria';
+                    petListEl.appendChild(noResults);
+                    return;
+                }
+
+                // Add filtered pets to list
+                filtered.forEach(pet => {
+                    const petItem = document.createElement('div');
+                    petItem.className = 'pet-item';
+                    petItem.textContent = pet;
+                    petItem.addEventListener('click', function () {
+                        document.querySelectorAll('.pet-item').forEach(item => item.classList.remove('active'));
+                        this.classList.add('active');
+
+                        placeholder.style.display = 'none';
+                        evolutionTree.style.display = 'flex';
+                        selectedPetName.textContent = pet;
+
+                        renderEvolutionTree(pet);
+                    });
+                    petListEl.appendChild(petItem);
+                });
+
+                // If active pet is not in filtered list, clear selection
+                const activeItem = document.querySelector('.pet-item.active');
+                if (activeItem && !filtered.includes(activeItem.textContent)) {
+                    placeholder.style.display = 'flex';
+                    evolutionTree.style.display = 'none';
+                }
+            }
+
+            // Search input handler
+            searchInput.addEventListener('input', function(e) {
+                currentSearch = e.target.value;
+                updatePetList();
+            });
+
+            // Clear filter handler
+            clearFilter.addEventListener('click', function() {
+                currentFilter = '';
+                currentSearch = '';
+                searchInput.value = '';
+                document.querySelectorAll('.az-letter').forEach(l => l.classList.remove('active'));
+                updatePetList();
             });
 
             function renderEvolutionTree(basePet) {
                 const petFileName = basePet.toLowerCase().replace(/\s+/g, '');
                 const path = `Images/pets/${petFileName}`;
 
-                // Level 0
+                // Group 1: Non-evolvable pets (cannot grade at all)
+                const nonEvolvablePets = ["Plump Toad", "Wild Wolf"];
+                
+                // Group 2: Gradeable but no evolution/mutation
+                const noEvolutionPets = [
+                    "Holly", 
+                    "Mini Bilu", 
+                    "Mini JD (2012 PK Version)", 
+                    "Mini Velonus", 
+                    "Raccoon Rascal ♀", 
+                    "Raccoon Rascal ♂"
+                ];
+
+                // Group 3: Special case - Chibi-chan
+                const chibiChan = "Chibi-chan";
+
+                // Group 4: Delayed mutation - Wolfgang and Rattlesnake
+                const delayedMutationPets = ["Wolfgang", "Rattlesnake"];
+
+                // Group 5: No mutation, evolve at both g12 and g18
+                const noMutationPets = [
+                    "Apocalypse Cow", "Astral Drake", "Blossoming Princess", "Dragon Scout", 
+                    "Dream Catty", "Dream Weaver", "Emerald Spirit", "Genghis Kong", 
+                    "JD Mini Pet", "Jessie", "Junkyard Dogg", "Maggie Fairy", 
+                    "Octomum", "Pengo", "Raja", "Rhex", "Scorpus Ravager", 
+                    "Tater Tot", "Thunder Snake", "Torin Kul", "Yaksha Ranger"
+                ];
+
+                const isNonEvolvable = nonEvolvablePets.includes(basePet);
+                const isNoEvolution = noEvolutionPets.includes(basePet);
+                const isChibiChan = basePet === chibiChan;
+                const isDelayedMutation = delayedMutationPets.includes(basePet);
+                const isNoMutation = noMutationPets.includes(basePet);
+
+                // Level 0 - Base pet (ALWAYS UNTOUCHED)
                 levels[0].innerHTML = createPetCard(path, basePet, "", true);
 
-                // Level 1
-                levels[1].innerHTML =
-                    createPetCard(`${path}-g12A`, "", "Grade 12 + Blue Mushroom") +
-                    createPetCard(`${path}-g12B`, "", "Grade 12 + Blue Mushroom + Gem Mushroom");
+                if (isNonEvolvable) {
+                    // Group 1: Only image changed to no-image.png, text below PRESERVED
+                    levels[1].innerHTML =
+                        createPetCard(`Images/pets/no-image`, "", "Grade 12 + Blue Mushroom", false, false, true) +
+                        createPetCard(`Images/pets/no-image`, "", "Grade 12 + Blue Mushroom + Gem Mushroom", false, false, true);
 
-                // Level 2
-                levels[2].innerHTML =
-                    createPetCard(`${path}-g18A`, "", "Grade 18 + Colorful Mushroom") +
-                    createPetCard(`${path}-g18B`, "", "Grade 18 + Colorful Mushroom");
+                    levels[2].innerHTML =
+                        createPetCard(`Images/pets/no-image`, "", "Grade 18 + Colorful Mushroom", false, false, true) +
+                        createPetCard(`Images/pets/no-image`, "", "Grade 18 + Colorful Mushroom", false, false, true);
 
-                // Level 3
-                levels[3].innerHTML =
-                    createPetCard(`Images/pets/comingsoon-A`, "", "Pet Ascension Coming Soon") +
-                    createPetCard(`Images/pets/comingsoon-B`, "", "Pet Ascension Coming Soon");
+                    levels[3].innerHTML =
+                        createPetCard(`Images/pets/comingsoon-A`, "", "Pet Ascension Coming Soon", false, true) +
+                        createPetCard(`Images/pets/comingsoon-B`, "", "Pet Ascension Coming Soon", false, true);
+                } 
+                else if (isNoEvolution) {
+                    // Group 2: Original images with blinking text overlays (DIM all)
+                    levels[1].innerHTML =
+                        createPetCard(`${path}-g12A`, "", "Grade 12 + Blue Mushroom", false, false, false, true, "No evolution detected", "", true) +
+                        createPetCard(`${path}-g12B`, "", "Grade 12 + Blue Mushroom + Gem Mushroom", false, false, false, true, "No evolution detected", "No mutation detected", true);
+
+                    levels[2].innerHTML =
+                        createPetCard(`${path}-g18A`, "", "Grade 18 + Colorful Mushroom", false, false, false, true, "No evolution detected", "", true) +
+                        createPetCard(`${path}-g18B`, "", "Grade 18 + Colorful Mushroom", false, false, false, true, "No evolution detected", "No mutation detected", true);
+
+                    levels[3].innerHTML =
+                        createPetCard(`Images/pets/comingsoon-A`, "", "Pet Ascension Coming Soon", false, true) +
+                        createPetCard(`Images/pets/comingsoon-B`, "", "Pet Ascension Coming Soon", false, true);
+                }
+                else if (isChibiChan) {
+                    // Group 3: Chibi-chan special rules
+                    // Level 1: No evolution, no mutation → DIM images
+                    levels[1].innerHTML =
+                        createPetCard(`${path}-g12A`, "", "Grade 12 + Blue Mushroom", false, false, false, true, "No evolution detected", "", true) +
+                        createPetCard(`${path}-g12B`, "", "Grade 12 + Blue Mushroom + Gem Mushroom", false, false, false, true, "No evolution detected", "No mutation detected", true);
+
+                    // Level 2: 
+                    // g18A: Evolution happens → NO DIM, NO TEXT
+                    // g18B: Evolution happens, no mutation → NO DIM, bottom text only
+                    levels[2].innerHTML =
+                        createPetCard(`${path}-g18A`, "", "Grade 18 + Colorful Mushroom", false, false, false, false, "", "", false) +
+                        createPetCard(`${path}-g18B`, "", "Grade 18 + Colorful Mushroom", false, false, false, true, "", "No mutation detected", false);
+
+                    levels[3].innerHTML =
+                        createPetCard(`Images/pets/comingsoon-A`, "", "Pet Ascension Coming Soon", false, true) +
+                        createPetCard(`Images/pets/comingsoon-B`, "", "Pet Ascension Coming Soon", false, true);
+                }
+                else if (isDelayedMutation) {
+                    // Group 4: Wolfgang and Rattlesnake - delayed mutation
+                    // Level 1: Both evolve, no mutation yet
+                    levels[1].innerHTML =
+                        createPetCard(`${path}-g12A`, "", "Grade 12 + Blue Mushroom", false, false, false, false, "", "", false) +
+                        createPetCard(`${path}-g12B`, "", "Grade 12 + Blue Mushroom + Gem Mushroom", false, false, false, true, "", "No mutation detected", false);
+
+                    // Level 2: 
+                    // g18A: Evolves, no mutation → NO DIM, NO TEXT
+                    // g18B: Evolves, mutation active → NO DIM, green bottom text
+                    levels[2].innerHTML =
+                        createPetCard(`${path}-g18A`, "", "Grade 18 + Colorful Mushroom", false, false, false, false, "", "", false) +
+                        createPetCard(`${path}-g18B`, "", "Grade 18 + Colorful Mushroom", false, false, false, true, "", "Delayed Mutation Detected", false, true);
+
+                    levels[3].innerHTML =
+                        createPetCard(`Images/pets/comingsoon-A`, "", "Pet Ascension Coming Soon", false, true) +
+                        createPetCard(`Images/pets/comingsoon-B`, "", "Pet Ascension Coming Soon", false, true);
+                }
+                else if (isNoMutation) {
+                    // Group 5: No mutation, evolve at both g12 and g18
+                    // g12A: Evolves, no mutation → NO DIM, NO TEXT
+                    // g12B: Evolves, no mutation → NO DIM, bottom text "No mutation detected"
+                    // g18A: Evolves, no mutation → NO DIM, NO TEXT
+                    // g18B: Evolves, no mutation → NO DIM, bottom text "No mutation detected"
+                    levels[1].innerHTML =
+                        createPetCard(`${path}-g12A`, "", "Grade 12 + Blue Mushroom", false, false, false, false, "", "", false) +
+                        createPetCard(`${path}-g12B`, "", "Grade 12 + Blue Mushroom + Gem Mushroom", false, false, false, true, "", "No mutation detected", false);
+
+                    levels[2].innerHTML =
+                        createPetCard(`${path}-g18A`, "", "Grade 18 + Colorful Mushroom", false, false, false, false, "", "", false) +
+                        createPetCard(`${path}-g18B`, "", "Grade 18 + Colorful Mushroom", false, false, false, true, "", "No mutation detected", false);
+
+                    levels[3].innerHTML =
+                        createPetCard(`Images/pets/comingsoon-A`, "", "Pet Ascension Coming Soon", false, true) +
+                        createPetCard(`Images/pets/comingsoon-B`, "", "Pet Ascension Coming Soon", false, true);
+                }
+                else {
+                    // Group 6: All remaining pets - evolve and mutate at both g12 and g18
+                    // NO DIM, NO OVERLAY TEXT (completely normal)
+                    levels[1].innerHTML =
+                        createPetCard(`${path}-g12A`, "", "Grade 12 + Blue Mushroom") +
+                        createPetCard(`${path}-g12B`, "", "Grade 12 + Blue Mushroom + Gem Mushroom");
+
+                    levels[2].innerHTML =
+                        createPetCard(`${path}-g18A`, "", "Grade 18 + Colorful Mushroom") +
+                        createPetCard(`${path}-g18B`, "", "Grade 18 + Colorful Mushroom");
+
+                    levels[3].innerHTML =
+                        createPetCard(`Images/pets/comingsoon-A`, "", "Pet Ascension Coming Soon", false, true) +
+                        createPetCard(`Images/pets/comingsoon-B`, "", "Pet Ascension Coming Soon", false, true);
+                }
             }
+
+            // Initialize
+            buildAZFilter();
+            updatePetList();
 
             // Auto-select first pet
             setTimeout(() => {

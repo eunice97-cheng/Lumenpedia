@@ -110,15 +110,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Handle window resize - reset if layout changes significantly
     let resizeTimeout;
-    window.addEventListener('resize', function() {
+    let lastWidth = window.innerWidth; // Store initial width
+
+window.addEventListener('resize', function() {
+    // Only trigger if the WIDTH actually changed
+    if (window.innerWidth !== lastWidth) {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(function() {
             if (currentState === 'left-expanded' || currentState === 'right-expanded') {
                 resetToNormal();
             }
+            lastWidth = window.innerWidth; // Update width for next check
         }, 250);
-    });
-
+    }
+});
     // Initialize normal view
     resetToNormal();
 });

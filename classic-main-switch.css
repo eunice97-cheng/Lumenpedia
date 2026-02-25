@@ -3,7 +3,7 @@
 /* Hero Section with Assistants */
 .hero-with-assistants {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 4rem 0;
+    padding: 2rem 0;
     position: relative;
     overflow: hidden;
 }
@@ -21,7 +21,7 @@
 .hero-assistants-container {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -38,7 +38,7 @@
 }
 
 .hero-assistants-content h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 1rem;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -73,11 +73,11 @@
 }
 
 .assistant-img {
-    width: 80px;
-    height: 80px;
+    width: 125px;
+    height: 125px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid rgba(255, 255, 255, 0.2);
+    border: 4px solid rgba(174, 56, 204, 0.562);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
 }

@@ -132,8 +132,7 @@
             gap: 10px;
         }
 
-        .nav-item:hover,
-        .nav-item.active {
+        .nav-item:hover {
             border-color: var(--pet-accent);
             background: var(--pet-card-bg);
             transform: translateX(5px);
@@ -141,8 +140,10 @@
         }
 
         .nav-item.active {
-            color: var(--pet-accent);
-            border-left: 4px solid var(--pet-accent);
+            color: var(--pet-accent) !important;
+            border-left: 4px solid var(--pet-accent) !important;
+            background: var(--pet-card-bg) !important;
+            transform: none !important; /* Prevents stuck shift */
         }
 
         .nav-item span {
@@ -300,6 +301,7 @@
                     <div
                         style="color: var(--pet-accent); font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin: 0.5rem 0 0.5rem 0.5rem;">
                         Navigation</div>
+                    <a href="#introduction" class="nav-item"><span>Start</span>Introduction</a>
                     <a href="#acquisition" class="nav-item"><span>Start</span>Acquisition</a>
                     <a href="#star-signs" class="nav-item"><span>01</span>Star Signs</a>
                     <a href="#passives" class="nav-item"><span>02</span>Passives</a>
@@ -319,6 +321,21 @@
                 </aside>
 
                 <div class="main-content">
+                    <div id="introduction" class="guide-card">
+                        <div class="guide-card-header">
+                            <h2 class="guide-card-title">Why do I Need a Pet?</h2>
+                            <p class="guide-card-description" style="color: var(--color-muted);">Reasons why you should get a pet.</p>
+                        </div>
+                        <ul class="guide-list">
+                            <li><span><strong style="color: var(--pet-accent);">Assist in Attack</strong> – You can summon your pet and have it attack enemies for you.</span></li>
+                            <li><span><strong style="color: var(--pet-accent);">Fusion</strong> – Fusion will reduce the damage you take and increase your resistances.</span></li>
+                            <li><span><strong style="color: var(--pet-accent);">Esperate</strong> – Esperate will improve the benefits you earn from the Esper you are wearing.</span></li>
+                            <li><span><strong style="color: var(--pet-accent);">Buffs</strong> – Some pets have buff skills that can be use to buff yourself.</span></li>
+                            <li><span><strong style="color: var(--pet-accent);">Debuffs</strong> – Some pets even have debuff skills that can be use on your enemies.</span></li>
+                            <li><span><strong style="color: var(--pet-accent);">Materials Gathering</strong> – Pets can gather materials used for crafting pet gear.</span></li>
+                        </ul>
+                    </div>
+
                     <div id="acquisition" class="guide-card">
                         <div class="guide-card-header">
                             <h2 class="guide-card-title">How to Obtain a Pet</h2>
@@ -864,19 +881,15 @@
 
     <a href="#" class="back-to-top">↑</a>
 
-    <!-- Footer -->
     <footer class="lumenpedia-footer">
         <div class="footer-container">
 
-            <!-- Main Footer Content -->
             <div class="footer-main">
-                <!-- Brand Section -->
                 <div class="footer-brand">
                     <div class="footer-logo">LUMENPEDIA</div>
                     <p class="footer-tagline">Your all-in-one community guide for the Jade Dynasty Lumen Server.
                         Discover game information, guides, and server updates in one convenient location.</p>
 
-                    <!-- Social Media -->
                     <div class="footer-social">
                         <a href="https://www.facebook.com/jadedynastylumen" class="social-link" target="_blank"
                             aria-label="Facebook">
@@ -910,19 +923,14 @@
                     </div>
                 </div>
 
-                <!-- Explore Section -->
                 <div class="footer-section">
                     <h4>EXPLORE</h4>
                     <div class="footer-links">
                         <a href="latest-updates.html" class="footer-link">Latest Updates</a>
                         <a href="browse.html" class="footer-link">Browse All Guides</a>
-                        <!-- <a href="classes.html" class="footer-link">Classes & Factions</a>
-                        <a href="quests.html" class="footer-link">Quest Database</a>
-                        <a href="items.html" class="footer-link">Item Database</a> -->
                     </div>
                 </div>
 
-                <!-- Community Section -->
                 <div class="footer-section">
                     <h4>COMMUNITY</h4>
                     <div class="footer-links">
@@ -949,7 +957,6 @@
                     </div>
                 </div>
 
-                <!-- Support Section -->
                 <div class="footer-section">
                     <h4>SUPPORT</h4>
                     <div class="footer-links">
@@ -957,12 +964,10 @@
                         <a href="support.html" class="footer-link">Report Issue</a>
                         <a href="support.html" class="footer-link">Contribute</a>
                         <a href="support.html" class="footer-link">Contact Us</a>
-                        <!-- <a href="faq.html" class="footer-link">FAQ</a> -->
                     </div>
                 </div>
             </div>
 
-            <!-- Footer Bottom -->
             <div class="footer-bottom">
                 <div class="footer-copyright">© 2025 Lumenpedia. All rights reserved.</div>
                 <div class="footer-legal">
@@ -979,28 +984,44 @@
     <script src="icon-loader.js"></script>
 
     <script>
-        // FIX: Scroll-Spy logic to highlight the sidebar as you scroll
-        const sections = document.querySelectorAll('div[id]');
-        const navItems = document.querySelectorAll('.nav-item');
+        /**
+         * NEW Intersection Observer Logic
+         * Reliably detects current section and updates sidebar.
+         */
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -70% 0px',
+            threshold: 0
+        };
 
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    const navItems = document.querySelectorAll('.nav-item');
+                    
+                    navItems.forEach(item => {
+                        item.classList.remove('active');
+                        if (item.getAttribute('href') === `#${id}`) {
+                            item.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Targets all IDs (Introduction, Acquisition, etc.)
+        document.querySelectorAll('[id]').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Special check for bottom of page to force-highlight "Fortify"
         window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - 150)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('href') === `#${current}`) {
-                    item.classList.add('active');
-                }
-            });
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                document.querySelector('a[href="#fortify"]').classList.add('active');
+            }
         });
     </script>
 </body>
-
 </html>
