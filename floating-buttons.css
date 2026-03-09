@@ -92,23 +92,6 @@
     background-color: #c94443;
 }
 
-/* PayPal */
-.floating-btn-paypal {
-    background-color: #0070ba;
-}
-
-.floating-btn-paypal .floating-btn-icon {
-    background-color: #003087;
-}
-
-.floating-btn-paypal:hover {
-    background-color: #005ea6;
-}
-
-.floating-btn-paypal:hover .floating-btn-icon {
-    background-color: #002674;
-}
-
 /* Mobile */
 @media (max-width: 600px) {
     .floating-buttons {
