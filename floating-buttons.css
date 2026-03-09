@@ -75,21 +75,21 @@
     background-color: #4752c4;
 }
 
-/* PayPal */
-.floating-btn-paypal {
-    background-color: #0070ba;
+/* Ko-fi */
+.floating-btn-kofi {
+    background-color: #FF5E5B;
 }
 
-.floating-btn-paypal .floating-btn-icon {
-    background-color: #003087;
+.floating-btn-kofi .floating-btn-icon {
+    background-color: #e04e4b;
 }
 
-.floating-btn-paypal:hover {
-    background-color: #005ea6;
+.floating-btn-kofi:hover {
+    background-color: #e04e4b;
 }
 
-.floating-btn-paypal:hover .floating-btn-icon {
-    background-color: #002674;
+.floating-btn-kofi:hover .floating-btn-icon {
+    background-color: #c94443;
 }
 
 /* Mobile */
