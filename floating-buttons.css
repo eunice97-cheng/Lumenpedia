@@ -1,0 +1,120 @@
+/* floating-buttons.css */
+
+.floating-buttons {
+    position: fixed;
+    right: 20px;
+    bottom: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 9999;
+}
+
+.floating-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-decoration: none;
+    border-radius: 50px;
+    overflow: hidden;
+    width: 48px;
+    height: 48px;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+}
+
+.floating-btn:hover {
+    width: 160px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+    text-decoration: none;
+}
+
+.floating-btn-label {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(6px);
+    transition: opacity 0.2s 0.05s, transform 0.25s;
+    padding-left: 14px;
+    flex: 1;
+}
+
+.floating-btn:hover .floating-btn-label {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.floating-btn-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+/* Discord */
+.floating-btn-discord {
+    background-color: #5865F2;
+}
+
+.floating-btn-discord .floating-btn-icon {
+    background-color: #5865F2;
+}
+
+.floating-btn-discord:hover {
+    background-color: #4752c4;
+}
+
+.floating-btn-discord:hover .floating-btn-icon {
+    background-color: #4752c4;
+}
+
+/* PayPal */
+.floating-btn-paypal {
+    background-color: #0070ba;
+}
+
+.floating-btn-paypal .floating-btn-icon {
+    background-color: #003087;
+}
+
+.floating-btn-paypal:hover {
+    background-color: #005ea6;
+}
+
+.floating-btn-paypal:hover .floating-btn-icon {
+    background-color: #002674;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .floating-buttons {
+        right: 12px;
+        bottom: 80px;
+        gap: 10px;
+    }
+
+    .floating-btn {
+        width: 44px;
+        height: 44px;
+    }
+
+    .floating-btn:hover {
+        width: 44px;
+    }
+
+    .floating-btn-label {
+        display: none;
+    }
+
+    .floating-btn-icon {
+        width: 44px;
+        height: 44px;
+    }
+}
