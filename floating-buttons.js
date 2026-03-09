@@ -1,6 +1,6 @@
 // floating-buttons.js
 (function () {
-    const DISCORD_URL = 'https://discord.com/invite/TeNbyexB6W';
+    const DISCORD_URL = 'https://discord.com/users/909063517280296961';
     const PAYPAL_URL = 'https://www.paypal.com/donate?business=eunice97.cheng%40gmail.com&currency_code=USD';
 
     const discordIcon = `<svg width="22" height="22" viewBox="0 0 24 24" fill="white" aria-hidden="true">
