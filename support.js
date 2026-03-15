@@ -1,30 +1,3 @@
-// Copy Discord username to clipboard
-function copyDiscordUsername() {
-    const username = 'Eunice97'; // Your actual Discord username
-    const copyBtn = document.querySelector('.copy-btn');
-    
-    navigator.clipboard.writeText(username).then(() => {
-        // Visual feedback
-        const originalText = copyBtn.innerHTML;
-        copyBtn.innerHTML = `
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="20 6 9 17 4 12"/>
-            </svg>
-            Copied!
-        `;
-        copyBtn.classList.add('copied');
-        
-        // Reset after 2 seconds
-        setTimeout(() => {
-            copyBtn.innerHTML = originalText;
-            copyBtn.classList.remove('copied');
-        }, 2000);
-    }).catch(err => {
-        console.error('Failed to copy: ', err);
-        alert('Failed to copy username to clipboard');
-    });
-}
-
 // Handle avatar image loading
 document.addEventListener('DOMContentLoaded', function() {
     const avatarImg = document.querySelector('.avatar-img');
