@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -628,11 +628,11 @@
     <div class="pet-evolution-container">
         <!-- Left Sidebar - Pet List with Search and A-Z -->
         <aside class="pet-sidebar">
-            <h3>🐾 PET LIST</h3>
+            <h3>ðŸ¾ PET LIST</h3>
             
             <!-- Search Bar -->
             <div class="pet-search">
-                <input type="text" id="petSearch" placeholder="🔍 Search pets..." autocomplete="off">
+                <input type="text" id="petSearch" placeholder="ðŸ” Search pets..." autocomplete="off">
             </div>
 
             <!-- A-Z Filter -->
@@ -703,7 +703,7 @@
                                 <use href="#icon-facebook"></use>
                             </svg>
                         </a>
-                        <a href="https://discord.com/invite/TeNbyexB6W" class="social-link" target="_blank"
+                        <a href="https://discord.gg/sypZjUwPav" class="social-link" target="_blank"
                             aria-label="Discord">
                             <svg width="16" height="16">
                                 <use href="#icon-discord"></use>
@@ -746,7 +746,7 @@
                             <svg class="footer-icon" width="14" height="14">
                                 <use href="#icon-facebook"></use>
                             </svg>Facebook</a>
-                        <a href="https://discord.com/invite/TeNbyexB6W" class="footer-link" target="_blank">
+                        <a href="https://discord.gg/sypZjUwPav" class="footer-link" target="_blank">
                             <svg class="footer-icon" width="14" height="14">
                                 <use href="#icon-discord"></use>
                             </svg>Discord</a>
@@ -779,7 +779,7 @@
 
             <!-- Footer Bottom -->
             <div class="footer-bottom">
-                <div class="footer-copyright">© 2025 Lumenpedia. All rights reserved.</div>
+                <div class="footer-copyright">Â© 2025 Lumenpedia. All rights reserved.</div>
                 <div class="footer-legal">
                     <a href="privacy.html">Privacy Policy</a>
                     <a href="terms.html">Terms of Service</a>
@@ -810,7 +810,7 @@
                 "Little Cow", "Little Deer", "Little Sheep", "Lovebird", "Maggie Fairy",
                 "Mini Bilu", "Mini JD (2012 PK Version)", "Mini Velonus", "MiuMiu",
                 "Night Owl", "Octomum", "Pengo", "Phantasma", "Plump Panda",
-                "Plump Toad", "Raccoon Rascal ♀", "Raccoon Rascal ♂", "Raja", "Rattlesnake",
+                "Plump Toad", "Raccoon Rascal â™€", "Raccoon Rascal â™‚", "Raja", "Rattlesnake",
                 "Rhex", "Rubi Boar", "Scorpus Ravager", "Silver Fox", "Sproutax",
                 "Stonus Protector", "Tater Tot", "Thunder Snake", "Torin Kul", "Underworld Judge",
                 "Warlord's Bodyguard", "Wild Wolf", "Wolfgang", "Woody Pig", "Yaksha Ranger"
@@ -1043,8 +1043,8 @@
                     "Mini Bilu",
                     "Mini JD (2012 PK Version)",
                     "Mini Velonus",
-                    "Raccoon Rascal ♀",
-                    "Raccoon Rascal ♂"
+                    "Raccoon Rascal â™€",
+                    "Raccoon Rascal â™‚"
                 ];
 
                 // Group 3: Special case - Chibi-chan
@@ -1101,14 +1101,14 @@
                 }
                 else if (isChibiChan) {
                     // Group 3: Chibi-chan special rules
-                    // Level 1: No evolution, no mutation → DIM images
+                    // Level 1: No evolution, no mutation â†’ DIM images
                     levels[1].innerHTML =
                         createPetCard(`${path}-g12A`, "", "Grade 12 + Blue Mushroom", false, false, false, true, "No evolution detected", "", true) +
                         createPetCard(`${path}-g12B`, "", "Grade 12 + Blue Mushroom + Gem Mushroom", false, false, false, true, "No evolution detected", "No mutation detected", true);
 
                     // Level 2: 
-                    // g18A: Evolution happens → NO DIM, NO TEXT
-                    // g18B: Evolution happens, no mutation → NO DIM, bottom text only
+                    // g18A: Evolution happens â†’ NO DIM, NO TEXT
+                    // g18B: Evolution happens, no mutation â†’ NO DIM, bottom text only
                     levels[2].innerHTML =
                         createPetCard(`${path}-g18A`, "", "Grade 18 + Colorful Mushroom", false, false, false, false, "", "", false) +
                         createPetCard(`${path}-g18B`, "", "Grade 18 + Colorful Mushroom", false, false, false, true, "", "No mutation detected", false);
@@ -1125,8 +1125,8 @@
                         createPetCard(`${path}-g12B`, "", "Grade 12 + Blue Mushroom + Gem Mushroom", false, false, false, true, "", "No mutation detected", false);
 
                     // Level 2: 
-                    // g18A: Evolves, no mutation → NO DIM, NO TEXT
-                    // g18B: Evolves, mutation active → NO DIM, green bottom text
+                    // g18A: Evolves, no mutation â†’ NO DIM, NO TEXT
+                    // g18B: Evolves, mutation active â†’ NO DIM, green bottom text
                     levels[2].innerHTML =
                         createPetCard(`${path}-g18A`, "", "Grade 18 + Colorful Mushroom", false, false, false, false, "", "", false) +
                         createPetCard(`${path}-g18B`, "", "Grade 18 + Colorful Mushroom", false, false, false, true, "", "Delayed Mutation Detected", false, true);
@@ -1137,10 +1137,10 @@
                 }
                 else if (isNoMutation) {
                     // Group 5: No mutation, evolve at both g12 and g18
-                    // g12A: Evolves, no mutation → NO DIM, NO TEXT
-                    // g12B: Evolves, no mutation → NO DIM, bottom text "No mutation detected"
-                    // g18A: Evolves, no mutation → NO DIM, NO TEXT
-                    // g18B: Evolves, no mutation → NO DIM, bottom text "No mutation detected"
+                    // g12A: Evolves, no mutation â†’ NO DIM, NO TEXT
+                    // g12B: Evolves, no mutation â†’ NO DIM, bottom text "No mutation detected"
+                    // g18A: Evolves, no mutation â†’ NO DIM, NO TEXT
+                    // g18B: Evolves, no mutation â†’ NO DIM, bottom text "No mutation detected"
                     levels[1].innerHTML =
                         createPetCard(`${path}-g12A`, "", "Grade 12 + Blue Mushroom", false, false, false, false, "", "", false) +
                         createPetCard(`${path}-g12B`, "", "Grade 12 + Blue Mushroom + Gem Mushroom", false, false, false, true, "", "No mutation detected", false);
