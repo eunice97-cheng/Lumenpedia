@@ -5,6 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initFooter() {
+    // Auto-update the copyright year
+    const yearSpan = document.getElementById('copyright-year');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+
     // Newsletter form handling - currently disabled
     // const newsletterForm = document.getElementById('newsletterForm');
     // if (newsletterForm) {
