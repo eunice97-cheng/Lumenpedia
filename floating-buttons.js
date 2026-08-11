@@ -35,13 +35,13 @@
     const sidebarHtml = `
     <div class="floating-sidebar" role="complementary" aria-label="Quick links">
     <div class="floating-ad-wrap" id="floating-poker-ad">
-        <button type="button" class="floating-ad-btn" aria-label="Open Poker and Blackjack promo" aria-haspopup="dialog" aria-controls="floating-casino-modal">
+        <button type="button" class="floating-ad-btn" aria-label="Open ASL Gaming Casino promo" aria-haspopup="dialog" aria-controls="floating-casino-modal">
             <span class="floating-ad-icon">
                 <img src="${POKER_IMAGE_URL}" alt="" class="floating-ad-image">
             </span>
             <span class="floating-ad-copy">
                 <span class="floating-ad-eyebrow">Sponsored</span>
-                <span class="floating-ad-title">Poker + Blackjack</span>
+                <span class="floating-ad-title">ASL Gaming Casino</span>
             </span>
         </button>
         <button type="button" class="floating-ad-toggle" aria-label="Minimize casino promo" aria-expanded="true">
