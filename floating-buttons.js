@@ -4,6 +4,7 @@
     const KOFI_URL = 'https://ko-fi.com/eunicecheng';
     const MAIN_DOMAIN_URL = 'https://arcanastudiolabs.com';
     const POKER_URL = 'https://basement-poker.arcanastudiolabs.com/';
+    const CASINO_LOBBY_URL = 'https://basement-poker.arcanastudiolabs.com/';
     const BLACKJACK_URL = 'https://basement-poker.arcanastudiolabs.com/blackjack';
     const POKER_IMAGE_URL = 'Images/poker.png';
     const BLACKJACK_LOGO_URL = 'Images/asl-blackjack-logo.png';
@@ -35,7 +36,7 @@
     const sidebarHtml = `
     <div class="floating-sidebar" role="complementary" aria-label="Quick links">
     <div class="floating-ad-wrap" id="floating-poker-ad">
-        <button type="button" class="floating-ad-btn" aria-label="Open ASL Gaming Casino promo" aria-haspopup="dialog" aria-controls="floating-casino-modal">
+        <a href="${CASINO_LOBBY_URL}" class="floating-ad-btn" target="_blank" rel="noopener noreferrer" aria-label="Visit ASL Gaming Casino">
             <span class="floating-ad-icon">
                 <img src="${POKER_IMAGE_URL}" alt="" class="floating-ad-image">
             </span>
@@ -43,7 +44,7 @@
                 <span class="floating-ad-eyebrow">Sponsored</span>
                 <span class="floating-ad-title">ASL Gaming Casino</span>
             </span>
-        </button>
+        </a>
         <button type="button" class="floating-ad-toggle" aria-label="Minimize casino promo" aria-expanded="true">
             ${minimizeIcon}
         </button>
@@ -139,21 +140,6 @@
             } catch (e) {}
         }
 
-        function openCasinoPromo() {
-            if (!modal) {
-                window.open(BLACKJACK_URL, '_blank', 'noopener');
-                return;
-            }
-
-            modal.hidden = false;
-            document.body.classList.add('casino-promo-open');
-
-            const closeButton = modal.querySelector('.casino-promo-close');
-            if (closeButton) {
-                closeButton.focus();
-            }
-        }
-
         function closeCasinoPromo() {
             if (!modal) {
                 return;
@@ -167,9 +153,7 @@
             }
         }
 
-        if (adButton) {
-            adButton.addEventListener('click', openCasinoPromo);
-        }
+        
 
         closeButtons.forEach(function (button) {
             button.addEventListener('click', closeCasinoPromo);
